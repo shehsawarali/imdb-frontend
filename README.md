@@ -1,2 +1,2 @@
 # imdb-frontend
-Frontend repository for full-stack IMDb project
+Client repository for full-stack IMDb project
