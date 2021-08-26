@@ -1,0 +1,38 @@
+.form-container {
+  box-shadow: 1px 1px 5px #888888;
+  border-radius: 8px;
+  background-color: #dcdcdc;
+  margin: 2rem auto;
+  width: 30rem;
+  padding: 2rem 1rem;
+}
+
+.form-container > h3 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+input {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  width: 100%;
+  outline: none !important;
+}
+
+input:focus {
+  border: 0.5px solid var(--primary);
+  box-shadow: 0 0 2px 0.5px var(--primary);
+}
+
+label {
+  padding-left: 2px;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 520px) {
+  .form-container {
+    width: 90%;
+  }
+}

@@ -1,5 +1,4 @@
 import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
 
-const second = () => {};
-
-export {Home, second};
+export {Home, SignIn};

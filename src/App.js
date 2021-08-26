@@ -1,7 +1,8 @@
 import React from "react";
-import {Home} from "./Pages";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {Home, SignIn} from "./Pages";
+import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import {Navbar} from "./Components";
+import {StrictlyPublic} from "./Routing";
 
 const App = () => {
   return (
@@ -10,6 +11,8 @@ const App = () => {
 
       <Switch>
         <Route exact path="/" component={Home} />
+        <StrictlyPublic path="/signin" component={SignIn} />
+        <Redirect to="/" />
       </Switch>
     </BrowserRouter>
   );
