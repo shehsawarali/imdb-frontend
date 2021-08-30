@@ -6,6 +6,11 @@
   --secondary-light: #2f2d2d;
 }
 
+::placeholder {
+  color: gray;
+  opacity: 1;
+}
+
 body {
   background-color: black;
 }

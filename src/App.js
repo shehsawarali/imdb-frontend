@@ -3,7 +3,7 @@ import React from "react";
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 
 import {Navbar} from "./Components";
-import {Home, SignIn} from "./Pages";
+import {Home, SignIn, SignUp} from "./Pages";
 import {StrictlyPublic} from "./Routing";
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <StrictlyPublic path="/signin" component={SignIn} />
+        <StrictlyPublic path="/signup" component={SignUp} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>

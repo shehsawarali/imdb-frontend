@@ -12,18 +12,26 @@
   text-decoration: underline;
 }
 
-input {
+input,
+select {
   height: 40px;
   border-radius: 5px;
   border: 1px solid #ccc;
   padding-left: 10px;
+  padding-right: 10px;
   width: 100%;
   outline: none !important;
+  background-color: white;
 }
 
-input:focus {
-  border: 0.5px solid var(--primary);
-  box-shadow: 0 0 2px 0.5px var(--primary);
+select:invalid {
+  color: gray; /* same as ::placeholder */
+}
+
+input:focus,
+select:focus {
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 2px 1px var(--primary);
 }
 
 label {

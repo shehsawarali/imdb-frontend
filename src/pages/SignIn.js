@@ -1,6 +1,6 @@
-import {useContext, useState} from "react";
+import {useState} from "react";
 
-import {Button} from "react-bootstrap";
+import {Button, Spinner} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 import "../assets/css/Form.css";
@@ -9,7 +9,10 @@ import useInput from "../hooks/useInput";
 import UserService from "../services/UserService";
 
 const validateEmail = (email) => {
-  if (email.trim() === "") return "Enter a correct email address";
+  const EMAIL_TEST =
+    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
+
+  if (!EMAIL_TEST.test(email)) return "Enter a valid email address";
 
   return null;
 };
@@ -23,7 +26,9 @@ const validatePassword = (password) => {
 const SignIn = () => {
   const email = useInput(validateEmail);
   const password = useInput(validatePassword);
+
   const [message, setMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const formIsValid = () => {
     if (email.hasError) {
@@ -45,6 +50,7 @@ const SignIn = () => {
     setMessage(null);
 
     if (formIsValid()) {
+      setIsLoading(true);
       UserService.login(form)
         .then((response) => {
           localStorage.setItem("access_token", response.access);
@@ -53,6 +59,7 @@ const SignIn = () => {
         })
         .catch((error) => {
           setMessage(error.data.message);
+          setIsLoading(false);
         });
     }
   };
@@ -71,7 +78,7 @@ const SignIn = () => {
             type={"email"}
             placeholder={"Email"}
             onChange={email.handleChange}
-            autoFocus={true}
+            required
           />
         </div>
 
@@ -83,13 +90,15 @@ const SignIn = () => {
             type={"password"}
             placeholder={"Password"}
             onChange={password.handleChange}
+            required
           />
         </div>
 
         {message && <p className="error text-center mt-3 mb-0">{message}</p>}
 
         <Button className={"mt-4"} style={{width: "100%"}} type={"submit"}>
-          Sign In
+          {isLoading && <Spinner size="sm" animation="border" />}
+          {!isLoading && "SignIn"}
         </Button>
 
         <div className={"text-center mt-4"}>

@@ -21,14 +21,14 @@ API.interceptors.response.use(
     const originalRequest = error.config;
 
     if (
-      error.response.data.code === "token_not_valid" &&
+      error?.response?.data?.code === "token_not_valid" &&
       originalRequest.url === "user/token/refresh/"
     ) {
       window.location.href = "/login/";
       return Promise.reject(error);
     }
 
-    if (error.response.data.code === "token_not_valid") {
+    if (error?.response?.data?.code === "token_not_valid") {
       const refreshToken = localStorage.getItem("refresh_token");
 
       return API.post("user/token/refresh/", {refresh: refreshToken})
@@ -49,16 +49,16 @@ API.interceptors.response.use(
 
     if (error.response) {
       return Promise.reject(error.response);
-    } else {
-      let error = {
-        status: 500,
-        data: {
-          message: "Unable to execute request. Please try again.",
-        },
-      };
-
-      return Promise.reject(error);
     }
+
+    let errorInfo = {
+      status: 500,
+      data: {
+        message: "Unable to execute request. Please try again.",
+      },
+    };
+
+    return Promise.reject(errorInfo);
   }
 );
 
