@@ -4,12 +4,6 @@
     "es2021": true
   },
   "extends": [
-//    "eslint:recommended",
-//    "plugin:react/recommended",
-//    "plugin:react/recommended",
-//    "plugin:import/recommended",
-//    "plugin:import/errors",
-//    "plugin:import/warnings",
     "react-app",
     "react-app/jest",
     "plugin:prettier/recommended"
@@ -26,5 +20,25 @@
     "import"
   ],
   "rules": {
-  }
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+
 }

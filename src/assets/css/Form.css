@@ -31,6 +31,14 @@ label {
   margin-bottom: 2px;
 }
 
+.error {
+  color: indianred;
+}
+
+.success {
+  color: green;
+}
+
 @media (max-width: 520px) {
   .form-container {
     width: 90%;

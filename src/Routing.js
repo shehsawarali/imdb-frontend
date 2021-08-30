@@ -1,9 +1,11 @@
 import React, {useContext} from "react";
+
 import {Route, Redirect} from "react-router-dom";
-import {AuthContext} from "./context/AuthContext";
+
+import {UserContext} from "./context/UserContext";
 
 const StrictlyPublic = ({component: Component, ...rest}) => {
-  const {user} = useContext(AuthContext);
+  const {user} = useContext(UserContext);
   return (
     <Route
       {...rest}
@@ -18,7 +20,7 @@ const StrictlyPublic = ({component: Component, ...rest}) => {
 };
 
 const StrictlyPrivate = ({component: Component, ...rest}) => {
-  const {user} = useContext(AuthContext);
+  const {user} = useContext(UserContext);
 
   return (
     <Route
