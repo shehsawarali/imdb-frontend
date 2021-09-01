@@ -5,27 +5,19 @@ import {Link} from "react-router-dom";
 
 import "../assets/css/Form.css";
 import logo from "../assets/media/logo.png";
+import {EMAIL_TEST_REGEX} from "../constants";
 import useInput from "../hooks/useInput";
 import UserService from "../services/UserService";
 
 const validateEmail = (email) => {
-  const EMAIL_TEST =
-    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
-
-  if (!EMAIL_TEST.test(email)) return "Enter a valid email address";
-
-  return null;
-};
-
-const validatePassword = (password) => {
-  if (password.trim() === "") return "Enter your password";
+  if (!EMAIL_TEST_REGEX.test(email)) return "Enter a valid email address";
 
   return null;
 };
 
 const SignIn = () => {
   const email = useInput(validateEmail);
-  const password = useInput(validatePassword);
+  const password = useInput();
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
