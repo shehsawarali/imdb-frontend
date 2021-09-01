@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 import {Button, Spinner} from "react-bootstrap";
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import "../assets/css/Form.css";
 import CountryOptions from "../assets/js/CountryOptions";
@@ -38,22 +38,21 @@ const SignUp = () => {
   const age = useInput((value) => true);
 
   const [message, setMessage] = useState(null);
-  const [redirect, setRedirect] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const formIsValid = () => {
     if (email.hasError) {
-      setMessage(email.hasError);
+      setMessage({text: email.hasError, error: true});
       return false;
     }
 
     if (password.hasError) {
-      setMessage(password.hasError);
+      setMessage({text: password.hasError, error: true});
       return false;
     }
 
     if (password.value !== confirmPassword.value) {
-      setMessage("Passwords do not match");
+      setMessage({text: "Passwords do not match", error: true});
       return false;
     }
 
@@ -77,17 +76,15 @@ const SignUp = () => {
       setIsLoading(true);
       UserService.register(form)
         .then((response) => {
-          setRedirect("/signin");
+          setMessage({text: response.message, error: false});
+          setIsLoading(false);
         })
         .catch((error) => {
-          console.log(error);
-          setMessage(error.data.message);
+          setMessage({text: error.data.message, error: true});
           setIsLoading(false);
         });
     }
   };
-
-  if (redirect) return <Redirect to={redirect} />;
 
   return (
     <>
@@ -176,7 +173,11 @@ const SignUp = () => {
           />
         </div>
 
-        {message && <p className="error text-center mt-3 mb-0">{message}</p>}
+        {message && (
+          <p className={`text-center mt-3 mb-0 ${message.error ? "error" : "success"}`}>
+            {message.text}
+          </p>
+        )}
 
         <Button className={"mt-4"} style={{width: "100%"}} type={"submit"}>
           {isLoading && <Spinner size="sm" animation="border" />}

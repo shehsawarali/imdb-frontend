@@ -40,11 +40,11 @@ label {
 }
 
 .error {
-  color: indianred;
+  color: var(--error);
 }
 
 .success {
-  color: green;
+  color: var(--success);
 }
 
 @media (max-width: 520px) {

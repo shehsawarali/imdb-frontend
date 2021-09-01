@@ -12,7 +12,7 @@ const ContextWrapper = ({children}) => {
     let accessToken = localStorage.getItem("access_token");
 
     if (accessToken) {
-      UserService.verifyUser()
+      UserService.verifySession()
         .then((response) => {
           setUser(response.user);
           setIsLoading(false);

@@ -11,7 +11,7 @@ const UserServices = {
       });
   },
 
-  verifyUser: () => {
+  verifySession: () => {
     return API.get("user/session/")
       .then((response) => {
         return response.data;
@@ -30,5 +30,16 @@ const UserServices = {
         return Promise.reject(error);
       });
   },
+
+  verifyAccount: (token) => {
+    return API.post("user/verify/", token)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
+
 export default UserServices;
