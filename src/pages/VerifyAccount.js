@@ -7,7 +7,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import UserService from "../services/UserService";
 import "../assets/css/PageMessage.css";
 
-const ActivateAccount = (props) => {
+const VerifyAccount = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorResponse, setErrorResponse] = useState(null);
 
@@ -16,7 +16,9 @@ const ActivateAccount = (props) => {
     let token = params?.link;
     let id = params?.id;
 
-    UserService.verifyAccount({id: id, token: token})
+    let payload = {id, token};
+
+    UserService.verifyAccount(payload)
       .then((response) => {
         setIsLoading(false);
       })
@@ -41,4 +43,4 @@ const ActivateAccount = (props) => {
   );
 };
 
-export default ActivateAccount;
+export default VerifyAccount;

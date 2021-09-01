@@ -6,25 +6,9 @@ import {Link} from "react-router-dom";
 import "../assets/css/Form.css";
 import CountryOptions from "../assets/js/CountryOptions";
 import logo from "../assets/media/logo.png";
-import {EMAIL_TEST_REGEX} from "../constants";
 import useInput from "../hooks/useInput";
 import UserService from "../services/UserService";
-
-const validateEmail = (email) => {
-  if (!EMAIL_TEST_REGEX.test(email)) return "Enter a valid email address";
-
-  return null;
-};
-
-const validatePassword = (password) => {
-  if (password.trim() === "") {
-    return "Enter your password";
-  } else if (password.trim().length < 4) {
-    return "Password length must be atleast 4 characters";
-  }
-
-  return null;
-};
+import {validateEmail, validatePassword} from "../utils";
 
 const SignUp = () => {
   const firstName = useInput();
@@ -88,7 +72,7 @@ const SignUp = () => {
     <>
       <img style={{display: "block", margin: "2rem auto"}} src={logo} alt={"App Logo"} />
       <form className={"form-container"} onSubmit={submitForm}>
-        <h3 className={"text-center"}>Sign-Up</h3>
+        <h3>Sign-Up</h3>
 
         <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
           <label htmlFor={"firstName"}>First Name</label>
@@ -178,8 +162,7 @@ const SignUp = () => {
         )}
 
         <Button className={"mt-4"} style={{width: "100%"}} type={"submit"}>
-          {isLoading && <Spinner size="sm" animation="border" />}
-          {!isLoading && "SignUp"}
+          {!isLoading ? "Sign Up" : <Spinner size="sm" animation="border" />}
         </Button>
 
         <div className={"text-center mt-4"}>

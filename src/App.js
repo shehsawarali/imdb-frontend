@@ -3,7 +3,7 @@ import React from "react";
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 
 import {Navbar} from "./components";
-import {ActivateAccount, Home, SignIn, SignUp} from "./pages";
+import Pages from "./pages";
 import {StrictlyPublic} from "./routing";
 
 const App = () => {
@@ -12,10 +12,12 @@ const App = () => {
       <Navbar />
 
       <Switch>
-        <Route exact path="/" component={Home} />
-        <StrictlyPublic path="/signin" component={SignIn} />
-        <StrictlyPublic path="/signup" component={SignUp} />
-        <StrictlyPublic path="/verify" component={ActivateAccount} />
+        <Route exact path="/" component={Pages.Home} />
+        <StrictlyPublic path="/signin" component={Pages.SignIn} />
+        <StrictlyPublic path="/signup" component={Pages.SignUp} />
+        <StrictlyPublic path="/verify" component={Pages.VerifyAccount} />
+        <StrictlyPublic path="/forgot-password" component={Pages.ForgotPassword} />
+        <StrictlyPublic path="/reset" component={Pages.ResetPassword} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>
