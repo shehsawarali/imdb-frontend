@@ -1,0 +1,64 @@
+.form-container {
+  box-shadow: 1px 1px 5px #888888;
+  border-radius: 8px;
+  background-color: #dcdcdc;
+  margin: 2rem auto;
+  width: 30rem;
+  padding: 2rem 1rem;
+}
+
+.form-container > h3 {
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+}
+
+input,
+select {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  outline: none !important;
+  background-color: white;
+}
+
+select:invalid {
+  color: gray; /* same as ::placeholder */
+}
+
+input:focus,
+select:focus {
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 2px 1px var(--primary);
+}
+
+label {
+  margin-left: 2px;
+  margin-bottom: 2px;
+}
+
+.error {
+  color: var(--error);
+}
+
+.success {
+  color: var(--success);
+}
+
+.forgot-password {
+  display: flex;
+  justifycontent: space-between;
+}
+.forgot-password > .link {
+  font-size: small;
+  margin: auto 2px 4px auto;
+}
+
+@media (max-width: 520px) {
+  .form-container {
+    width: 90%;
+  }
+}

@@ -1,0 +1,15 @@
+.page-message {
+  width: 60%;
+  margin: 5rem auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.page-error {
+  background-color: var(--error);
+}
+
+.page-success {
+  background-color: darkseagreen;
+}
