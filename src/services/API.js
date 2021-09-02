@@ -31,7 +31,7 @@ API.interceptors.response.use(
     if (error?.response?.data?.code === "token_not_valid") {
       const refreshToken = localStorage.getItem("refresh_token");
 
-      return API.post("user/token/refresh/", {refresh: refreshToken})
+      return API.post("user/token/refresh/", { refresh: refreshToken })
         .then((response) => {
           const accessToken = response.data.access;
           localStorage.setItem("access_token", accessToken);

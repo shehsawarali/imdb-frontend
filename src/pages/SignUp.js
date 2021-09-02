@@ -1,14 +1,14 @@
-import {useState} from "react";
+import { useState } from "react";
 
-import {Button, Spinner} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Button, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "../assets/css/Form.css";
 import CountryOptions from "../assets/js/CountryOptions";
 import logo from "../assets/media/logo.png";
 import useInput from "../hooks/useInput";
 import UserService from "../services/UserService";
-import {validateEmail, validatePassword} from "../utils";
+import { validateEmail, validatePassword } from "../utils";
 
 const SignUp = () => {
   const firstName = useInput();
@@ -24,17 +24,17 @@ const SignUp = () => {
 
   const formIsValid = () => {
     if (email.hasError) {
-      setMessage({text: email.hasError, error: true});
+      setMessage({ text: email.hasError, error: true });
       return false;
     }
 
     if (password.hasError) {
-      setMessage({text: password.hasError, error: true});
+      setMessage({ text: password.hasError, error: true });
       return false;
     }
 
     if (password.value !== confirmPassword.value) {
-      setMessage({text: "Passwords do not match", error: true});
+      setMessage({ text: "Passwords do not match", error: true });
       return false;
     }
 
@@ -58,11 +58,11 @@ const SignUp = () => {
       setIsLoading(true);
       UserService.register(form)
         .then((response) => {
-          setMessage({text: response.message, error: false});
+          setMessage({ text: response.message, error: false });
           setIsLoading(false);
         })
         .catch((error) => {
-          setMessage({text: error.data.message, error: true});
+          setMessage({ text: error.data.message, error: true });
           setIsLoading(false);
         });
     }
@@ -70,11 +70,15 @@ const SignUp = () => {
 
   return (
     <>
-      <img style={{display: "block", margin: "2rem auto"}} src={logo} alt={"App Logo"} />
+      <img
+        style={{ display: "block", margin: "2rem auto" }}
+        src={logo}
+        alt={"App Logo"}
+      />
       <form className={"form-container"} onSubmit={submitForm}>
         <h3>Sign-Up</h3>
 
-        <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
+        <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
           <label htmlFor={"firstName"}>First Name</label>
           <input
             id={"firstName"}
@@ -84,7 +88,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
+        <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
           <label htmlFor={"lastName"}>Last Name</label>
           <input
             id={"lastName"}
@@ -105,7 +109,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
+        <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
           <label htmlFor={"password"}>Password</label>
           <input
             id={"password"}
@@ -116,7 +120,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
+        <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
           <label htmlFor={"confirmPassword"}>Confirm Password</label>
           <input
             id={"confirmPassword"}
@@ -161,7 +165,7 @@ const SignUp = () => {
           </p>
         )}
 
-        <Button className={"mt-4"} style={{width: "100%"}} type={"submit"}>
+        <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
           {!isLoading ? "Sign Up" : <Spinner size="sm" animation="border" />}
         </Button>
 

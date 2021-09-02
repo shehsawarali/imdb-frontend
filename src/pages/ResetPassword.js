@@ -1,14 +1,14 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import queryString from "query-string";
-import {Button, Spinner} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Button, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import LoadingScreen from "../components/LoadingScreen";
 import useInput from "../hooks/useInput";
 import UserService from "../services/UserService";
 import "../assets/css/PageMessage.css";
-import {validatePassword} from "../utils";
+import { validatePassword } from "../utils";
 
 const VerifyAccount = (props) => {
   const password = useInput(validatePassword);
@@ -23,7 +23,7 @@ const VerifyAccount = (props) => {
     let token = params?.link;
     let id = params?.id;
 
-    UserService.checkPasswordResetLink({id: id, token: token})
+    UserService.checkPasswordResetLink({ id: id, token: token })
       .then((response) => {
         setIsLoading(false);
       })
@@ -35,12 +35,12 @@ const VerifyAccount = (props) => {
 
   const formIsValid = () => {
     if (password.hasError) {
-      setMessage({text: password.hasError, error: true});
+      setMessage({ text: password.hasError, error: true });
       return false;
     }
 
     if (password.value !== confirmPassword.value) {
-      setMessage({text: "Passwords do not match", error: true});
+      setMessage({ text: "Passwords do not match", error: true });
       return false;
     }
 
@@ -66,11 +66,11 @@ const VerifyAccount = (props) => {
       setIsLoadingAPI(true);
       UserService.resetPassword(form)
         .then((response) => {
-          setMessage({text: response.message, error: false});
+          setMessage({ text: response.message, error: false });
           setIsLoadingAPI(false);
         })
         .catch((error) => {
-          setMessage({text: error.data.message, error: true});
+          setMessage({ text: error.data.message, error: true });
           setIsLoadingAPI(false);
         });
     }
@@ -129,7 +129,7 @@ const VerifyAccount = (props) => {
           </p>
         )}
 
-        <Button className={"mt-4"} style={{width: "100%"}} type={"submit"}>
+        <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
           {!isLoadingAPI ? "Submit" : <Spinner size="sm" animation="border" />}
         </Button>
       </form>

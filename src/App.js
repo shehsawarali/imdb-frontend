@@ -1,10 +1,10 @@
 import React from "react";
 
-import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import {Navbar} from "./components";
+import { Navbar } from "./components";
 import Pages from "./pages";
-import {StrictlyPublic} from "./routing";
+import { StrictlyPublic } from "./routing";
 
 const App = () => {
   return (

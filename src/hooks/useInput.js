@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 
 const useInput = (validateValue = null) => {
   const [value, setValue] = useState("");

@@ -1,13 +1,13 @@
-import {useState} from "react";
+import { useState } from "react";
 
-import {Button, Spinner} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Button, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "../assets/css/Form.css";
 import logo from "../assets/media/logo.png";
 import useInput from "../hooks/useInput";
 import UserService from "../services/UserService";
-import {validateEmail} from "../utils";
+import { validateEmail } from "../utils";
 
 const SignIn = () => {
   const email = useInput(validateEmail);
@@ -32,7 +32,7 @@ const SignIn = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    let form = {email: email.value, password: password.value};
+    let form = { email: email.value, password: password.value };
     setMessage(null);
 
     if (formIsValid()) {
@@ -52,7 +52,11 @@ const SignIn = () => {
 
   return (
     <>
-      <img style={{display: "block", margin: "2rem auto"}} src={logo} alt={"App Logo"} />
+      <img
+        style={{ display: "block", margin: "2rem auto" }}
+        src={logo}
+        alt={"App Logo"}
+      />
       <form className={"form-container"} onSubmit={submitForm}>
         <h3>Sign-In</h3>
 
@@ -87,7 +91,7 @@ const SignIn = () => {
 
         {message && <p className="error text-center mt-3 mb-0">{message}</p>}
 
-        <Button className={"mt-4"} style={{width: "100%"}} type={"submit"}>
+        <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
           {!isLoading ? "Sign In" : <Spinner size="sm" animation="border" />}
         </Button>
 

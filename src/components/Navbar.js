@@ -1,14 +1,14 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 
-import {Button, Nav, Navbar} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Button, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "../assets/css/Navbar.css";
 
-import {UserContext} from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
 const AppNavbar = () => {
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const loggedOutOptions = () => {
     return (

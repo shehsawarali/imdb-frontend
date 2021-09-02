@@ -1,13 +1,13 @@
-import {useState} from "react";
+import { useState } from "react";
 
-import {Button, Spinner} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import { Button, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "../assets/css/Form.css";
 import logo from "../assets/media/logo.png";
 import useInput from "../hooks/useInput";
 import UserService from "../services/UserService";
-import {validateEmail} from "../utils";
+import { validateEmail } from "../utils";
 
 const SignIn = () => {
   const email = useInput(validateEmail);
@@ -16,7 +16,7 @@ const SignIn = () => {
 
   const formIsValid = () => {
     if (email.hasError) {
-      setMessage({text: email.hasError, error: true});
+      setMessage({ text: email.hasError, error: true });
       return false;
     }
     return true;
@@ -24,18 +24,18 @@ const SignIn = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    let form = {email: email.value};
+    let form = { email: email.value };
     setMessage(null);
 
     if (formIsValid()) {
       setIsLoading(true);
       UserService.forgotPassword(form)
         .then((response) => {
-          setMessage({text: response.message, error: false});
+          setMessage({ text: response.message, error: false });
           setIsLoading(false);
         })
         .catch((error) => {
-          setMessage({text: error.data.message, error: true});
+          setMessage({ text: error.data.message, error: true });
           setIsLoading(false);
         });
     }
@@ -43,7 +43,11 @@ const SignIn = () => {
 
   return (
     <>
-      <img style={{display: "block", margin: "2rem auto"}} src={logo} alt={"App Logo"} />
+      <img
+        style={{ display: "block", margin: "2rem auto" }}
+        src={logo}
+        alt={"App Logo"}
+      />
       <form className={"form-container"} onSubmit={submitForm}>
         <h3>Forgot Password</h3>
 
@@ -65,7 +69,7 @@ const SignIn = () => {
           </p>
         )}
 
-        <Button className={"mt-4"} style={{width: "100%"}} type={"submit"}>
+        <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
           {!isLoading ? "Submit" : <Spinner size="sm" animation="border" />}
         </Button>
 

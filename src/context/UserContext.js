@@ -1,10 +1,10 @@
-import React, {createContext, useEffect, useState} from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 import UserService from "../services/UserService";
 
 const UserContext = createContext();
 
-const ContextWrapper = ({children}) => {
+const ContextWrapper = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,11 +26,11 @@ const ContextWrapper = ({children}) => {
   return (
     <div>
       {!isLoading && (
-        <UserContext.Provider value={{user, setUser}}>{children}</UserContext.Provider>
+        <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
       )}
     </div>
   );
 };
 
 export default ContextWrapper;
-export {UserContext};
+export { UserContext };

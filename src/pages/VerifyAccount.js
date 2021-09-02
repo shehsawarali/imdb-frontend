@@ -1,7 +1,7 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import queryString from "query-string";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import LoadingScreen from "../components/LoadingScreen";
 import UserService from "../services/UserService";
@@ -16,7 +16,7 @@ const VerifyAccount = (props) => {
     let token = params?.link;
     let id = params?.id;
 
-    let payload = {id, token};
+    let payload = { id, token };
 
     UserService.verifyAccount(payload)
       .then((response) => {

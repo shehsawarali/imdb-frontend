@@ -1,8 +1,8 @@
-import {Spinner} from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 
 const LoadingScreen = () => {
   return (
-    <div style={{display: "flex", justifyContent: "center", padding: "5rem"}}>
+    <div style={{ display: "flex", justifyContent: "center", padding: "5rem" }}>
       <Spinner
         animation={"border"}
         style={{

@@ -1,17 +1,19 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 
-import {Route, Redirect} from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
-import {UserContext} from "./context/UserContext";
+import { UserContext } from "./context/UserContext";
 
-const StrictlyPublic = ({component: Component, ...rest}) => {
-  const {user} = useContext(UserContext);
+const StrictlyPublic = ({ component: Component, ...rest }) => {
+  const { user } = useContext(UserContext);
   return (
     <Route
       {...rest}
       render={(props) => {
         if (user)
-          return <Redirect to={{pathname: "/profile", state: {from: props.location}}} />;
+          return (
+            <Redirect to={{ pathname: "/profile", state: { from: props.location } }} />
+          );
 
         return <Component {...props} />;
       }}
@@ -19,15 +21,17 @@ const StrictlyPublic = ({component: Component, ...rest}) => {
   );
 };
 
-const StrictlyPrivate = ({component: Component, ...rest}) => {
-  const {user} = useContext(UserContext);
+const StrictlyPrivate = ({ component: Component, ...rest }) => {
+  const { user } = useContext(UserContext);
 
   return (
     <Route
       {...rest}
       render={(props) => {
         if (!user)
-          return <Redirect to={{pathname: "/signin", state: {from: props.location}}} />;
+          return (
+            <Redirect to={{ pathname: "/signin", state: { from: props.location } }} />
+          );
 
         return <Component {...props} />;
       }}
@@ -35,4 +39,4 @@ const StrictlyPrivate = ({component: Component, ...rest}) => {
   );
 };
 
-export {StrictlyPublic, StrictlyPrivate};
+export { StrictlyPublic, StrictlyPrivate };
