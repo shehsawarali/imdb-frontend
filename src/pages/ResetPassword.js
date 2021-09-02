@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 
 import queryString from "query-string";
 import { Button, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
-import LoadingScreen from "../components/LoadingScreen";
-import useInput from "../hooks/useInput";
-import UserService from "../services/UserService";
-import "../assets/css/PageMessage.css";
-import { validatePassword } from "../utils";
+import LoadingScreen from "components/LoadingScreen";
+import useInput from "hooks/useInput";
+import UserService from "services/UserService";
+import "assets/css/PageMessage.css";
+import { validatePassword } from "utils";
 
 const VerifyAccount = (props) => {
   const password = useInput(validatePassword);

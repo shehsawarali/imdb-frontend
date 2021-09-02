@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import "../assets/css/Form.css";
-import logo from "../assets/media/logo.png";
-import useInput from "../hooks/useInput";
-import UserService from "../services/UserService";
-import { validateEmail } from "../utils";
+import "assets/css/Form.css";
+import logo from "assets/media/logo.png";
+import useInput from "hooks/useInput";
+import UserService from "services/UserService";
+import { validateEmail } from "utils";
 
 const SignIn = () => {
   const email = useInput(validateEmail);

@@ -1,4 +1,4 @@
-import "../assets/css/Button.css";
+import "assets/css/Button.css";
 
 export default function Button({ label }) {
   return (

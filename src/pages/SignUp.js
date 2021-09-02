@@ -3,12 +3,12 @@ import { useState } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import "../assets/css/Form.css";
-import CountryOptions from "../assets/js/CountryOptions";
-import logo from "../assets/media/logo.png";
-import useInput from "../hooks/useInput";
-import UserService from "../services/UserService";
-import { validateEmail, validatePassword } from "../utils";
+import "assets/css/Form.css";
+import CountryOptions from "assets/js/CountryOptions";
+import logo from "assets/media/logo.png";
+import useInput from "hooks/useInput";
+import UserService from "services/UserService";
+import { validateEmail, validatePassword } from "utils";
 
 const SignUp = () => {
   const firstName = useInput();

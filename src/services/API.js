@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:8000/";
+import { BACKEND_URL, JWT_PREFIX } from "constant";
 
 const API = axios.create({
-  baseURL: baseURL,
+  baseURL: BACKEND_URL,
   timeout: 5000,
   headers: {
     Authorization: localStorage.getItem("access_token")
-      ? "Bearer " + localStorage.getItem("access_token")
+      ? `${JWT_PREFIX} ` + localStorage.getItem("access_token")
       : null,
   },
 });

@@ -1,4 +1,4 @@
-import { EMAIL_TEST_REGEX } from "./constants";
+import { EMAIL_TEST_REGEX } from "./constant";
 
 export const validatePassword = (password) => {
   if (password.trim() === "") {

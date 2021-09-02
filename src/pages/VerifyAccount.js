@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import queryString from "query-string";
 import { Link } from "react-router-dom";
 
-import LoadingScreen from "../components/LoadingScreen";
-import UserService from "../services/UserService";
-import "../assets/css/PageMessage.css";
+import LoadingScreen from "components/LoadingScreen";
+import UserService from "services/UserService";
+import "assets/css/PageMessage.css";
 
 const VerifyAccount = (props) => {
   const [isLoading, setIsLoading] = useState(true);

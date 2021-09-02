@@ -1,4 +1,4 @@
-import API from "./API";
+import API from "services/API";
 
 const UserServices = {
   login: (data) => {
