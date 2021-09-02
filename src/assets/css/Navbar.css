@@ -36,9 +36,3 @@ nav {
   background-color: var(--primary);
   color: var(--secondary);
 }
-
-/*.nav-button:focus {*/
-/*  box-shadow: none;*/
-/*  background-color: #2f2d2d;*/
-/*  border: 1px dashed white !important;*/
-/*}*/

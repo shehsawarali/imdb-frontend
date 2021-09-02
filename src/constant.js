@@ -3,3 +3,5 @@ export const EMAIL_TEST_REGEX =
 
 export const BACKEND_URL = "http://localhost:8000/";
 export const JWT_PREFIX = "Bearer";
+export const REFRESH_TOKEN = "refresh_token";
+export const ACCESS_TOKEN = "access_token";

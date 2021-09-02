@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 
+import { ACCESS_TOKEN } from "constant";
 import UserService from "services/UserService";
 
 const UserContext = createContext();
@@ -9,7 +10,7 @@ const ContextWrapper = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let accessToken = localStorage.getItem("access_token");
+    let accessToken = localStorage.getItem(ACCESS_TOKEN);
 
     if (accessToken) {
       UserService.verifySession()
