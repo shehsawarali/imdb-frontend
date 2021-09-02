@@ -1,59 +1,40 @@
-import {useState} from "react";
+import { useState } from "react";
 
-import {Button, Spinner} from "react-bootstrap";
-import {Link, Redirect} from "react-router-dom";
+import { Button, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-import "../assets/css/Form.css";
-import CountryOptions from "../assets/js/CountryOptions";
-import logo from "../assets/media/logo.png";
-import useInput from "../hooks/useInput";
-import UserService from "../services/UserService";
-
-const validateEmail = (email) => {
-  const EMAIL_TEST =
-    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
-
-  if (!EMAIL_TEST.test(email)) return "Enter a valid email address";
-
-  return null;
-};
-
-const validatePassword = (password) => {
-  if (password.trim() === "") {
-    return "Enter your password";
-  } else if (password.trim().length < 4) {
-    return "Password length must be atleast 4 characters";
-  }
-
-  return null;
-};
+import "assets/css/Form.css";
+import CountryOptions from "assets/js/CountryOptions";
+import logo from "assets/media/logo.png";
+import useInput from "hooks/useInput";
+import UserService from "services/UserService";
+import { validateEmail, validatePassword } from "utils";
 
 const SignUp = () => {
-  const firstName = useInput((value) => true);
-  const lastName = useInput((value) => true);
+  const firstName = useInput();
+  const lastName = useInput();
   const email = useInput(validateEmail);
   const password = useInput(validatePassword);
   const confirmPassword = useInput(validatePassword);
-  const country = useInput((value) => true);
-  const age = useInput((value) => true);
+  const country = useInput();
+  const age = useInput();
 
   const [message, setMessage] = useState(null);
-  const [redirect, setRedirect] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const formIsValid = () => {
     if (email.hasError) {
-      setMessage(email.hasError);
+      setMessage({ text: email.hasError, error: true });
       return false;
     }
 
     if (password.hasError) {
-      setMessage(password.hasError);
+      setMessage({ text: password.hasError, error: true });
       return false;
     }
 
     if (password.value !== confirmPassword.value) {
-      setMessage("Passwords do not match");
+      setMessage({ text: "Passwords do not match", error: true });
       return false;
     }
 
@@ -77,25 +58,27 @@ const SignUp = () => {
       setIsLoading(true);
       UserService.register(form)
         .then((response) => {
-          setRedirect("/signin");
+          setMessage({ text: response.message, error: false });
+          setIsLoading(false);
         })
         .catch((error) => {
-          console.log(error);
-          setMessage(error.data.message);
+          setMessage({ text: error.data.message, error: true });
           setIsLoading(false);
         });
     }
   };
 
-  if (redirect) return <Redirect to={redirect} />;
-
   return (
     <>
-      <img style={{display: "block", margin: "2rem auto"}} src={logo} alt={"App Logo"} />
+      <img
+        style={{ display: "block", margin: "2rem auto" }}
+        src={logo}
+        alt={"App Logo"}
+      />
       <form className={"form-container"} onSubmit={submitForm}>
-        <h3 className={"text-center"}>Sign-Up</h3>
+        <h3>Sign-Up</h3>
 
-        <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
+        <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
           <label htmlFor={"firstName"}>First Name</label>
           <input
             id={"firstName"}
@@ -105,7 +88,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
+        <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
           <label htmlFor={"lastName"}>Last Name</label>
           <input
             id={"lastName"}
@@ -126,7 +109,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
+        <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
           <label htmlFor={"password"}>Password</label>
           <input
             id={"password"}
@@ -137,7 +120,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div className={"mt-3"} style={{display: "inline-block", width: "50%"}}>
+        <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
           <label htmlFor={"confirmPassword"}>Confirm Password</label>
           <input
             id={"confirmPassword"}
@@ -176,11 +159,14 @@ const SignUp = () => {
           />
         </div>
 
-        {message && <p className="error text-center mt-3 mb-0">{message}</p>}
+        {message && (
+          <p className={`text-center mt-3 mb-0 ${message.error ? "error" : "success"}`}>
+            {message.text}
+          </p>
+        )}
 
-        <Button className={"mt-4"} style={{width: "100%"}} type={"submit"}>
-          {isLoading && <Spinner size="sm" animation="border" />}
-          {!isLoading && "SignUp"}
+        <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
+          {!isLoading ? "Sign Up" : <Spinner size="sm" animation="border" />}
         </Button>
 
         <div className={"text-center mt-4"}>

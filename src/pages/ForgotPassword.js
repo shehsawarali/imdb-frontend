@@ -11,40 +11,31 @@ import { validateEmail } from "utils";
 
 const SignIn = () => {
   const email = useInput(validateEmail);
-  const password = useInput();
-
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const formIsValid = () => {
     if (email.hasError) {
-      setMessage(email.hasError);
+      setMessage({ text: email.hasError, error: true });
       return false;
     }
-
-    if (password.hasError) {
-      setMessage(password.hasError);
-      return false;
-    }
-
     return true;
   };
 
   const submitForm = (e) => {
     e.preventDefault();
-    let form = { email: email.value, password: password.value };
+    let form = { email: email.value };
     setMessage(null);
 
     if (formIsValid()) {
       setIsLoading(true);
-      UserService.login(form)
+      UserService.forgotPassword(form)
         .then((response) => {
-          localStorage.setItem("access_token", response.access);
-          localStorage.setItem("refresh_token", response.refresh);
-          window.location.reload();
+          setMessage({ text: response.message, error: false });
+          setIsLoading(false);
         })
         .catch((error) => {
-          setMessage(error.data.message);
+          setMessage({ text: error.data.message, error: true });
           setIsLoading(false);
         });
     }
@@ -58,7 +49,7 @@ const SignIn = () => {
         alt={"App Logo"}
       />
       <form className={"form-container"} onSubmit={submitForm}>
-        <h3>Sign-In</h3>
+        <h3>Forgot Password</h3>
 
         <div className={"mt-3"}>
           <label htmlFor={"email"}>Email</label>
@@ -72,31 +63,18 @@ const SignIn = () => {
           />
         </div>
 
-        <div className={"mt-3"}>
-          <div className={"forgot-password"}>
-            <label htmlFor={"password"}>Password</label>
-            <Link to={"/forgot-password"} className="link">
-              Forgot your password?
-            </Link>
-          </div>
-          <input
-            id={"password"}
-            name={"password"}
-            type={"password"}
-            placeholder={"Password"}
-            onChange={password.handleChange}
-            required
-          />
-        </div>
-
-        {message && <p className="error text-center mt-3 mb-0">{message}</p>}
+        {message && (
+          <p className={`text-center mt-3 mb-0 ${message.error ? "error" : "success"}`}>
+            {message.text}
+          </p>
+        )}
 
         <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
-          {!isLoading ? "Sign In" : <Spinner size="sm" animation="border" />}
+          {!isLoading ? "Submit" : <Spinner size="sm" animation="border" />}
         </Button>
 
         <div className={"text-center mt-4"}>
-          Don't have an account? <Link to={"/signup"}>Sign Up</Link>
+          <Link to={"/signin"}>&lt;&lt; Go back</Link>
         </div>
       </form>
     </>

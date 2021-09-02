@@ -10,6 +10,7 @@
 .form-container > h3 {
   font-weight: bold;
   text-decoration: underline;
+  text-align: center;
 }
 
 input,
@@ -35,16 +36,25 @@ select:focus {
 }
 
 label {
-  padding-left: 2px;
+  margin-left: 2px;
   margin-bottom: 2px;
 }
 
 .error {
-  color: indianred;
+  color: var(--error);
 }
 
 .success {
-  color: green;
+  color: var(--success);
+}
+
+.forgot-password {
+  display: flex;
+  justifycontent: space-between;
+}
+.forgot-password > .link {
+  font-size: small;
+  margin: auto 2px 4px auto;
 }
 
 @media (max-width: 520px) {

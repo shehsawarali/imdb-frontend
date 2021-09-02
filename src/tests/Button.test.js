@@ -1,6 +1,6 @@
 import React from "react";
 
-import {cleanup, render} from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import ReactDOM from "react-dom";
 import "@testing-library/jest-dom/extend-expect";
 import renderer from "react-test-renderer";
@@ -15,7 +15,7 @@ it("renders without crashing", () => {
 });
 
 it("renders button correctly", () => {
-  const {getByTestId} = render(<Button label={"Click Me"} />);
+  const { getByTestId } = render(<Button label={"Click Me"} />);
   expect(getByTestId("button")).toHaveTextContent("Click Me");
 });
 
