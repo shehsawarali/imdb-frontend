@@ -62,7 +62,7 @@ const UserServices = {
   },
 
   resetPassword: (data) => {
-    return API.patch("user/reset-password/", data)
+    return API.put("user/reset-password/", data)
       .then((response) => {
         return response.data;
       })
