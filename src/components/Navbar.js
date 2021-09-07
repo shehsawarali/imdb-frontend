@@ -40,8 +40,7 @@ const AppNavbar = () => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
     if (refreshToken) {
-      UserService.logOut({ refresh_token: refreshToken }).then((response) => {
-        console.log(response);
+      UserService.logOut({ refresh_token: refreshToken }).finally((response) => {
         localStorage.removeItem(ACCESS_TOKEN);
         localStorage.removeItem(REFRESH_TOKEN);
         window.location.reload();
