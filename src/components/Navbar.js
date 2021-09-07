@@ -4,7 +4,9 @@ import { Button, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "assets/css/Navbar.css";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import { UserContext } from "context/UserContext";
+import UserService from "services/UserService";
 
 const AppNavbar = () => {
   const { user } = useContext(UserContext);
@@ -12,9 +14,10 @@ const AppNavbar = () => {
   const loggedOutOptions = () => {
     return (
       <>
-        <Button as={Link} to="/signup" className={"nav-button"}>
+        <Button as={Link} to="/signup" className={"nav-button"} eventKey="2">
           Sign Up
         </Button>
+
         <Button as={Link} to="/signin" className={"nav-button"}>
           Sign In
         </Button>
@@ -34,9 +37,15 @@ const AppNavbar = () => {
   };
 
   const logOut = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    window.location.reload();
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+
+    if (refreshToken) {
+      UserService.logOut({ refresh_token: refreshToken }).finally((response) => {
+        localStorage.removeItem(ACCESS_TOKEN);
+        localStorage.removeItem(REFRESH_TOKEN);
+        window.location.reload();
+      });
+    }
   };
 
   return (

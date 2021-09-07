@@ -1,13 +1,13 @@
 import axios from "axios";
 
-import { BACKEND_URL, JWT_PREFIX } from "constant";
+import { ACCESS_TOKEN, BACKEND_URL, JWT_PREFIX, REFRESH_TOKEN } from "constant";
 
 const API = axios.create({
   baseURL: BACKEND_URL,
   timeout: 5000,
   headers: {
-    Authorization: localStorage.getItem("access_token")
-      ? `${JWT_PREFIX} ` + localStorage.getItem("access_token")
+    Authorization: localStorage.getItem(ACCESS_TOKEN)
+      ? `${JWT_PREFIX} ` + localStorage.getItem(ACCESS_TOKEN)
       : null,
   },
 });
@@ -29,20 +29,20 @@ API.interceptors.response.use(
     }
 
     if (error?.response?.data?.code === "token_not_valid") {
-      const refreshToken = localStorage.getItem("refresh_token");
+      const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
       return API.post("user/token/refresh/", { refresh: refreshToken })
         .then((response) => {
           const accessToken = response.data.access;
-          localStorage.setItem("access_token", accessToken);
-          API.defaults.headers["Authorization"] = "Bearer " + accessToken;
-          originalRequest.headers["Authorization"] = "Bearer " + accessToken;
+          localStorage.setItem(ACCESS_TOKEN, accessToken);
+          API.defaults.headers["Authorization"] = `${JWT_PREFIX} ` + accessToken;
+          originalRequest.headers["Authorization"] = `${JWT_PREFIX} ` + accessToken;
 
           return API(originalRequest);
         })
         .catch((error) => {
-          localStorage.removeItem("access_token");
-          localStorage.removeItem("refresh_token");
+          localStorage.removeItem(ACCESS_TOKEN);
+          localStorage.removeItem(REFRESH_TOKEN);
           window.location.href = "/login/";
         });
     }

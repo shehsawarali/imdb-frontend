@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import "assets/css/Form.css";
 import logo from "assets/media/logo.png";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
 import { validateEmail } from "utils";
@@ -39,8 +40,8 @@ const SignIn = () => {
       setIsLoading(true);
       UserService.login(form)
         .then((response) => {
-          localStorage.setItem("access_token", response.access);
-          localStorage.setItem("refresh_token", response.refresh);
+          localStorage.setItem(ACCESS_TOKEN, response.access);
+          localStorage.setItem(REFRESH_TOKEN, response.refresh);
           window.location.reload();
         })
         .catch((error) => {
