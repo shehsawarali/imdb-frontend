@@ -6,7 +6,7 @@ import { Redirect, useParams } from "react-router-dom";
 import "assets/css/Profile.css";
 import {
   ProfileChangePassword,
-  ProfileDetails,
+  ProfileChangeDetails,
   ProfileFollowing,
   ProfileFollowers,
   ProfileHeader,
@@ -47,7 +47,7 @@ const Profile = () => {
           {user && user.id === Number(id) && (
             <>
               <Nav.Item>
-                <Nav.Link eventKey="2">Details</Nav.Link>
+                <Nav.Link eventKey="2">Edit Profile</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="3">Change Password</Nav.Link>
@@ -65,7 +65,7 @@ const Profile = () => {
         <div className={"px-2"}>
           <Tab.Content>
             <Tab.Pane eventKey="2">
-              <ProfileDetails profile={profile} id={id} />
+              <ProfileChangeDetails profile={profile} id={id} />
             </Tab.Pane>
             <Tab.Pane eventKey="3">
               <ProfileChangePassword profile={profile} />

@@ -30,5 +30,6 @@ library.add(
   faDizzy,
   faUserMinus,
   faExclamationTriangle,
-  faAngleDoubleDown
+  faAngleDoubleDown,
+  faKey
 );

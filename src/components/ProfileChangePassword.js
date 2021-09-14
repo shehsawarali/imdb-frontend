@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import { Button, Col, Row, Spinner } from "react-bootstrap";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+import { Button, Spinner } from "react-bootstrap";
 
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
@@ -52,6 +53,21 @@ const ProfileChangePassword = () => {
     }
   };
 
+  const formButton = () => {
+    return (
+      <Button type={"submit"} className={"w-100"}>
+        {isLoading ? (
+          <Spinner size="sm" animation="border" />
+        ) : (
+          <>
+            Change Password
+            <Icon icon={"key"} size="1x" style={{ marginLeft: "8px" }} />
+          </>
+        )}
+      </Button>
+    );
+  };
+
   return (
     <>
       {message && (
@@ -62,7 +78,7 @@ const ProfileChangePassword = () => {
 
       <div className={"w-100 d-flex flex-column"}>
         <form onSubmit={submitForm} className={"mx-auto"}>
-          <div className={"text-left"}>
+          <div>
             <label htmlFor="email">Current Password</label>
             <input
               name="currentPassword"
@@ -74,40 +90,32 @@ const ProfileChangePassword = () => {
             />
           </div>
 
-          <Row className={"mt-3"}>
-            <Col sm={12}>
-              <label htmlFor="email">New Password</label>
-              <input
-                name="newPassword"
-                type="password"
-                placeholder="New Password"
-                defaultValue={""}
-                onChange={newPassword.handleChange}
-                required
-              />
-            </Col>
-          </Row>
+          <div className={"mt-3"}>
+            <label htmlFor="email">New Password</label>
+            <input
+              name="newPassword"
+              type="password"
+              placeholder="New Password"
+              defaultValue={""}
+              onChange={newPassword.handleChange}
+              required
+            />
+          </div>
 
-          <Row className={"mt-3"}>
-            <Col sm={12}>
-              <label htmlFor="email">Confirm Password</label>
-              <input
-                name="confirmPassword"
-                type="password"
-                placeholder="Confirm Password"
-                defaultValue={""}
-                onChange={confirmPassword.handleChange}
-                required
-              />
-            </Col>
-          </Row>
+          <div className={"mt-3"}>
+            <label htmlFor="email">Confirm Password</label>
+            <input
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+              defaultValue={""}
+              onChange={confirmPassword.handleChange}
+              required
+            />
+          </div>
 
           <br />
-          <Col sm={12}>
-            <Button type={"submit"} className={"w-100"}>
-              {!isLoading ? "Change Password" : <Spinner size="sm" animation="border" />}
-            </Button>
-          </Col>
+          {formButton()}
         </form>
       </div>
     </>

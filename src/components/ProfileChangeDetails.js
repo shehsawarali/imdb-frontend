@@ -1,13 +1,12 @@
 import { useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import { Button, Col, Row, Spinner } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 
 import CountryOptions from "assets/js/CountryOptions";
 import UserService from "services/UserService";
 
-const ProfileDetails = ({ id, profile }) => {
-  const [edit, setEdit] = useState(false);
+const ProfileChangeDetails = ({ id, profile }) => {
   const [form, setForm] = useState({
     first_name: profile.first_name,
     last_name: profile.last_name,
@@ -37,72 +36,62 @@ const ProfileDetails = ({ id, profile }) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const formButton = () => (
+    <>
+      <div className={"mt-3"}>
+        <Button type={"submit"} className={"w-100"}>
+          {isLoading ? (
+            <Spinner size="sm" animation="border" />
+          ) : (
+            <>
+              Edit Profile
+              <Icon icon={"edit"} size="1x" style={{ marginLeft: "8px" }} />
+            </>
+          )}
+        </Button>
+      </div>
+    </>
+  );
+
   return (
     <>
-      <form onSubmit={submitForm}>
-        <div style={{ textAlign: "right", marginBottom: "1rem" }}>
-          {isLoading && (
-            <Button type={"submit"}>
-              Saving
-              <Spinner size="sm" animation="border" style={{ marginLeft: "10px" }} />
-            </Button>
+      <div className={"w-100 d-flex flex-column"}>
+        <form onSubmit={submitForm} className={"mx-auto"}>
+          {message && (
+            <p className={`text-center mt-3 mb-0 ${message.error ? "error" : "success"}`}>
+              {message.text}
+            </p>
           )}
 
-          {!isLoading && edit && (
-            <Button type={"submit"}>
-              Save
-              <Icon icon={"save"} size="1x" style={{ marginLeft: "8px" }} />
-            </Button>
-          )}
-
-          {!isLoading && !edit && (
-            <Button onClick={() => setEdit(true)}>
-              Edit Details
-              <Icon icon={"edit"} size="1x" style={{ marginLeft: "8px" }} />
-            </Button>
-          )}
-        </div>
-
-        {message && (
-          <p className={`text-center mt-3 mb-0 ${message.error ? "error" : "success"}`}>
-            {message.text}
-          </p>
-        )}
-
-        <Row style={{ marginTop: "1rem" }}>
-          <Col sm>
+          <div className={"mt-3"}>
             <label htmlFor="first_name">First Name</label>
             <input
               id="first_name"
               name="first_name"
               placeholder="First Name"
-              disabled={!edit}
               defaultValue={profile.first_name}
               onChange={handleForm}
               required
             />
-          </Col>
-          <Col sm>
+          </div>
+
+          <div className={"mt-3"}>
             <label htmlFor="last_name">Last Name</label>
             <input
               id="last_name"
               name="last_name"
               placeholder="Last Name"
-              disabled={!edit}
               defaultValue={profile.last_name}
               onChange={handleForm}
               required
             />
-          </Col>
-        </Row>
+          </div>
 
-        <Row style={{ marginTop: "1rem" }}>
-          <Col sm>
+          <div className={"mt-3"}>
             <label htmlFor="country">Country</label>
             <select
               id="country"
               name="country"
-              disabled={!edit}
               defaultValue={profile.country.code}
               onChange={handleForm}
               required
@@ -112,9 +101,9 @@ const ProfileDetails = ({ id, profile }) => {
               </option>
               <CountryOptions />
             </select>
-          </Col>
+          </div>
 
-          <Col sm>
+          <div className={"mt-3"}>
             <label htmlFor="age">Age</label>
             <input
               id="age"
@@ -124,15 +113,17 @@ const ProfileDetails = ({ id, profile }) => {
               required
               min={18}
               max={100}
-              disabled={!edit}
               defaultValue={profile.age}
               onChange={handleForm}
             />
-          </Col>
-        </Row>
-      </form>
+          </div>
+
+          <br />
+          {formButton()}
+        </form>
+      </div>
     </>
   );
 };
 
-export default ProfileDetails;
+export default ProfileChangeDetails;

@@ -25,7 +25,8 @@ select {
   background-color: white;
 }
 
-select:invalid {
+select:invalid,
+input:disabled {
   color: gray; /* same as ::placeholder */
 }
 
