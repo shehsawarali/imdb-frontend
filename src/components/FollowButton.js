@@ -79,6 +79,7 @@ const FollowButton = ({ id }) => {
     );
   };
 
+  if (!user) return null;
   if (Number(id) === user?.id) return invisibleState();
   if (isLoading) return loadingState();
   if (follows === null) return errorState();

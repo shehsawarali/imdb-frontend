@@ -19,14 +19,13 @@ const VerifyAccount = (props) => {
     let payload = { id, token };
 
     UserService.verifyAccount(payload)
-      .then((response) => {
-        setIsLoading(false);
-      })
       .catch((error) => {
         setErrorResponse(error.data?.message);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [props.location.hash]);
 
   if (isLoading) {
     return <LoadingScreen />;

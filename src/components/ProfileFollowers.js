@@ -26,7 +26,7 @@ const ProfileFollowers = ({ id }) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [id]);
 
   const fetchMore = () => {
     if (!next) return;
