@@ -35,6 +35,11 @@ select:focus {
   box-shadow: 0 0 2px 1px var(--primary);
 }
 
+input:disabled,
+select:disabled {
+  background-color: #cccccc;
+}
+
 label {
   margin-left: 2px;
   margin-bottom: 2px;
@@ -50,7 +55,7 @@ label {
 
 .forgot-password {
   display: flex;
-  justifycontent: space-between;
+  justify-content: space-between;
 }
 .forgot-password > .link {
   font-size: small;

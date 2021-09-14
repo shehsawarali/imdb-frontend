@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
-import { Button, Nav, Navbar } from "react-bootstrap";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "assets/css/Navbar.css";
@@ -14,7 +15,7 @@ const AppNavbar = () => {
   const loggedOutOptions = () => {
     return (
       <>
-        <Button as={Link} to="/signup" className={"nav-button"} eventKey="2">
+        <Button as={Link} to="/signup" className={"nav-button"}>
           Sign Up
         </Button>
 
@@ -28,10 +29,22 @@ const AppNavbar = () => {
   const loggedInOptions = () => {
     return (
       <>
-        <Button className={"nav-button"} onClick={logOut}>
-          Sign Out
-        </Button>
-        <Button className={"nav-button"}>{user.first_name}</Button>
+        <button className={"nav-button"} style={{ marginRight: "10px" }}>
+          <Icon icon={"bookmark"} style={{ marginRight: "10px" }} />
+          Watchlist
+        </button>
+
+        <NavDropdown title={user.first_name} id="basic-nav-dropdown">
+          <NavDropdown.Item as={Link} to={`/user/${user.id}`}>
+            <Icon icon={"user"} style={{ marginRight: "10px" }} />
+            Profile
+          </NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item onClick={logOut}>
+            <Icon icon={"sign-out-alt"} style={{ marginRight: "10px" }} />
+            Logout
+          </NavDropdown.Item>
+        </NavDropdown>
       </>
     );
   };
@@ -40,7 +53,7 @@ const AppNavbar = () => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
     if (refreshToken) {
-      UserService.logOut({ refresh_token: refreshToken }).finally((response) => {
+      UserService.logOut({ refresh_token: refreshToken }).finally(() => {
         localStorage.removeItem(ACCESS_TOKEN);
         localStorage.removeItem(REFRESH_TOKEN);
         window.location.reload();
@@ -55,7 +68,7 @@ const AppNavbar = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto"></Nav>
+        <Nav className="me-auto" />
 
         <Nav justify={"space-between"}>
           {!user && loggedOutOptions()}

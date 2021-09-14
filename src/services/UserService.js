@@ -80,6 +80,76 @@ const UserServices = {
         return Promise.reject(error);
       });
   },
+
+  profile: (id) => {
+    return API.get(`user/${id}/`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  update: (id, data) => {
+    return API.put(`user/${id}/`, data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  follow: (id, data) => {
+    return API.post(`user/follow/${id}/`, data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  unfollow: (id, data) => {
+    return API.delete(`user/follow/${id}/`, data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  changePassword: (data) => {
+    return API.put("user/change-email/", data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  followers: (id, page) => {
+    return API.get(`user/${id}/followers/?page=${page}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  following: (id, page) => {
+    return API.get(`user/${id}/following/?page=${page}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
 
 export default UserServices;

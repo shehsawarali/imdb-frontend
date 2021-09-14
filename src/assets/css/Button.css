@@ -1,22 +1,37 @@
 .btn,
 .btn-inverted {
   padding: 10px 20px;
-  background-color: var(--primary);
-  color: var(--secondary);
   outline: none !important;
-  border: 1px dashed var(--secondary);
   font-weight: bold;
+  box-shadow: none !important;
+  transition-duration: var(--transition);
+}
+
+.btn {
+  background-color: var(--primary);
+  border: 1px dashed var(--secondary);
+  color: var(--secondary);
 }
 
 .btn:hover {
-  box-shadow: none;
   background-color: var(--secondary-light);
+  border: 1px dashed var(--primary);
+  color: white;
 }
 
 .btn:focus {
-  box-shadow: none;
   background-color: var(--primary);
   color: var(--secondary);
+  border: 1px dashed var(--secondary);
+}
+
+.btn > .svg-inline--fa,
+.btn:focus:hover > .svg-inline--fa {
+  color: var(--secondary);
+}
+
+.btn:hover > .svg-inline--fa {
+  color: white;
 }
 
 .btn-inverted {
@@ -25,8 +40,25 @@
   border: 1px dashed var(--primary);
 }
 
-.btn-inverted:hover {
-  box-shadow: none;
+.btn-inverted:focus {
+  background-color: var(--secondary-light);
+  color: white;
+  border: 1px dashed var(--primary);
+}
+
+.btn-inverted:hover,
+btn-inverted:focus:hover {
   background-color: var(--primary);
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.btn-inverted > .svg-inline--fa,
+.btn-inverted:focus > .svg-inline--fa {
+  color: white;
+}
+
+.btn-inverted:hover > .svg-inline--fa,
+.btn-inverted:focus:hover > .svg-inline--fa {
   color: var(--secondary);
 }
