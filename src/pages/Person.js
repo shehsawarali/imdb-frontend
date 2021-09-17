@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { Redirect, useParams, Link } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
 import "assets/css/Title.css";
 import "assets/css/Person.css";
 import DefaultPersonImage from "assets/media/default-person-image.png";
-import { Filmography, LoadingScreen, KnownForTitles } from "components";
+import { Filmography, KnownForTitles, LoadingScreen } from "components";
 import CoreService from "services/CoreService";
+import { scrollToDiv } from "utils";
 
 const Person = () => {
   const { id } = useParams();
@@ -27,13 +28,7 @@ const Person = () => {
   const header = () => {
     return (
       <div className={"detail-page-header mb-3"}>
-        <a
-          className={"me-1"}
-          onClick={() => {
-            const anchor = document.querySelector("#filmography");
-            anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-          }}
-        >
+        <a className={"me-1"} onClick={() => scrollToDiv("filmography")}>
           Filmography
         </a>
       </div>

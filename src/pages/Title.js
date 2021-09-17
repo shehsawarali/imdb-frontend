@@ -1,17 +1,15 @@
-import { useState, useContext, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { Button, Row, Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Redirect, useParams } from "react-router-dom";
 
 import "assets/css/Title.css";
 import DefaultTitleImage from "assets/media/default-title-image.png";
-import { LoadingScreen, PersonCard, TitleCast } from "components";
-import { UserContext } from "context/UserContext";
+import { LoadingScreen, PersonCard } from "components";
 import CoreService from "services/CoreService";
 
 const Title = () => {
   const { id } = useParams();
-  const { user } = useContext(UserContext);
 
   const [title, setTitle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -43,9 +41,7 @@ const Title = () => {
           {title.is_adult && <span>&#183; Adults Only</span>}
         </div>
         <div>
-          <a href={"#"} className={"me-1"}>
-            User Reviews
-          </a>
+          <a className={"me-1"}>User Reviews</a>
           <span>&#183; </span>
           <a href={"#"}>Cast & Crew</a>
         </div>

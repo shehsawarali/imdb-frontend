@@ -55,3 +55,8 @@ export const responsiveSliderSettings = [
     },
   },
 ];
+
+export const scrollToDiv = (id) => {
+  const anchor = document.querySelector(`#${id}`);
+  anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+};
