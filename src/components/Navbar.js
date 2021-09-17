@@ -49,7 +49,7 @@ const AppNavbar = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant={"dark"}>
+    <Navbar sticky="top" collapseOnSelect expand="lg" variant={"dark"}>
       <Navbar.Brand as={Link} to="/">
         IMDb
       </Navbar.Brand>

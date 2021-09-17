@@ -18,6 +18,8 @@ const App = () => {
         <StrictlyPublic path="/verify" component={Pages.VerifyAccount} />
         <StrictlyPublic path="/forgot-password" component={Pages.ForgotPassword} />
         <StrictlyPublic path="/reset" component={Pages.ResetPassword} />
+        <Route path="/title/:id" component={Pages.Title} />
+        <Route path="/person/:id" component={Pages.Person} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>

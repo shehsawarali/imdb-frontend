@@ -3,10 +3,13 @@
 
 :root {
   --primary: #f5c518;
+  --primary-light: #ecd168;
   --secondary: #121212;
   --secondary-light: #2f2d2d;
   --error: indianred;
   --success: green;
+  --link: #5799ef;
+  --muted: #6c757d;
 }
 
 ::placeholder {
