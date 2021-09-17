@@ -182,8 +182,6 @@ const Title = () => {
           {renderCrew()}
           {renderCast()}
         </div>
-        {/*<Button className={"w-25"}>Add To Watchlist</Button>*/}
-        {/*<Button className={"w-25"}>Favorite</Button>*/}
       </div>
     </>
   );

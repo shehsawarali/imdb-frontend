@@ -5,17 +5,7 @@ import { Accordion, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Filmography = ({ person_principals }) => {
-  const [activeId, setActiveId] = useState("0");
-
   if (!person_principals.length) return null;
-
-  function toggleActive(id) {
-    if (activeId === id) {
-      setActiveId(null);
-    } else {
-      setActiveId(id);
-    }
-  }
 
   const renderGroup = (index, group, principals) => {
     return (
