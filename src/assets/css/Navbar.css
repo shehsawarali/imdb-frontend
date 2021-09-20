@@ -8,7 +8,7 @@ nav {
 .navbar-brand {
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  border: 1px dashed white;
+  border: 1px dashed var(--primary);
 }
 .navbar-brand:hover {
   background-color: var(--primary);

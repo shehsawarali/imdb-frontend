@@ -20,6 +20,16 @@ const CoreService = {
         return Promise.reject(error);
       });
   },
+
+  titleSearch: (queryParams) => {
+    return API.get(`search/title/?${queryParams}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
 
 export default CoreService;

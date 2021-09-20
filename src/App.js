@@ -20,6 +20,7 @@ const App = () => {
         <StrictlyPublic path="/reset" component={Pages.ResetPassword} />
         <Route path="/title/:id" component={Pages.Title} />
         <Route path="/person/:id" component={Pages.Person} />
+        <Route path="/search" component={Pages.Search} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>

@@ -2,6 +2,7 @@ import ForgotPassword from "pages/ForgotPassword";
 import Home from "pages/Home";
 import Person from "pages/Person";
 import ResetPassword from "pages/ResetPassword";
+import Search from "pages/Search";
 import SignIn from "pages/SignIn";
 import SignUp from "pages/SignUp";
 import Title from "pages/Title";
@@ -16,6 +17,7 @@ let pages = {
   ResetPassword,
   Title,
   Person,
+  Search,
 };
 
 export default pages;
