@@ -7,11 +7,9 @@ const Filmography = ({ person_principals }) => {
 
   const renderGroup = (index, group, principals) => {
     return (
-      <div key={index}>
-        <Accordion.Toggle as={Card.Header} eventKey={index}>
-          {group}
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey={index}>
+      <Accordion.Item key={index} eventKey={index}>
+        <Accordion.Header>{group}</Accordion.Header>
+        <Accordion.Body className={"px-0 py-0"}>
           <div>
             {principals.map((principal, index) => (
               <Card.Body
@@ -29,8 +27,8 @@ const Filmography = ({ person_principals }) => {
               </Card.Body>
             ))}
           </div>
-        </Accordion.Collapse>
-      </div>
+        </Accordion.Body>
+      </Accordion.Item>
     );
   };
 
