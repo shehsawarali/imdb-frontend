@@ -36,3 +36,9 @@ nav {
   background-color: var(--primary);
   color: var(--secondary);
 }
+
+.absolute-center {
+  position: absolute;
+  left: 29%;
+  right: 0;
+}

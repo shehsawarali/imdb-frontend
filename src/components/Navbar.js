@@ -55,10 +55,12 @@ const AppNavbar = () => {
         IMDb
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-around"}>
-        <Nav className={"me-auto w-50"}>
+      <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-between"}>
+        <Nav className={"me-auto w-50 absolute-center"}>
           <NavSearch />
         </Nav>
+
+        <Nav />
 
         <Nav justify={"space-between"}>
           {!user && loggedOutOptions()}

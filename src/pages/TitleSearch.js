@@ -203,6 +203,23 @@ const TitleSearch = (props) => {
     );
   };
 
+  const renderResults = () => {
+    return (
+      <>
+        <div className={"text-center my-4"}>
+          Page <strong className={"primary"}>{page}</strong> of{" "}
+          {Math.ceil(response.count / 20)}
+        </div>
+        <Row md={2} xl={2} className="g-4">
+          {response.results.map((item, index) => (
+            <TitleCard key={index} title={item} />
+          ))}
+        </Row>
+        {renderPagination()}
+      </>
+    );
+  };
+
   if (isLoading) return <LoadingScreen />;
 
   if (!response?.results) return <Redirect to="/" />;
@@ -212,16 +229,11 @@ const TitleSearch = (props) => {
       <h6 className={"display-6"}>Search Results</h6>
       {renderHeader()}
       {renderFilters()}
-      <div className={"text-center my-4"}>
-        Page <strong className={"primary"}>{page}</strong> of{" "}
-        {Math.ceil(response.count / 20)}
-      </div>
-      <Row md={2} xl={2} className="g-4">
-        {response.results.map((item, index) => (
-          <TitleCard key={index} title={item} />
-        ))}
-      </Row>
-      {renderPagination()}
+      {response.results.length ? (
+        renderResults()
+      ) : (
+        <p className={"text-center"}>No results</p>
+      )}
     </div>
   );
 };

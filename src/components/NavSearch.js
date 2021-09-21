@@ -31,7 +31,12 @@ const NavSearch = (props) => {
         <option value={"person"}>Person</option>
       </select>
       &nbsp;
-      <input onChange={query.handleChange} defaultValue={queryParams.name || ""} />
+      <input
+        onChange={query.handleChange}
+        defaultValue={queryParams.name || ""}
+        className={"input-dark"}
+        placeholder={"Search"}
+      />
       &nbsp;
       <Button type={"submit"}>Search</Button>
     </form>
