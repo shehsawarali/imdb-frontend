@@ -14,8 +14,7 @@ const PersonCard = ({ person, characters, category }) => {
       <div className={"text-overflow w-75"} style={{ color: "white" }}>
         <span style={{ fontWeight: "bold" }}>{person.name}</span>
         <br />
-        <small style={{ color: "lightgray" }}>{characters}</small>
-        <small style={{ color: "lightgray" }}>{category}</small>
+        {characters && <small style={{ color: "lightgray" }}>As {characters}</small>}
       </div>
     </Link>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Col, Row } from "react-bootstrap";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, Link } from "react-router-dom";
 
 import "assets/css/Title.css";
 import DefaultTitleImage from "assets/media/default-title-image.png";
@@ -42,8 +42,6 @@ const Title = () => {
         </div>
         <div>
           <a className={"me-1"}>User Reviews</a>
-          <span>&#183; </span>
-          <a href={"#"}>Cast & Crew</a>
         </div>
       </div>
     );
@@ -53,9 +51,9 @@ const Title = () => {
     return (
       <div className={"title-page-genres mb-3"}>
         {title.genres.map((genre, index) => (
-          <a href={"#"} key={index}>
+          <Link to={`/search/title/?genre=${genre.name}`} key={index}>
             {genre.name}
-          </a>
+          </Link>
         ))}
       </div>
     );

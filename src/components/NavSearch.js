@@ -1,33 +1,37 @@
 import QueryString from "query-string";
 import { Button } from "react-bootstrap";
-import { useHistory, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-import useInput from "hooks/useInput";
+import usePresetInput from "hooks/usePresetInput";
 
-const NavSearch = () => {
-  const query = useInput();
-  const type = useInput();
-  let history = useHistory();
+const NavSearch = (props) => {
+  let queryParams = QueryString.parse(props.location.search);
+  const query = usePresetInput(queryParams.name);
+  const type = usePresetInput(queryParams.type);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!query) return;
 
-    let queryType = type.value ? type.value : "all";
-    const string = QueryString.stringify({ name: query.value, type: queryType });
-    let url = "/search/?" + string;
-    history.push(url);
+    let queryType = type.value ? type.value : "title";
+    const queryString = QueryString.stringify({ name: query.value, type: queryType });
+
+    let url = `/search/${queryType}/?${queryString}`;
+    window.location = url;
   };
 
   return (
     <form className={"nav-search"} onSubmit={handleSubmit}>
-      <select required defaultValue={"title"} onChange={type.handleChange}>
+      <select
+        required
+        defaultValue={queryParams.type || "title"}
+        onChange={type.handleChange}
+      >
         <option value={"title"}>Title</option>
         <option value={"person"}>Person</option>
-        <option value={"genre"}>Genre</option>
       </select>
       &nbsp;
-      <input onChange={query.handleChange} />
+      <input onChange={query.handleChange} defaultValue={queryParams.name || ""} />
       &nbsp;
       <Button type={"submit"}>Search</Button>
     </form>

@@ -6,7 +6,6 @@
 
 .nav-search input {
   border: 1px dashed var(--primary);
-  boxshadow: none;
   outline: none;
   height: 45px;
   width: 500px;
@@ -20,7 +19,7 @@
   width: 100px;
 }
 
-.select-wrap {
+.filter-sort {
   border-radius: 4px;
   padding: 5px 10px;
   width: 230px;
@@ -32,15 +31,17 @@
   border: 1px dashed var(--secondary);
 }
 
-.select-wrap label {
+.filter-sort label {
   color: var(--secondary);
   font-size: smaller;
 }
 
-.select-wrap select {
+.filter-sort select {
   border: 0;
   font-weight: bold;
   background-color: var(--primary);
+  height: 30px;
+  width: 75%;
 }
 
 .search-header {
@@ -53,13 +54,41 @@
   margin: 0 -1rem;
 }
 
+.search-filter-buttons {
+  display: flex;
+}
+
+#filter-collapse {
+  transition: height 1s;
+  border-radius: 3px;
+  background-color: var(--secondary-light);
+  border: 1px dashed var(--primary);
+}
+
+#filter-collapse h6 {
+  text-decoration: underline;
+}
+
 @media (max-width: 425px) {
-  .select-wrap {
+  .filter-sort {
     font-size: small;
     height: 36px;
     align-self: center;
   }
   .search-header {
+    flex-direction: column;
     justify-content: center;
+  }
+  .search-header span {
+    margin-bottom: 1rem;
+  }
+  .search-filter-buttons {
+    flex-direction: column;
+  }
+  .search-filter-buttons button {
+    height: 36px;
+    font-size: small;
+    width: 230px;
+    margin-bottom: 1rem;
   }
 }

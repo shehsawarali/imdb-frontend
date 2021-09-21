@@ -52,9 +52,17 @@ label {
   display: flex;
   justifycontent: space-between;
 }
+
 .forgot-password > .link {
   font-size: small;
   margin: auto 2px 4px auto;
+}
+
+input[type="checkbox"] {
+  height: 12px;
+  box-shadow: none;
+  width: auto;
+  margin-right: 5px;
 }
 
 @media (max-width: 520px) {

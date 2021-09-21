@@ -15,7 +15,7 @@ const AppNavbar = () => {
   const loggedOutOptions = () => {
     return (
       <>
-        <Button as={Link} to="/signup" className={"nav-button"} eventKey="2">
+        <Button as={Link} to="/signup" className={"nav-button"}>
           Sign Up
         </Button>
 

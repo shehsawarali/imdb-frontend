@@ -12,10 +12,7 @@ const Filmography = ({ person_principals }) => {
         <Accordion.Body className={"px-0 py-0"}>
           <div>
             {principals.map((principal, index) => (
-              <Card.Body
-                key={index}
-                className={"d-flex flex-row justify-content-between"}
-              >
+              <Card.Body key={index} className={"d-flex justify-content-between"}>
                 <Link to={`/title/${principal.title.id}`}>{principal.title.name}</Link>
                 {principal.title.end_year ? (
                   <div>
