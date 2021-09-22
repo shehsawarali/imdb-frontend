@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import { Spinner, Button, Row } from "react-bootstrap";
+import { Button, Row, Spinner } from "react-bootstrap";
 
 import { FollowListCard } from "components";
 import UserService from "services/UserService";

@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 
-import { Tab, Nav } from "react-bootstrap";
+import { Nav, Tab } from "react-bootstrap";
 import { Redirect, useParams } from "react-router-dom";
 
 import "assets/css/Profile.css";
 import {
-  ProfileChangePassword,
-  ProfileChangeDetails,
-  ProfileFollowing,
-  ProfileFollowers,
-  ProfileHeader,
-  LoadingScreen,
   FollowButton,
+  LoadingScreen,
+  ProfileChangeDetails,
+  ProfileChangePassword,
+  ProfileFollowers,
+  ProfileFollowing,
+  ProfileHeader,
 } from "components";
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import QueryString from "query-string";
-import { Col, Row, Button, Collapse } from "react-bootstrap";
+import { Button, Col, Collapse, Row } from "react-bootstrap";
 import { Redirect, useHistory } from "react-router-dom";
 
 import "assets/css/Search.css";

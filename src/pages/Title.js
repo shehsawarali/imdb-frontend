@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Col, Row } from "react-bootstrap";
-import { Redirect, useParams, Link } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 
 import "assets/css/Title.css";
 import DefaultTitleImage from "assets/media/default-title-image.png";
@@ -32,9 +32,9 @@ const Title = () => {
     return (
       <div className={"detail-page-header mb-3"}>
         <div>
-          <a href={"#"} className={"me-1"}>
+          <span href={"#"} className={"me-1"}>
             {title.type.name.charAt(0).toUpperCase() + title.type.name.slice(1)}
-          </a>
+          </span>
           {title.runtime_minutes && (
             <span className={"me-1"}>&#183; {title.runtime_minutes}min</span>
           )}
