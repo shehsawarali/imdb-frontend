@@ -25,7 +25,8 @@ select {
   background-color: white;
 }
 
-select:invalid {
+select:invalid,
+input:disabled {
   color: gray; /* same as ::placeholder */
 }
 
@@ -33,6 +34,11 @@ input:focus,
 select:focus {
   border: 1px solid var(--primary);
   box-shadow: 0 0 2px 1px var(--primary);
+}
+
+input:disabled,
+select:disabled {
+  background-color: #cccccc;
 }
 
 label {
@@ -50,7 +56,7 @@ label {
 
 .forgot-password {
   display: flex;
-  justifycontent: space-between;
+  justify-content: space-between;
 }
 .forgot-password > .link {
   font-size: small;

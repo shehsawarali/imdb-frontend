@@ -18,8 +18,9 @@ const ContextWrapper = ({ children }) => {
           setUser(response.user);
           setIsLoading(false);
         })
-        .catch((error) => {
+        .catch(() => {
           setIsLoading(false);
+          localStorage.removeItem(ACCESS_TOKEN);
         });
     } else setIsLoading(false);
   }, []);

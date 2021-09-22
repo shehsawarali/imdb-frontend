@@ -1,0 +1,99 @@
+.profile-container {
+  width: 60%;
+  min-height: 92vh;
+  overflow: auto;
+  background-color: var(--secondary-light);
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 2rem 0;
+  color: white;
+}
+
+.profile-content {
+  padding: 0 2rem;
+}
+
+.profile-header {
+  background-color: var(--primary);
+  min-height: 12rem;
+  padding: 2rem 4rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  color: var(--secondary) !important;
+}
+
+.profile-header > h1 {
+  font-weight: bold;
+}
+
+.nav.nav-pills .nav-link {
+  color: white;
+  border: 1px dashed var(--secondary);
+  margin: 5px;
+}
+.nav.nav-pills .nav-link.active {
+  background-color: var(--primary);
+  color: var(--secondary);
+  border-color: var(--primary);
+}
+
+.profile-picture {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 0;
+  border: 1px solid var(--secondary);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 3rem;
+}
+
+.profile-follow-card {
+  background-color: var(--secondary-light);
+  width: 100%;
+  color: white !important;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: 1px solid var(--secondary);
+  box-shadow: none;
+  transition-duration: var(--transition);
+}
+.profile-follow-card:hover {
+  border-color: var(--primary);
+  box-shadow: rgba(0, 0, 0, 0.22) 0 10px 10px;
+}
+
+.profile-follow-button {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .profile-follow-card {
+    width: 100%;
+  }
+  .profile-container {
+    width: 80%;
+  }
+  .profile-follow-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .profile-container {
+    width: 100%;
+  }
+  .profile-header {
+    padding: 2rem 2rem;
+  }
+  .profile-follow-card {
+    padding: 1rem;
+  }
+  .profile-content {
+    padding: 0;
+  }
+}
