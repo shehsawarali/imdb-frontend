@@ -1,30 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { Button, Spinner } from "react-bootstrap";
+import query from "query-string";
+import { Button, Spinner, Toast } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "assets/css/Form.css";
+import "assets/css/Toast.css";
 import logo from "assets/media/logo.png";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
 import { validateEmail } from "utils";
 
-const SignIn = () => {
+const SignIn = (props) => {
   const email = useInput(validateEmail);
   const password = useInput();
+  const [isLoadingAPI, setIsLoadingAPI] = useState(false);
 
-  const [message, setMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    let params = query.parse(props?.location?.search);
+    if (params.signupSuccess) {
+      toast.success(
+        "Successfully signed up! Please verify your account using the link sent to your email address."
+      );
+    } else if (params.resetSuccess) {
+      toast.success("Your password has been reset");
+    } else if (params.verifySuccess) {
+      toast.success("Your account has been verified. You can now sign in.");
+    }
+  }, []);
 
   const formIsValid = () => {
     if (email.hasError) {
-      setMessage(email.hasError);
-      return false;
-    }
-
-    if (password.hasError) {
-      setMessage(password.hasError);
+      toast.error(email.hasError, { autoClose: 3000 });
       return false;
     }
 
@@ -34,10 +43,9 @@ const SignIn = () => {
   const submitForm = (e) => {
     e.preventDefault();
     let form = { email: email.value, password: password.value };
-    setMessage(null);
 
     if (formIsValid()) {
-      setIsLoading(true);
+      setIsLoadingAPI(true);
       UserService.login(form)
         .then((response) => {
           localStorage.setItem(ACCESS_TOKEN, response.access);
@@ -45,8 +53,8 @@ const SignIn = () => {
           window.location.reload();
         })
         .catch((error) => {
-          setMessage(error.data.message);
-          setIsLoading(false);
+          toast.error(error.data.message);
+          setIsLoadingAPI(false);
         });
     }
   };
@@ -90,10 +98,8 @@ const SignIn = () => {
           />
         </div>
 
-        {message && <p className="error text-center mt-3 mb-0">{message}</p>}
-
         <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
-          {!isLoading ? "Sign In" : <Spinner size="sm" animation="border" />}
+          {!isLoadingAPI ? "Sign In" : <Spinner size="sm" animation="border" />}
         </Button>
 
         <div className={"text-center mt-4"}>

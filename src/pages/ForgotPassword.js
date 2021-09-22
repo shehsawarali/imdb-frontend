@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "assets/css/Form.css";
 import logo from "assets/media/logo.png";
@@ -11,12 +12,11 @@ import { validateEmail } from "utils";
 
 const SignIn = () => {
   const email = useInput(validateEmail);
-  const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const formIsValid = () => {
     if (email.hasError) {
-      setMessage({ text: email.hasError, error: true });
+      toast.error(email.hasError, { autoClose: 3000 });
       return false;
     }
     return true;
@@ -25,17 +25,16 @@ const SignIn = () => {
   const submitForm = (e) => {
     e.preventDefault();
     let form = { email: email.value };
-    setMessage(null);
 
     if (formIsValid()) {
       setIsLoading(true);
       UserService.forgotPassword(form)
         .then((response) => {
-          setMessage({ text: response.message, error: false });
+          toast.success(response.message);
           setIsLoading(false);
         })
         .catch((error) => {
-          setMessage({ text: error.data.message, error: true });
+          toast.error(error.data.message);
           setIsLoading(false);
         });
     }
@@ -62,12 +61,6 @@ const SignIn = () => {
             required
           />
         </div>
-
-        {message && (
-          <p className={`text-center mt-3 mb-0 ${message.error ? "error" : "success"}`}>
-            {message.text}
-          </p>
-        )}
 
         <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
           {!isLoading ? "Submit" : <Spinner size="sm" animation="border" />}

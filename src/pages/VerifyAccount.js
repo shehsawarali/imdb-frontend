@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import queryString from "query-string";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import LoadingScreen from "components/LoadingScreen";
 import UserService from "services/UserService";
@@ -31,15 +31,15 @@ const VerifyAccount = (props) => {
     return <LoadingScreen />;
   }
 
-  return !errorResponse ? (
-    <div className={"page-message page-success"}>
-      Your account has been activated. Click <Link to={"/signin"}>here</Link> to sign in.
-    </div>
-  ) : (
-    <div className={"page-message page-error"}>
-      {errorResponse ? errorResponse : "Activation link is invalid"}
-    </div>
-  );
+  if (errorResponse) {
+    return (
+      <div className={"page-message page-error"}>
+        {errorResponse ? errorResponse : "Activation link is invalid"}
+      </div>
+    );
+  }
+
+  return <Redirect to={"/signin/?verifySuccess=true"} />;
 };
 
 export default VerifyAccount;
