@@ -8,6 +8,7 @@
   --secondary-light: #2f2d2d;
   --error: indianred;
   --success: green;
+  --transition: 0.3s;
   --link: #5799ef;
   --muted: #6c757d;
   --background: #1f1f1f;
@@ -20,6 +21,16 @@
 
 body {
   background-color: black;
+}
+
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.svg-inline--fa {
+  transition-duration: var(--transition);
 }
 
 .primary {

@@ -23,14 +23,13 @@ const VerifyAccount = (props) => {
     let id = params?.id;
 
     UserService.checkPasswordResetLink({ id: id, token: token })
-      .then((response) => {
-        setIsLoading(false);
-      })
       .catch((error) => {
         setErrorResponse(error.data?.message);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [props.location.hash]);
 
   const formIsValid = () => {
     if (password.hasError) {

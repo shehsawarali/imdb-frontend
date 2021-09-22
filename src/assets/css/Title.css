@@ -66,12 +66,6 @@
   box-shadow: rgba(0, 0, 0, 0.22) 0 10px 10px;
 }
 
-.text-overflow {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 @media (max-width: 600px) {
   .detail-years {
     text-align: center;

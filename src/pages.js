@@ -1,7 +1,9 @@
 import ForgotPassword from "pages/ForgotPassword";
 import Home from "pages/Home";
+import NotFound from "pages/NotFound";
 import Person from "pages/Person";
 import PersonSearch from "pages/PersonSearch";
+import Profile from "pages/Profile";
 import ResetPassword from "pages/ResetPassword";
 import SignIn from "pages/SignIn";
 import SignUp from "pages/SignUp";
@@ -16,6 +18,8 @@ let pages = {
   VerifyAccount,
   ForgotPassword,
   ResetPassword,
+  Profile,
+  NotFound,
   Title,
   Person,
   TitleSearch,

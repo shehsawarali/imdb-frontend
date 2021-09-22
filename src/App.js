@@ -12,12 +12,15 @@ const App = () => {
       <Navbar />
 
       <Switch>
-        <Route exact path="/" component={Pages.Home} />
         <StrictlyPublic path="/signin" component={Pages.SignIn} />
         <StrictlyPublic path="/signup" component={Pages.SignUp} />
         <StrictlyPublic path="/verify" component={Pages.VerifyAccount} />
         <StrictlyPublic path="/forgot-password" component={Pages.ForgotPassword} />
         <StrictlyPublic path="/reset" component={Pages.ResetPassword} />
+
+        <Route exact path="/" component={Pages.Home} />
+        <Route path="/user/:id" component={Pages.Profile} />
+        <Route path="/404" component={Pages.NotFound} />
         <Route path="/title/:id" component={Pages.Title} />
         <Route path="/person/:id" component={Pages.Person} />
         <Route path="/search/title" component={Pages.TitleSearch} />

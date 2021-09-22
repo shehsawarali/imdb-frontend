@@ -2,6 +2,7 @@ nav {
   padding: 0.5rem 1rem;
   background-color: var(--secondary);
   font-weight: bold;
+  min-height: 8vh;
   border-bottom: 1px solid var(--primary);
 }
 
@@ -9,11 +10,11 @@ nav {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border: 1px dashed var(--primary);
+  transition-duration: var(--transition);
 }
 .navbar-brand:hover {
   background-color: var(--primary);
   color: var(--secondary) !important;
-  transition-duration: 0.3s;
   border: 1px dashed var(--secondary);
 }
 
@@ -24,6 +25,8 @@ nav {
   outline: none !important;
   border: 1px dashed transparent !important;
   font-weight: bold;
+  border-radius: 3px;
+  transition-duration: var(--transition);
 }
 
 .nav-button:hover {
@@ -31,10 +34,53 @@ nav {
   background-color: var(--secondary-light);
 }
 
-.nav-button:focus {
-  box-shadow: none;
+.dropdown-menu {
+  background-color: var(--secondary);
+  padding: 0;
+  right: 0;
+}
+
+.dropdown-item {
+  color: white !important;
+  font-weight: bold;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  transition-duration: var(--transition);
+}
+.dropdown-item:hover {
+  background-color: var(--secondary-light);
+}
+
+.dropdown-divider {
+  background-color: var(--secondary-light);
+  margin: 0;
+}
+
+.dropdown-toggle {
+  padding: 10px 20px !important;
   background-color: var(--primary);
-  color: var(--secondary);
+  color: var(--secondary) !important;
+  outline: none !important;
+  border: 1px dashed var(--secondary);
+  font-weight: bold;
+  box-shadow: none !important;
+  border-radius: 3px;
+  transition-duration: var(--transition);
+}
+.dropdown-toggle:hover {
+  color: white !important;
+  background-color: var(--secondary-light);
+  border: 1px dashed var(--secondary-light);
+}
+
+.nav-button > .svg-inline--fa,
+.dropdown-item > .svg-inline--fa {
+  color: gray;
+}
+
+.nav-button:hover > .svg-inline--fa,
+.dropdown-item:hover > .svg-inline--fa {
+  color: white;
 }
 
 .absolute-center {
