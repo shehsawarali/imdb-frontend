@@ -30,19 +30,19 @@ const AppNavbar = () => {
   const loggedInOptions = () => {
     return (
       <>
-        <button className={"nav-button"} style={{ marginRight: "10px" }}>
-          <Icon icon={"bookmark"} style={{ marginRight: "10px" }} />
+        <button className={"nav-button me-2"}>
+          <Icon icon={"bookmark"} className={"me-2"} />
           Watchlist
         </button>
 
         <NavDropdown title={user.first_name} id="basic-nav-dropdown">
           <NavDropdown.Item as={Link} to={`/user/${user.id}`}>
-            <Icon icon={"user"} style={{ marginRight: "10px" }} />
+            <Icon icon={"user"} className={"me-2"} />
             Profile
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={logOut}>
-            <Icon icon={"sign-out-alt"} style={{ marginRight: "10px" }} />
+            <Icon icon={"sign-out-alt"} className={"me-2"} />
             Logout
           </NavDropdown.Item>
         </NavDropdown>

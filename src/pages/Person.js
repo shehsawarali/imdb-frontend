@@ -25,7 +25,7 @@ const Person = () => {
       });
   }, [id]);
 
-  const header = () => {
+  const renderHeader = () => {
     return (
       <div className={"detail-page-header mb-3"}>
         <a className={"me-1"} onClick={() => scrollToDiv("filmography")}>
@@ -35,7 +35,7 @@ const Person = () => {
     );
   };
 
-  const professions = () => {
+  const renderProfessions = () => {
     return (
       <div className={"person-professions mb-3"}>
         {person.professions.map((genre, index) => {
@@ -45,7 +45,7 @@ const Person = () => {
     );
   };
 
-  const picture = () => {
+  const renderPicture = () => {
     return (
       <img
         src={person.image ? person.image : DefaultPersonImage}
@@ -77,18 +77,18 @@ const Person = () => {
 
   if (isLoading) return <LoadingScreen />;
 
-  if (!person) return <Redirect to={"/"} />;
+  if (!person) return <Redirect to={"/404"} />;
 
   return (
     <>
       <div className={"detail-page-container"}>
-        {header()}
+        {renderHeader()}
 
         <div className={"detail-page-padding"}>
-          {professions()}
+          {renderProfessions()}
 
           <div className={"detail-page-flex"}>
-            {picture()}
+            {renderPicture()}
             {renderInfo()}
           </div>
 

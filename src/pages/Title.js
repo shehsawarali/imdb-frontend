@@ -26,7 +26,7 @@ const Title = () => {
 
   if (isLoading) return <LoadingScreen />;
 
-  if (!title) return <Redirect to={"/"} />;
+  if (!title) return <Redirect to={"/404"} />;
 
   const renderHeader = () => {
     return (

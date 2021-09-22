@@ -58,14 +58,14 @@
   display: flex;
 }
 
-#filter-collapse {
-  transition: height 1s;
+.filter-collapse {
+  transition: height var(--transition);
   border-radius: 3px;
   background-color: var(--secondary-light);
   border: 1px dashed var(--primary);
 }
 
-#filter-collapse h6 {
+.filter-collapse h6 {
   text-decoration: underline;
 }
 

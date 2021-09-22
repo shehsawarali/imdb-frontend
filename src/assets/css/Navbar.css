@@ -18,7 +18,8 @@ nav {
   border: 1px dashed var(--secondary);
 }
 
-.nav-button {
+.nav-button,
+.nav-button:focus {
   padding: 10px 20px;
   background-color: var(--secondary);
   color: white;

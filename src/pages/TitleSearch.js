@@ -141,7 +141,7 @@ const TitleSearch = (props) => {
     return (
       <Collapse in={show}>
         <div>
-          <div id="filter-collapse" className={"p-4"}>
+          <div id="filter-collapse" className={"filter-collapse p-4"}>
             <h6>Genre</h6>
             <div className={"d-flex flex-wrap mb-3"}>
               {genresList.map((genre, index) => (
