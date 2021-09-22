@@ -50,22 +50,6 @@
   margin-bottom: 1rem;
 }
 
-.cast-card {
-  border: 1px solid dimgray;
-  padding: 1rem;
-  transition-duration: var(--transition);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-radius: 3px;
-}
-
-.cast-card:hover {
-  border-color: var(--primary);
-  background-color: var(--secondary-light);
-  box-shadow: rgba(0, 0, 0, 0.22) 0 10px 10px;
-}
-
 @media (max-width: 600px) {
   .detail-years {
     text-align: center;

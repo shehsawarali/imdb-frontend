@@ -14,9 +14,9 @@ const NavSearch = (props) => {
     if (!query) return;
 
     let queryType = type.value ? type.value : "title";
-    const queryString = QueryString.stringify({ name: query.value, type: queryType });
+    const queryString = QueryString.stringify({ name: query.value });
 
-    let url = `/search/${queryType}/?${queryString}`;
+    let url = `/search/${queryType}/?type=${queryType}&${queryString}`;
     window.location = url;
   };
 

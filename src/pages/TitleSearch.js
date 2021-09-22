@@ -42,6 +42,8 @@ const TitleSearch = (props) => {
     const genres = queryParams.genre;
     const min_rating = queryParams.min_rating;
     const max_rating = queryParams.max_rating;
+    const min_year = queryParams.min_year;
+    const max_year = queryParams.max_year;
 
     if (genres && Array.isArray(genres)) {
       for (const genre of genres) queryFilters[genre] = true;
@@ -55,6 +57,12 @@ const TitleSearch = (props) => {
     if (max_rating) {
       queryFilters["max_rating"] = max_rating;
     }
+    if (min_year) {
+      queryFilters["min_year"] = min_year;
+    }
+    if (max_year) {
+      queryFilters["max_year"] = max_year;
+    }
 
     return queryFilters;
   };
@@ -63,11 +71,12 @@ const TitleSearch = (props) => {
     filter[e.target.name] = e.target.checked;
   };
 
-  const changeRating = (e) => {
+  const changeInput = (e) => {
     filter[e.target.name] = e.target.value;
   };
 
-  const applyFilters = () => {
+  const applyFilters = (e) => {
+    e.preventDefault();
     let filterParams = "";
 
     if (queryParams.name) {
@@ -78,6 +87,12 @@ const TitleSearch = (props) => {
     }
     if (filter.min_rating) {
       filterParams += `&min_rating=${filter.min_rating}`;
+    }
+    if (filter.max_year) {
+      filterParams += `&max_year=${filter.max_year}`;
+    }
+    if (filter.min_year) {
+      filterParams += `&min_year=${filter.min_year}`;
     }
     for (let genre of genresList) {
       if (filter[genre]) filterParams += `&genre=${genre}`;
@@ -141,52 +156,77 @@ const TitleSearch = (props) => {
     return (
       <Collapse in={show}>
         <div>
-          <div id="filter-collapse" className={"filter-collapse p-4"}>
-            <h6>Genre</h6>
-            <div className={"d-flex flex-wrap mb-3"}>
-              {genresList.map((genre, index) => (
-                <Col sm={2} key={index}>
-                  <label className={"me-4"}>
-                    <input
-                      type="checkbox"
-                      defaultChecked={filter[genre]}
-                      name={genre}
-                      onChange={changeGenre}
-                    />
-                    {genre}
-                  </label>
-                </Col>
-              ))}
-            </div>
+          <div id="filter-collapse" className={"filter-collapse p-4 mb-2"}>
+            <form onSubmit={applyFilters}>
+              <h6>Genre</h6>
+              <div className={"d-flex flex-wrap mb-3"}>
+                {genresList.map((genre, index) => (
+                  <Col sm={2} key={index}>
+                    <label className={"me-4"}>
+                      <input
+                        type="checkbox"
+                        defaultChecked={filter[genre]}
+                        name={genre}
+                        onChange={changeGenre}
+                      />
+                      {genre}
+                    </label>
+                  </Col>
+                ))}
+              </div>
 
-            <h6>Rating</h6>
-            <div className={"d-flex w-25 align-items-center"}>
-              <input
-                type="number"
-                min="1"
-                max="10"
-                step="0.1"
-                defaultValue={filter["min_rating"] || 1}
-                name={"min_rating"}
-                onChange={changeRating}
-              />
-              <span className={"mx-2"}>to</span>
-              <input
-                type="number"
-                min="1"
-                max="10"
-                step="0.1"
-                defaultValue={filter["max_rating"] || 10}
-                name={"max_rating"}
-                onChange={changeRating}
-              />
-            </div>
+              <h6>Rating</h6>
+              <div className={"d-flex w-25 mb-3 align-items-center"}>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  step="0.1"
+                  defaultValue={filter["min_rating"]}
+                  name={"min_rating"}
+                  onChange={changeInput}
+                />
+                <span className={"mx-2"}>to</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  step="0.1"
+                  defaultValue={filter["max_rating"]}
+                  name={"max_rating"}
+                  onChange={changeInput}
+                />
+              </div>
 
-            <div className={"text-center mt-4"}>
-              <Button className={"btn-inverted"} onClick={applyFilters}>
-                Apply Filters
-              </Button>
-            </div>
+              <h6>Release Year</h6>
+              <div className={"d-flex w-25 align-items-center"}>
+                <input
+                  type="number"
+                  min="1800"
+                  max={new Date().getFullYear()}
+                  step="1"
+                  defaultValue={filter["min_year"]}
+                  name={"min_year"}
+                  onChange={changeInput}
+                />
+                <span className={"mx-2"}>to</span>
+                <input
+                  type="number"
+                  min="1800"
+                  max={new Date().getFullYear()}
+                  step="1"
+                  defaultValue={filter["max_year"]}
+                  name={"max_year"}
+                  onChange={changeInput}
+                />
+              </div>
+
+              <div className={"text-center mt-4"}>
+                <Button className={"btn-inverted"} type={"submit"}>
+                  Apply Filters
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       </Collapse>

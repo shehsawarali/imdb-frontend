@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 
+import "assets/css/Cards.css";
 import DefaultPersonImage from "assets/media/default-person-image.png";
 
 const PersonCard = ({ person, characters, category }) => {
   return (
-    <Link to={`/person/${person.id}`} className={"cast-card text-decoration-none"}>
+    <Link to={`/person/${person.id}`} className={"person-card text-decoration-none"}>
       <img
         src={person.image ? person.image : DefaultPersonImage}
         className={"me-3"}
         alt={"profile"}
-        style={{ height: "70px", width: "70px", borderRadius: "50%" }}
       />
-      <div className={"text-overflow w-75"} style={{ color: "white" }}>
-        <span style={{ fontWeight: "bold" }}>{person.name}</span>
+      <div className={"text-overflow w-75"}>
+        <strong>{person.name}</strong>
         <br />
-        {characters && <small style={{ color: "lightgray" }}>As {characters}</small>}
+        {characters && <small>As {characters}</small>}
       </div>
     </Link>
   );
