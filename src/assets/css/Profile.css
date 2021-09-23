@@ -21,12 +21,34 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   color: var(--secondary) !important;
 }
 
 .profile-header > h1 {
   font-weight: bold;
+}
+
+.profile-header #info {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.avatar {
+  margin-top: 15px;
+  margin-bottom: -10px;
+  margin-right: 3rem;
+}
+
+.avatar-edit {
+  text-align: center;
+  font-size: 14px;
+}
+
+.avatar-edit:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .nav.nav-pills .nav-link {
@@ -47,9 +69,6 @@
   background-color: white;
   padding: 0;
   border: 1px solid var(--secondary);
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-right: 3rem;
 }
 
 .profile-follow-card {
@@ -67,6 +86,12 @@
   box-shadow: rgba(0, 0, 0, 0.22) 0 10px 10px;
 }
 
+.profile-follow-card img {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 3rem;
+}
+
 .profile-follow-button {
   width: 100%;
 }
@@ -80,6 +105,20 @@
   }
   .profile-follow-button {
     width: 100%;
+  }
+  .profile-header {
+    flex-flow: row wrap;
+  }
+  .profile-header #info {
+    overflow: inherit;
+    text-overflow: inherit;
+    white-space: inherit;
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-header .avatar {
+    margin-bottom: 0px;
   }
 }
 

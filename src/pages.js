@@ -6,6 +6,7 @@ import ResetPassword from "pages/ResetPassword";
 import SignIn from "pages/SignIn";
 import SignUp from "pages/SignUp";
 import VerifyAccount from "pages/VerifyAccount";
+import Watchlist from "pages/Watchlist";
 
 let pages = {
   Home,
@@ -16,6 +17,7 @@ let pages = {
   ResetPassword,
   Profile,
   NotFound,
+  Watchlist,
 };
 
 export default pages;

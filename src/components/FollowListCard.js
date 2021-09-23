@@ -1,6 +1,6 @@
 import { Col } from "react-bootstrap";
 
-import ProfileImage from "assets/media/default-person.png";
+import defaultImage from "assets/media/default-person.png";
 import { FollowButton } from "components";
 
 const FollowListCard = ({ user }) => {
@@ -12,7 +12,7 @@ const FollowListCard = ({ user }) => {
           className={"d-flex flex-row align-items-center text-decoration-none"}
         >
           <img
-            src={ProfileImage}
+            src={user.image || defaultImage}
             className={"profile-picture me-3"}
             alt={"profile"}
             style={{ height: "70px", width: "70px" }}

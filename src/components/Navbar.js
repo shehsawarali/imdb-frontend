@@ -29,10 +29,15 @@ const AppNavbar = () => {
   const loggedInOptions = () => {
     return (
       <>
-        <button className={"nav-button"} style={{ marginRight: "10px" }}>
+        <Button
+          as={Link}
+          to={"/watchlist"}
+          className={"nav-button"}
+          style={{ marginRight: "10px" }}
+        >
           <Icon icon={"bookmark"} style={{ marginRight: "10px" }} />
           Watchlist
-        </button>
+        </Button>
 
         <NavDropdown title={user.first_name} id="basic-nav-dropdown">
           <NavDropdown.Item as={Link} to={`/user/${user.id}`}>

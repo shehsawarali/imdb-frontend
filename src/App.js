@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { Navbar } from "components";
 import Pages from "pages";
-import { StrictlyPublic } from "routing";
+import { StrictlyPrivate, StrictlyPublic } from "routing";
 
 const App = () => {
   return (
@@ -17,6 +17,8 @@ const App = () => {
         <StrictlyPublic path="/verify" component={Pages.VerifyAccount} />
         <StrictlyPublic path="/forgot-password" component={Pages.ForgotPassword} />
         <StrictlyPublic path="/reset" component={Pages.ResetPassword} />
+
+        <StrictlyPrivate path="/watchlist" component={Pages.Watchlist} />
 
         <Route exact path="/" component={Pages.Home} />
         <Route path="/user/:id" component={Pages.Profile} />
