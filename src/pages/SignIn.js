@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import query from "query-string";
-import { Button, Spinner, Toast } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -28,6 +28,10 @@ const SignIn = (props) => {
       toast.success("Your password has been reset");
     } else if (params.verifySuccess) {
       toast.success("Your account has been verified. You can now sign in.");
+    } else if (params.invalidLink === "verify") {
+      toast.error("Verification link is invalid or expired");
+    } else if (params.invalidLink === "reset") {
+      toast.error("Password reset link is invalid or expired");
     }
   }, []);
 

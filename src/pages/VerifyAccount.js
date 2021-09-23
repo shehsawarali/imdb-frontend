@@ -32,11 +32,7 @@ const VerifyAccount = (props) => {
   }
 
   if (errorResponse) {
-    return (
-      <div className={"page-message page-error"}>
-        {errorResponse ? errorResponse : "Activation link is invalid"}
-      </div>
-    );
+    return <Redirect to={"/signin/?invalidLink=verify"} />;
   }
 
   return <Redirect to={"/signin/?verifySuccess=true"} />;
