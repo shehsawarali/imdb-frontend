@@ -30,15 +30,24 @@ const AppNavbar = () => {
   const loggedInOptions = () => {
     return (
       <>
-        <button className={"nav-button me-2"}>
+        <Button as={Link} to="/watchlist" className={"nav-button me-2"}>
           <Icon icon={"bookmark"} className={"me-2"} />
           Watchlist
-        </button>
+        </Button>
 
-        <NavDropdown title={user.first_name} id="basic-nav-dropdown">
+        <NavDropdown
+          align="end"
+          title={user.first_name}
+          id="basic-nav-dropdown"
+          className={"dropdown-menu-end"}
+        >
           <NavDropdown.Item as={Link} to={`/user/${user.id}`}>
             <Icon icon={"user"} className={"me-2"} />
             Profile
+          </NavDropdown.Item>
+          <NavDropdown.Item as={Link} to={`/favorites`}>
+            <Icon icon={"heart"} className={"me-2"} />
+            Favorites
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={logOut}>

@@ -18,15 +18,13 @@ function Favorites() {
   }, []);
 
   async function fetch(callback) {
-    CoreService.watchlist(page + 1)
+    CoreService.favorites(page + 1)
       .then((response) => {
         setList([...list, ...response.results]);
         setNext(response.next);
         setPage((page) => page + 1);
       })
-      .finally(() => {
-        callback(false);
-      });
+      .finally(() => callback(false));
   }
 
   const fetchMore = () => {
@@ -40,7 +38,7 @@ function Favorites() {
     if (isLoadingMore) {
       return (
         <div className={"text-center mt-5"}>
-          <Button className={"btn-inverted"} onClick={fetchMore}>
+          <Button className={"btn-inverted"}>
             <Spinner animation={"border"} size={"sm"} />
           </Button>
         </div>
@@ -49,8 +47,9 @@ function Favorites() {
 
     return (
       <div className={"text-center mt-5"}>
-        <Button onClick={fetchMore}>
-          View More <Icon icon={"angle-double-down"} size="1x" className={"ms-1"} />
+        <Button className={"btn-inverted"} onClick={fetchMore}>
+          View More{" "}
+          <Icon icon={"angle-double-down"} size="1x" style={{ marginLeft: "8px" }} />
         </Button>
       </div>
     );
@@ -61,8 +60,8 @@ function Favorites() {
   return (
     <div className={"detail-page-container"}>
       <h6 className={"display-6 text-center"}>
-        <FontAwesomeIcon icon={"bookmark"} className={"me-3"} size={"sm"} />
-        Watchlist
+        <FontAwesomeIcon icon={"heart"} className={"me-3"} size={"sm"} />
+        Favorites
       </h6>
       <hr />
       {list.length ? (

@@ -7,6 +7,7 @@ import {
   faEdit,
   faEnvelope,
   faExclamationTriangle,
+  faHeart,
   faKey,
   faLocationArrow,
   faSave,
@@ -33,5 +34,6 @@ library.add(
   faExclamationTriangle,
   faAngleDoubleDown,
   faKey,
+  faHeart,
   faStar
 );

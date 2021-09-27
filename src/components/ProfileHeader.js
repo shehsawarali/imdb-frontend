@@ -20,7 +20,7 @@ const ProfileHeader = ({ profile }) => {
       })
       .catch((err) => {
         fileInputRef.current.value = "";
-        //  ///////////////// ADD TOAST HERE
+        // ADD TOAST HERE
       });
   };
 
@@ -45,7 +45,7 @@ const ProfileHeader = ({ profile }) => {
 
       <div className={"avatar"}>
         <img
-          src={profile.image ? `http://localhost:8000${profile.image}` : defaultImage}
+          src={profile.image ? profile.image : defaultImage}
           className={"profile-picture"}
           alt={"profile"}
         />

@@ -1,5 +1,6 @@
 @import "assets/css/Button.css";
 @import "assets/css/Form.css";
+@import "assets/css/Modal.css";
 
 :root {
   --primary: #f5c518;
@@ -35,4 +36,29 @@ body {
 
 .primary {
   color: var(--primary);
+}
+
+.lightgray {
+  color: lightgray !important;
+}
+
+.lightcoral {
+  color: lightcoral !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  opacity: 0.7;
+}
+
+.link {
+  color: var(--link);
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
 }

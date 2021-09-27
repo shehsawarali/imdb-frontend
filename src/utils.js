@@ -16,46 +16,6 @@ export const validateEmail = (email) => {
   return null;
 };
 
-export const responsiveSliderSettings = [
-  {
-    breakpoint: 1025,
-    settings: {
-      slidesToShow: 2.75,
-      slidesToScroll: 2,
-    },
-  },
-  {
-    breakpoint: 769,
-    settings: {
-      slidesToShow: 2.75,
-      slidesToScroll: 2,
-    },
-  },
-  {
-    breakpoint: 600,
-    settings: {
-      slidesToShow: 2,
-      slidesToScroll: 2,
-    },
-  },
-  {
-    breakpoint: 425,
-    settings: {
-      slidesToShow: 1.25,
-      slidesToScroll: 1,
-      dots: true,
-    },
-  },
-  {
-    breakpoint: 320,
-    settings: {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      dots: true,
-    },
-  },
-];
-
 export const scrollToDiv = (id) => {
   const anchor = document.querySelector(`#${id}`);
   anchor.scrollIntoView({ behavior: "smooth", block: "center" });

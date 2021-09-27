@@ -48,7 +48,7 @@ const ProfileFollowers = ({ id }) => {
     if (isLoadingMore) {
       return (
         <div className={"text-center mt-5"}>
-          <Button className={"btn-inverted"} onClick={fetchMore}>
+          <Button className={"btn-inverted"}>
             <Spinner animation={"border"} size={"sm"} />
           </Button>
         </div>
@@ -58,8 +58,7 @@ const ProfileFollowers = ({ id }) => {
     return (
       <div className={"text-center mt-5"}>
         <Button className={"btn-inverted"} onClick={fetchMore}>
-          View More{" "}
-          <Icon icon={"angle-double-down"} size="1x" style={{ marginLeft: "8px" }} />
+          View More <Icon icon={"angle-double-down"} size="1x" className={"ms-1"} />
         </Button>
       </div>
     );

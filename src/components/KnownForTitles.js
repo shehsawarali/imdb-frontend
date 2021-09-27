@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 import DefaultTitleImage from "assets/media/default-title-image.png";
-import { responsiveSliderSettings } from "utils";
+import { responsiveSliderSettings } from "constant";
 
 const sliderSettings = {
   dots: false,

@@ -1,3 +1,4 @@
+import FavoriteButton from "components/FavoriteButton";
 import Filmography from "components/Filmography";
 import FollowButton from "components/FollowButton";
 import FollowListCard from "components/FollowListCard";
@@ -11,21 +12,32 @@ import ProfileChangePassword from "components/ProfileChangePassword";
 import ProfileFollowers from "components/ProfileFollowers";
 import ProfileFollowing from "components/ProfileFollowing";
 import ProfileHeader from "components/ProfileHeader";
+import Rate from "components/Rate";
+import Review from "components/Review";
 import TitleCard from "components/TitleCard";
+import TitleRatingButton from "components/TitleRatingButton";
+import WatchlistButton from "components/WatchlistButton";
+import WriteReview from "components/WriteReview";
 
 export {
-  Navbar,
-  ProfileHeader,
-  ProfileChangeDetails,
-  ProfileChangePassword,
-  LoadingScreen,
-  ProfileFollowers,
-  ProfileFollowing,
+  Filmography,
   FollowButton,
   FollowListCard,
-  Filmography,
   KnownForTitles,
-  PersonCard,
+  LoadingScreen,
   NavSearch,
+  Navbar,
+  PersonCard,
+  ProfileChangeDetails,
+  ProfileChangePassword,
+  ProfileFollowers,
+  ProfileFollowing,
+  ProfileHeader,
+  Rate,
+  Review,
   TitleCard,
+  WriteReview,
+  FavoriteButton,
+  WatchlistButton,
+  TitleRatingButton,
 };
