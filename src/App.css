@@ -3,11 +3,15 @@
 
 :root {
   --primary: #f5c518;
+  --primary-light: #ecd168;
   --secondary: #121212;
   --secondary-light: #2f2d2d;
   --error: indianred;
   --success: green;
   --transition: 0.3s;
+  --link: #5799ef;
+  --muted: #6c757d;
+  --background: #1f1f1f;
 }
 
 ::placeholder {
@@ -27,4 +31,8 @@ body {
 
 .svg-inline--fa {
   transition-duration: var(--transition);
+}
+
+.primary {
+  color: var(--primary);
 }

@@ -15,3 +15,112 @@ export const validateEmail = (email) => {
 
   return null;
 };
+
+export const responsiveSliderSettings = [
+  {
+    breakpoint: 1025,
+    settings: {
+      slidesToShow: 2.75,
+      slidesToScroll: 2,
+    },
+  },
+  {
+    breakpoint: 769,
+    settings: {
+      slidesToShow: 2.75,
+      slidesToScroll: 2,
+    },
+  },
+  {
+    breakpoint: 600,
+    settings: {
+      slidesToShow: 2,
+      slidesToScroll: 2,
+    },
+  },
+  {
+    breakpoint: 425,
+    settings: {
+      slidesToShow: 1.25,
+      slidesToScroll: 1,
+      dots: true,
+    },
+  },
+  {
+    breakpoint: 320,
+    settings: {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: true,
+    },
+  },
+];
+
+export const scrollToDiv = (id) => {
+  const anchor = document.querySelector(`#${id}`);
+  anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+};
+
+export const genresList = [
+  "Action",
+  "Adult",
+  "Adventure",
+  "Animation",
+  "Biography",
+  "Comedy",
+  "Crime",
+  "Documentary",
+  "Drama",
+  "Family",
+  "Fantasy",
+  "Film-Noir",
+  "Game-Show",
+  "History",
+  "Horror",
+  "Mystery",
+  "Music",
+  "Musical",
+  "News",
+  "Romance",
+  "Sci-Fi",
+  "Short",
+  "Sport",
+  "Talk-Show",
+  "Thriller",
+  "War",
+  "Western",
+];
+
+export const genreStates = {
+  Action: false,
+  Adult: false,
+  Adventure: false,
+  Animation: false,
+  Biography: false,
+  Comedy: false,
+  Crime: false,
+  Documentary: false,
+  Drama: false,
+  Family: false,
+  Fantasy: false,
+  "Film-Noir": false,
+  "Game-Show": false,
+  History: false,
+  Horror: false,
+  Mystery: false,
+  Music: false,
+  Musical: false,
+  News: false,
+  Romance: false,
+  "Sci-Fi": false,
+  Short: false,
+  Sport: false,
+  "Talk-Show": false,
+  Thriller: false,
+  War: false,
+  Western: false,
+};
+
+export const mergeObjects = (oldObject, newObject) => {
+  return { ...oldObject, ...newObject };
+};

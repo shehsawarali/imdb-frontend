@@ -1,0 +1,64 @@
+@import "DetailPage.css";
+
+.title-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.title-page-genres {
+  display: flex;
+  flex-direction: row;
+}
+
+.title-page-genres a {
+  padding: 5px 10px;
+  border: 1px solid white;
+  margin-right: 12px;
+  border-radius: 20px;
+  font-size: smaller;
+  color: white;
+}
+
+.title-page-genres a:hover {
+  text-decoration: none;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.core-page-content {
+  padding: 1rem;
+}
+
+.title-rating > strong {
+  color: lightgray;
+}
+
+.title-rating > p > span {
+  font-size: larger;
+  color: var(--primary);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.title-cast h3 {
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+  margin-left: 0rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .detail-years {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .title-page-genres {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

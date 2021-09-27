@@ -8,3 +8,8 @@
   text-align: center;
   padding: 1rem;
 }
+
+.not-found > .svg-inline--fa {
+  color: var(--error);
+  font-size: 10rem;
+}

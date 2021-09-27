@@ -1,0 +1,34 @@
+.title-card,
+.person-card {
+  border: 1px solid dimgray;
+  padding: 1rem;
+  transition-duration: var(--transition);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 3px;
+  color: white !important;
+}
+
+.title-card:hover,
+.person-card:hover {
+  border-color: var(--primary);
+  background-color: var(--secondary-light);
+  box-shadow: rgba(0, 0, 0, 0.22) 0 10px 10px;
+}
+
+.title-card small,
+.person-card small {
+  color: lightgray;
+}
+
+.title-card img {
+  height: 70px;
+  width: 50px;
+}
+
+.person-card img {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
