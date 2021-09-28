@@ -95,4 +95,13 @@ textarea {
   .form-container {
     width: 90%;
   }
+  .filter-number-input {
+    width: 150px;
+  }
+}
+
+@media (max-width: 325px) {
+  .filter-genre {
+    font-size: 11px;
+  }
 }

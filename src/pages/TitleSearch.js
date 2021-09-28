@@ -161,7 +161,7 @@ const TitleSearch = (props) => {
               <h6>Genre</h6>
               <div className={"d-flex flex-wrap mb-3"}>
                 {genresList.map((genre, index) => (
-                  <Col sm={2} key={index}>
+                  <Col xs={6} md={3} key={index} className={"filter-genre"}>
                     <label className={"me-4"}>
                       <input
                         type="checkbox"
@@ -185,6 +185,7 @@ const TitleSearch = (props) => {
                   defaultValue={filter["min_rating"]}
                   name={"min_rating"}
                   onChange={changeInput}
+                  className={"filter-number-input"}
                 />
                 <span className={"mx-2"}>to</span>
                 <input
@@ -195,6 +196,7 @@ const TitleSearch = (props) => {
                   defaultValue={filter["max_rating"]}
                   name={"max_rating"}
                   onChange={changeInput}
+                  className={"filter-number-input"}
                 />
               </div>
 
@@ -203,21 +205,23 @@ const TitleSearch = (props) => {
                 <input
                   type="number"
                   min="1800"
-                  max={new Date().getFullYear()}
+                  max={new Date().getFullYear() + 1}
                   step="1"
                   defaultValue={filter["min_year"]}
                   name={"min_year"}
                   onChange={changeInput}
+                  className={"filter-number-input"}
                 />
                 <span className={"mx-2"}>to</span>
                 <input
                   type="number"
                   min="1800"
-                  max={new Date().getFullYear()}
+                  max={new Date().getFullYear() + 1}
                   step="1"
                   defaultValue={filter["max_year"]}
                   name={"max_year"}
                   onChange={changeInput}
+                  className={"filter-number-input"}
                 />
               </div>
 
