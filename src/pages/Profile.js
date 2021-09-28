@@ -7,6 +7,7 @@ import "assets/css/Profile.css";
 import {
   FollowButton,
   LoadingScreen,
+  ProfileActivity,
   ProfileChangeDetails,
   ProfileChangePassword,
   ProfileFollowers,
@@ -64,6 +65,9 @@ const Profile = () => {
 
         <div className={"px-2"}>
           <Tab.Content>
+            <Tab.Pane eventKey="1">
+              <ProfileActivity id={id} />
+            </Tab.Pane>
             <Tab.Pane eventKey="2">
               <ProfileChangeDetails profile={profile} id={id} />
             </Tab.Pane>

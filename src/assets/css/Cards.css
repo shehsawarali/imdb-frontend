@@ -11,7 +11,8 @@
 }
 
 .title-card:hover,
-.person-card:hover {
+.person-card:hover,
+.activity-card:hover {
   border-color: var(--primary);
   background-color: var(--secondary-light);
   box-shadow: rgba(0, 0, 0, 0.22) 0 10px 10px;
@@ -31,4 +32,50 @@
   height: 70px;
   width: 70px;
   border-radius: 50%;
+}
+
+.timeline-card {
+  border-bottom: 1px solid var(--secondary-light);
+  padding: 1rem;
+  transition-duration: var(--transition);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.timeline-card .title-image,
+.activity-card .title-image {
+  border-radius: 3px;
+  box-shadow: 5px 2px 10px var(--secondary);
+  object-fit: cover;
+  height: 88px;
+  width: 58px;
+}
+
+.timeline-card .header,
+.activity-card .header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.timeline-card a,
+.activity-card a {
+  color: white !important;
+}
+
+.activity-card {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  border: 1px solid var(--secondary);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .timeline-card .header {
+    flex-direction: column;
+  }
 }

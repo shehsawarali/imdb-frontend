@@ -46,6 +46,10 @@ body {
   color: lightcoral !important;
 }
 
+.blue {
+  color: var(--link);
+}
+
 .pointer {
   cursor: pointer;
 }

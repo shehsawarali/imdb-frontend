@@ -30,9 +30,9 @@ const AppNavbar = () => {
   const loggedInOptions = () => {
     return (
       <>
-        <Button as={Link} to="/watchlist" className={"nav-button me-2"}>
-          <Icon icon={"bookmark"} className={"me-2"} />
-          Watchlist
+        <Button as={Link} to="/timeline" className={"nav-button me-2"}>
+          <Icon icon={"history"} className={"me-2"} />
+          Timeline
         </Button>
 
         <NavDropdown
@@ -44,6 +44,10 @@ const AppNavbar = () => {
           <NavDropdown.Item as={Link} to={`/user/${user.id}`}>
             <Icon icon={"user"} className={"me-2"} />
             Profile
+          </NavDropdown.Item>
+          <NavDropdown.Item as={Link} to={`/watchlist`}>
+            <Icon icon={"bookmark"} className={"me-2"} />
+            Watchlist
           </NavDropdown.Item>
           <NavDropdown.Item as={Link} to={`/favorites`}>
             <Icon icon={"heart"} className={"me-2"} />

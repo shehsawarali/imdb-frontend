@@ -7,6 +7,7 @@ import LoadingScreen from "components/LoadingScreen";
 import Navbar from "components/Navbar";
 import NavSearch from "components/NavSearch";
 import PersonCard from "components/PersonCard";
+import ProfileActivity from "components/ProfileActivity";
 import ProfileChangeDetails from "components/ProfileChangeDetails";
 import ProfileChangePassword from "components/ProfileChangePassword";
 import ProfileFollowers from "components/ProfileFollowers";
@@ -14,12 +15,15 @@ import ProfileFollowing from "components/ProfileFollowing";
 import ProfileHeader from "components/ProfileHeader";
 import Rate from "components/Rate";
 import Review from "components/Review";
+import TextModal from "components/TextModal";
+import TimelineCard from "components/TimelineCard";
 import TitleCard from "components/TitleCard";
 import TitleRatingButton from "components/TitleRatingButton";
 import WatchlistButton from "components/WatchlistButton";
 import WriteReview from "components/WriteReview";
 
 export {
+  FavoriteButton,
   Filmography,
   FollowButton,
   FollowListCard,
@@ -28,6 +32,7 @@ export {
   NavSearch,
   Navbar,
   PersonCard,
+  ProfileActivity,
   ProfileChangeDetails,
   ProfileChangePassword,
   ProfileFollowers,
@@ -35,9 +40,10 @@ export {
   ProfileHeader,
   Rate,
   Review,
+  TextModal,
+  TimelineCard,
   TitleCard,
-  WriteReview,
-  FavoriteButton,
-  WatchlistButton,
   TitleRatingButton,
+  WatchlistButton,
+  WriteReview,
 };

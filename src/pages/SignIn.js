@@ -42,7 +42,7 @@ const SignIn = () => {
         .then((response) => {
           localStorage.setItem(ACCESS_TOKEN, response.access);
           localStorage.setItem(REFRESH_TOKEN, response.refresh);
-          window.location.reload();
+          window.location.href = "/timeline";
         })
         .catch((error) => {
           setMessage(error.data.message);

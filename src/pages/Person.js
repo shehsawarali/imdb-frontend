@@ -95,7 +95,7 @@ const Person = () => {
           <KnownForTitles titles={person.known_for_titles} />
         </div>
 
-        <Filmography person_principals={person.principals} />
+        <Filmography person_principals={person.filmography} />
       </div>
     </>
   );

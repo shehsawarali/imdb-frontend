@@ -73,7 +73,7 @@ const ProfileFollowers = ({ id }) => {
   }
 
   if (count === 0) {
-    return <div className={"text-center"}>The user is not following anyone</div>;
+    return <div className={"text-center"}>This user is not following anyone</div>;
   }
 
   return (

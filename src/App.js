@@ -20,6 +20,7 @@ const App = () => {
 
         <StrictlyPrivate path="/watchlist" component={Pages.Watchlist} />
         <StrictlyPrivate path="/favorites" component={Pages.Favorites} />
+        <StrictlyPrivate path="/timeline" component={Pages.Timeline} />
 
         <Route exact path="/" component={Pages.Home} />
         <Route path="/user/:id" component={Pages.Profile} />

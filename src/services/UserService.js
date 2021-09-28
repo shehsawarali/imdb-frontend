@@ -162,6 +162,16 @@ const UserServices = {
         return Promise.reject(error);
       });
   },
+
+  activity: (id, page) => {
+    return API.get(`user/${id}/activity/?page=${page}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
 
 export default UserServices;

@@ -8,6 +8,7 @@ import Profile from "pages/Profile";
 import ResetPassword from "pages/ResetPassword";
 import SignIn from "pages/SignIn";
 import SignUp from "pages/SignUp";
+import Timeline from "pages/Timeline";
 import Title from "pages/Title";
 import TitleReviews from "pages/TitleReviews";
 import TitleSearch from "pages/TitleSearch";
@@ -25,6 +26,7 @@ let pages = {
   ResetPassword,
   SignIn,
   SignUp,
+  Timeline,
   Title,
   TitleReviews,
   TitleSearch,

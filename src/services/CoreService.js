@@ -171,6 +171,16 @@ const CoreService = {
         return Promise.reject(error);
       });
   },
+
+  timeline: (page) => {
+    return API.get(`timeline/?page=${page}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
 
 export default CoreService;

@@ -1,6 +1,6 @@
 .detail-page-container {
   width: 60%;
-  min-height: 92vh;
+  min-height: 100vh;
   overflow: auto;
   background-color: var(--background);
   margin: 0 auto;

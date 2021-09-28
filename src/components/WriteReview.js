@@ -79,6 +79,7 @@ const WriteReview = ({ title_id }) => {
                   rows={10}
                   value={review}
                   onChange={changeReview}
+                  maxLength={2000}
                 />
               </>
             ) : (
