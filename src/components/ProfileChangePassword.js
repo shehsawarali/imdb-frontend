@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
@@ -13,16 +14,15 @@ const ProfileChangePassword = () => {
   const confirmPassword = useInput();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState(null);
 
   const formIsValid = () => {
     if (newPassword.hasError) {
-      setMessage({ text: "New password must be 4 characters long or more", error: true });
+      toast.error("New password must be 4 characters long or more", { autoClose: 3000 });
       return false;
     }
 
     if (newPassword.value !== confirmPassword.value) {
-      setMessage({ text: "Passwords do not match", error: true });
+      toast.error("Passwords do not match", { autoClose: 3000 });
       return false;
     }
 
@@ -31,7 +31,6 @@ const ProfileChangePassword = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    setMessage(null);
 
     let form = {
       password: password.value,
@@ -42,10 +41,10 @@ const ProfileChangePassword = () => {
       setIsLoading(true);
       UserService.changePassword(form)
         .then((response) => {
-          setMessage({ text: response.message, error: false });
+          toast.success(response.message);
         })
         .catch((error) => {
-          setMessage({ text: error.data.message, error: true });
+          toast.error(error.data.message);
         })
         .finally(() => {
           setIsLoading(false);
@@ -70,12 +69,6 @@ const ProfileChangePassword = () => {
 
   return (
     <>
-      {message && (
-        <p className={`text-center mt-3 mb-3 ${message.error ? "error" : "success"}`}>
-          {message.text}
-        </p>
-      )}
-
       <div className={"w-100 d-flex flex-column"}>
         <form onSubmit={submitForm} className={"mx-auto"}>
           <div>

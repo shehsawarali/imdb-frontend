@@ -1,0 +1,18 @@
+:root {
+  --toastify-color-success: mediumseagreen !important;
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-color-dark: #1f1f1f;
+  --toastify-toast-width: 380px;
+}
+
+.Toastify__toast-container {
+  font-size: 14px;
+}
+
+.Toastify__toast-container--top-right {
+  margin-top: 3rem;
+}
+
+.Toastify__toast {
+  padding: 10px;
+}
