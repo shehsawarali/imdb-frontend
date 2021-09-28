@@ -5,6 +5,7 @@ import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "assets/css/Navbar.css";
+import { NavSearch } from "components";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
@@ -29,19 +30,19 @@ const AppNavbar = () => {
   const loggedInOptions = () => {
     return (
       <>
-        <button className={"nav-button"} style={{ marginRight: "10px" }}>
-          <Icon icon={"bookmark"} style={{ marginRight: "10px" }} />
+        <button className={"nav-button me-2"}>
+          <Icon icon={"bookmark"} className={"me-2"} />
           Watchlist
         </button>
 
         <NavDropdown title={user.first_name} id="basic-nav-dropdown">
           <NavDropdown.Item as={Link} to={`/user/${user.id}`}>
-            <Icon icon={"user"} style={{ marginRight: "10px" }} />
+            <Icon icon={"user"} className={"me-2"} />
             Profile
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={logOut}>
-            <Icon icon={"sign-out-alt"} style={{ marginRight: "10px" }} />
+            <Icon icon={"sign-out-alt"} className={"me-2"} />
             Logout
           </NavDropdown.Item>
         </NavDropdown>
@@ -62,13 +63,17 @@ const AppNavbar = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant={"dark"}>
+    <Navbar sticky="top" collapseOnSelect expand="lg" variant={"dark"}>
       <Navbar.Brand as={Link} to="/">
         IMDb
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto" />
+      <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-between"}>
+        <Nav className={"me-auto w-50 absolute-center"}>
+          <NavSearch />
+        </Nav>
+
+        <Nav />
 
         <Nav justify={"space-between"}>
           {!user && loggedOutOptions()}

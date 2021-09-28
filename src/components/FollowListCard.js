@@ -9,7 +9,7 @@ const FollowListCard = ({ user }) => {
       <div className={"profile-follow-card mb-1"}>
         <a
           href={`/user/${user.id}`}
-          className={"d-flex flex-row align-items-center text-decoration-none"}
+          className={"d-flex align-items-center text-decoration-none"}
         >
           <img
             src={ProfileImage}
