@@ -58,9 +58,27 @@ label {
   display: flex;
   justify-content: space-between;
 }
+
 .forgot-password > .link {
   font-size: small;
   margin: auto 2px 4px auto;
+}
+
+input[type="checkbox"] {
+  height: 12px;
+  box-shadow: none;
+  width: auto;
+  margin-right: 5px;
+}
+
+.input-dark {
+  background-color: var(--background);
+  color: white;
+}
+
+.input-dark::placeholder {
+  color: lightgray;
+  opacity: 1;
 }
 
 @media (max-width: 520px) {

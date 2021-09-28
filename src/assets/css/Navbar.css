@@ -3,12 +3,13 @@ nav {
   background-color: var(--secondary);
   font-weight: bold;
   min-height: 8vh;
+  border-bottom: 1px solid var(--primary);
 }
 
 .navbar-brand {
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  border: 1px dashed white;
+  border: 1px dashed var(--primary);
   transition-duration: var(--transition);
 }
 .navbar-brand:hover {
@@ -17,7 +18,8 @@ nav {
   border: 1px dashed var(--secondary);
 }
 
-.nav-button {
+.nav-button,
+.nav-button:focus {
   padding: 10px 20px;
   background-color: var(--secondary);
   color: white;
@@ -80,4 +82,10 @@ nav {
 .nav-button:hover > .svg-inline--fa,
 .dropdown-item:hover > .svg-inline--fa {
   color: white;
+}
+
+.absolute-center {
+  position: absolute;
+  left: 29%;
+  right: 0;
 }

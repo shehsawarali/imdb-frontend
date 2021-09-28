@@ -11,6 +11,7 @@ import {
   faLocationArrow,
   faSave,
   faSignOutAlt,
+  faStar,
   faUser,
   faUserMinus,
   faUserPlus,
@@ -31,5 +32,6 @@ library.add(
   faUserMinus,
   faExclamationTriangle,
   faAngleDoubleDown,
-  faKey
+  faKey,
+  faStar
 );
