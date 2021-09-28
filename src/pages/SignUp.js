@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import { Button, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "assets/css/Form.css";
 import CountryOptions from "assets/js/CountryOptions";
@@ -19,22 +20,22 @@ const SignUp = () => {
   const country = useInput();
   const age = useInput();
 
-  const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const formIsValid = () => {
     if (email.hasError) {
-      setMessage({ text: email.hasError, error: true });
+      toast.error(email.hasError, { autoClose: 3000 });
       return false;
     }
 
     if (password.hasError) {
-      setMessage({ text: password.hasError, error: true });
+      toast.error(password.hasError, { autoClose: 3000 });
       return false;
     }
 
     if (password.value !== confirmPassword.value) {
-      setMessage({ text: "Passwords do not match", error: true });
+      toast.error("Passwords do not match", { autoClose: 3000 });
       return false;
     }
 
@@ -43,7 +44,6 @@ const SignUp = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    setMessage(null);
 
     let form = {
       email: email.value,
@@ -58,15 +58,18 @@ const SignUp = () => {
       setIsLoading(true);
       UserService.register(form)
         .then((response) => {
-          setMessage({ text: response.message, error: false });
-          setIsLoading(false);
+          setRedirect(response.message);
         })
         .catch((error) => {
-          setMessage({ text: error.data.message, error: true });
+          toast.error(error.data.message);
           setIsLoading(false);
         });
     }
   };
+
+  if (redirect) {
+    return <Redirect to={"/signin/?signupSuccess=true"} />;
+  }
 
   return (
     <>
@@ -158,12 +161,6 @@ const SignUp = () => {
             onChange={age.handleChange}
           />
         </div>
-
-        {message && (
-          <p className={`text-center mt-3 mb-0 ${message.error ? "error" : "success"}`}>
-            {message.text}
-          </p>
-        )}
 
         <Button className={"mt-4"} style={{ width: "100%" }} type={"submit"}>
           {!isLoading ? "Sign Up" : <Spinner size="sm" animation="border" />}

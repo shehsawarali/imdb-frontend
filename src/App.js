@@ -1,6 +1,8 @@
 import React from "react";
 
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Navbar } from "components";
 import Pages from "pages";
@@ -10,6 +12,18 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
+      <ToastContainer
+        position="top-right"
+        autoClose={6000}
+        hideProgressBar={true}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
 
       <Switch>
         <StrictlyPublic path="/signin" component={Pages.SignIn} />

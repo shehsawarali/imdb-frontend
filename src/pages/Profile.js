@@ -20,6 +20,7 @@ import UserService from "services/UserService";
 const Profile = () => {
   const { id } = useParams();
   const { user } = useContext(UserContext);
+  const profileTab = JSON.parse(localStorage.getItem("profileTab"));
 
   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,28 +39,42 @@ const Profile = () => {
 
   if (!profile) return <Redirect to={"/404"} />;
 
+  const changeTab = (tab) => {
+    localStorage.setItem("profileTab", JSON.stringify({ id: id, tab: tab }));
+  };
+
   const Tabs = () => {
     return (
-      <Tab.Container defaultActiveKey="1">
+      <Tab.Container defaultActiveKey={profileTab?.id == id ? profileTab.tab : "1"}>
         <Nav variant="pills" className="justify-content-center mb-5">
           <Nav.Item>
-            <Nav.Link eventKey="1">Activity</Nav.Link>
+            <Nav.Link eventKey="1" onSelect={() => changeTab("1")}>
+              Activity
+            </Nav.Link>
           </Nav.Item>
           {user && user.id === Number(id) && (
             <>
               <Nav.Item>
-                <Nav.Link eventKey="2">Edit Profile</Nav.Link>
+                <Nav.Link eventKey="2" onSelect={() => changeTab("2")}>
+                  Update Profile
+                </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="3">Change Password</Nav.Link>
+                <Nav.Link eventKey="3" onSelect={() => changeTab("3")}>
+                  Change Password
+                </Nav.Link>
               </Nav.Item>
             </>
           )}
           <Nav.Item>
-            <Nav.Link eventKey="4">Following</Nav.Link>
+            <Nav.Link eventKey="4" onSelect={() => changeTab("4")}>
+              Following
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="5">Followers</Nav.Link>
+            <Nav.Link eventKey="5" onSelect={() => changeTab("5")}>
+              Followers
+            </Nav.Link>
           </Nav.Item>
         </Nav>
 

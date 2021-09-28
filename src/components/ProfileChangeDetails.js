@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 import CountryOptions from "assets/js/CountryOptions";
 import UserService from "services/UserService";
@@ -14,12 +15,10 @@ const ProfileChangeDetails = ({ id, profile }) => {
     age: profile.age,
   });
 
-  const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const submitForm = (e) => {
     e.preventDefault();
-    setMessage(null);
     setIsLoading(true);
 
     UserService.update(id, form)
@@ -27,7 +26,7 @@ const ProfileChangeDetails = ({ id, profile }) => {
         window.location.reload();
       })
       .catch((error) => {
-        setMessage({ text: error.data.message, error: true });
+        toast.error(error.data.message);
         setIsLoading(false);
       });
   };
@@ -57,12 +56,6 @@ const ProfileChangeDetails = ({ id, profile }) => {
     <>
       <div className={"w-100 d-flex flex-column"}>
         <form onSubmit={submitForm} className={"mx-auto"}>
-          {message && (
-            <p className={`text-center mt-3 mb-0 ${message.error ? "error" : "success"}`}>
-              {message.text}
-            </p>
-          )}
-
           <div className={"mt-3"}>
             <label htmlFor="first_name">First Name</label>
             <input
