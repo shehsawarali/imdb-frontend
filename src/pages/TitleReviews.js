@@ -23,9 +23,10 @@ const TitleReviews = () => {
     CoreService.title(id)
       .then((response) => {
         setTitle(response);
-      })
-      .finally(() => {
         fetch().then(setIsLoading(false));
+      })
+      .catch(() => {
+        window.location.href = "/404";
       });
   }, [id]);
 

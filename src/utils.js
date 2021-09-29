@@ -84,3 +84,13 @@ export const genreStates = {
 export const mergeObjects = (oldObject, newObject) => {
   return { ...oldObject, ...newObject };
 };
+
+export const getDatetime = (isoString, timezone = null) => {
+  const settings = { hour12: true, dateStyle: "short", timeStyle: "short" };
+
+  if (timezone) {
+    settings.timeZone = timezone;
+  }
+
+  return new Date(isoString).toLocaleString("en-GB", settings);
+};

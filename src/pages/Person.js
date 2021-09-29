@@ -28,9 +28,9 @@ const Person = () => {
   const renderHeader = () => {
     return (
       <div className={"detail-page-header mb-3"}>
-        <a className={"me-1"} onClick={() => scrollToDiv("filmography")}>
+        <span className={"link me-1"} onClick={() => scrollToDiv("filmography")}>
           Filmography
-        </a>
+        </span>
       </div>
     );
   };

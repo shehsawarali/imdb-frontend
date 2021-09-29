@@ -172,6 +172,16 @@ const UserServices = {
         return Promise.reject(error);
       });
   },
+
+  updateTimezone: (data) => {
+    return API.post("user/preferences/timezone", data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
 
 export default UserServices;

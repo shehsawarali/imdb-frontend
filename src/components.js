@@ -7,6 +7,7 @@ import LoadingScreen from "components/LoadingScreen";
 import Navbar from "components/Navbar";
 import NavSearch from "components/NavSearch";
 import PersonCard from "components/PersonCard";
+import Preferences from "components/Preferences";
 import ProfileActivity from "components/ProfileActivity";
 import ProfileChangeDetails from "components/ProfileChangeDetails";
 import ProfileChangePassword from "components/ProfileChangePassword";
@@ -32,6 +33,7 @@ export {
   NavSearch,
   Navbar,
   PersonCard,
+  Preferences,
   ProfileActivity,
   ProfileChangeDetails,
   ProfileChangePassword,

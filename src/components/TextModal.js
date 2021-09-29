@@ -15,10 +15,8 @@ const TextModal = ({ text, modalButton, modalTitle }) => {
           <Modal.Title>{modalTitle}</Modal.Title>
           <CloseButton variant={"white"} onClick={handleClose} />
         </Modal.Header>
-        <Modal.Body>
-          <p className={"lightgray"} style={{ textAlign: "left" }}>
-            {text}
-          </p>
+        <Modal.Body className={"text-start"}>
+          <p className={"lightgray"}>{text}</p>
           <br />
         </Modal.Body>
       </Modal>

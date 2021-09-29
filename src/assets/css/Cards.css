@@ -74,6 +74,7 @@
   align-items: flex-start;
   border: 1px solid var(--secondary);
   margin-bottom: 1rem;
+  transition-duration: var(--transition);
 }
 
 @media (max-width: 768px) {

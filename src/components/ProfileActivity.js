@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Col, Spinner } from "react-bootstrap";
@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 
 import defaultTitleImage from "assets/media/default-title-image.png";
 import { TextModal } from "components";
+import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
+import { getDatetime } from "utils";
 
 const ProfileActivity = ({ id }) => {
+  const { user } = useContext(UserContext);
+
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [list, setList] = useState([]);
@@ -73,7 +77,7 @@ const ProfileActivity = ({ id }) => {
   const activityCard = (instance, key) => {
     if (!instance) return null;
 
-    let user = instance.user;
+    let activityUser = instance.user;
     let title = instance.title;
     let review = instance.review?.review;
     let given_rating = instance.rating?.rating;
@@ -97,12 +101,18 @@ const ProfileActivity = ({ id }) => {
                 <TextModal
                   text={review}
                   modalButton={"Open Review"}
-                  modalTitle={`${user.first_name}'s Review`}
+                  modalTitle={`${activityUser.first_name}'s Review`}
                 />
               </>
             )}
           </div>
-          <small className={"text-muted"}>{new Date(created_at).toLocaleString()}</small>
+          {user?.timezone ? (
+            <small className={"text-muted"}>
+              {getDatetime(created_at, user.timezone)}
+            </small>
+          ) : (
+            <small className={"text-muted"}>{getDatetime(created_at)}</small>
+          )}
         </div>
 
         <br />

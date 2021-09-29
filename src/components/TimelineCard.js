@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Col } from "react-bootstrap";
@@ -6,11 +6,15 @@ import { Link } from "react-router-dom";
 
 import defaultTitleImage from "assets/media/default-title-image.png";
 import { TextModal } from "components";
+import { UserContext } from "context/UserContext";
+import { getDatetime } from "utils";
 
 const TimelineCard = ({ instance }) => {
+  const { user } = useContext(UserContext);
+
   if (!instance) return null;
 
-  let user = instance.user;
+  let activity_user = instance.user;
   let title = instance.title;
   let review = instance.review?.review;
   let given_rating = instance.rating?.rating;
@@ -20,12 +24,16 @@ const TimelineCard = ({ instance }) => {
   return (
     <div className={"timeline-card p-4 flex-column align-items-start"}>
       <div className={"header"}>
-        <Link to={`/user/${user.id}`} className={"lead"}>
+        <Link to={`/user/${activity_user.id}`} className={"lead"}>
           <strong>
-            {user.first_name} {user.last_name}
+            {activity_user.first_name} {activity_user.last_name}
           </strong>
         </Link>
-        <small className={"text-muted"}>{new Date(created_at).toLocaleString()}</small>
+        {user?.timezone ? (
+          <small className={"text-muted"}>{getDatetime(created_at, user.timezone)}</small>
+        ) : (
+          <small className={"text-muted"}>{getDatetime(created_at)}</small>
+        )}
       </div>
       <div>
         <small>{action}</small>
@@ -41,7 +49,7 @@ const TimelineCard = ({ instance }) => {
             <TextModal
               text={review}
               modalButton={"Open Review"}
-              modalTitle={`${user.first_name}'s Review`}
+              modalTitle={`${activity_user.first_name}'s Review`}
             />
           </>
         )}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
@@ -10,8 +10,11 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
 
+import Preferences from "./Preferences";
+
 const AppNavbar = () => {
   const { user } = useContext(UserContext);
+  const [show, setShow] = useState(false);
 
   const loggedOutOptions = () => {
     return (
@@ -47,6 +50,10 @@ const AppNavbar = () => {
           <NavDropdown.Item as={Link} to={`/favorites`}>
             <Icon icon={"heart"} className={"me-2"} />
             Favorites
+          </NavDropdown.Item>
+          <NavDropdown.Item onClick={() => setShow(true)}>
+            <Icon icon={"user-cog"} className={"me-2"} />
+            Preferences
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={logOut}>
@@ -89,6 +96,8 @@ const AppNavbar = () => {
           {user && loggedInOptions()}
         </Nav>
       </Navbar.Collapse>
+
+      {user && <Preferences show={show} setShow={setShow} user={user} />}
     </Navbar>
   );
 };

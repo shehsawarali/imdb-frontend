@@ -26,7 +26,7 @@ const Profile = () => {
   const tabHistory = JSON.parse(localStorage.getItem("tabHistory"));
 
   const defaultTab = () => {
-    if (Number(tabHistory?.id) !== user.id && privateTabs.includes(tabHistory?.tab))
+    if (Number(tabHistory?.id) !== user?.id && privateTabs.includes(tabHistory?.tab))
       return "1";
 
     if (tabHistory?.id === id) return tabHistory.tab;

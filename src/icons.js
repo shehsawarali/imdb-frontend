@@ -16,6 +16,7 @@ import {
   faSignOutAlt,
   faStar,
   faUser,
+  faUserCog,
   faUserMinus,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
@@ -39,5 +40,6 @@ library.add(
   faHeart,
   faStar,
   faHistory,
-  faSearch
+  faSearch,
+  faUserCog
 );
