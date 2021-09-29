@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Col, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -52,8 +52,7 @@ const ProfileActivity = ({ id }) => {
     return (
       <div className={"text-center mt-5"}>
         <Button onClick={fetchMore}>
-          View More{" "}
-          <FontAwesomeIcon icon={"angle-double-down"} size="1x" className={"ms-1"} />
+          View More <Icon icon={"angle-double-down"} size="1x" className={"ms-1"} />
         </Button>
       </div>
     );
@@ -88,7 +87,7 @@ const ProfileActivity = ({ id }) => {
             <small>{action}</small>
             {given_rating && (
               <span className={"blue"}>
-                <FontAwesomeIcon icon={"star"} className={"blue ms-2 me-1 pointer"} />
+                <Icon icon={"star"} className={"blue ms-2 me-1 pointer"} />
                 <strong className={"blue"}>{given_rating}</strong>
               </span>
             )}
@@ -120,7 +119,7 @@ const ProfileActivity = ({ id }) => {
             <Col>
               {title.rating ? (
                 <p className={"primary"}>
-                  <FontAwesomeIcon icon={"star"} className={"me-1 pointer"} />
+                  <Icon icon={"star"} className={"me-1 pointer"} />
                   <strong>{title.rating}</strong>
                 </p>
               ) : (

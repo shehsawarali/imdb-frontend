@@ -19,6 +19,7 @@
   border-radius: 20px;
   font-size: smaller;
   color: white;
+  transition-duration: var(--transition);
 }
 
 .title-page-genres a:hover {

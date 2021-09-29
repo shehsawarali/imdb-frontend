@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import queryString from "query-string";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import LoadingScreen from "components/LoadingScreen";
 import UserService from "services/UserService";

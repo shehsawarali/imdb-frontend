@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Button, CloseButton, Modal, Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 import { Rate } from "components";
 import CoreService from "services/CoreService";
@@ -11,7 +12,6 @@ const WriteReview = ({ title_id }) => {
   const [isSaving, setIsSaving] = useState(false);
   const [rating, setRating] = useState(null);
   const [review, setReview] = useState("");
-  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     CoreService.isRated(title_id)
@@ -36,20 +36,17 @@ const WriteReview = ({ title_id }) => {
     e.preventDefault();
 
     if (!rating) {
-      setMessage("You need to rate the title before submitting your review");
+      toast.error("Please rate the title before submitting your review");
       return;
     }
 
     setIsSaving(true);
     CoreService.review({ id: title_id, review })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error.data);
-      })
-      .finally(() => {
+      .then(() => {
         window.location.reload();
+      })
+      .catch(() => {
+        toast.error("An error occurred. Please try again.");
       });
   };
 
@@ -70,8 +67,6 @@ const WriteReview = ({ title_id }) => {
               <>
                 <Rate rating={rating} setRating={setRating} title_id={title_id} />
                 <br />
-                {message && <div className={"error mb-2"}>{message}</div>}
-
                 <textarea
                   name={"review"}
                   required

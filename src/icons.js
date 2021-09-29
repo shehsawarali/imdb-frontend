@@ -12,6 +12,7 @@ import {
   faKey,
   faLocationArrow,
   faSave,
+  faSearch,
   faSignOutAlt,
   faStar,
   faUser,
@@ -37,5 +38,6 @@ library.add(
   faKey,
   faHeart,
   faStar,
-  faHistory
+  faHistory,
+  faSearch
 );

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 import CoreService from "services/CoreService";
 
@@ -23,6 +24,10 @@ const FavoriteButton = ({ title_id }) => {
     CoreService.addToFavorites(title_id)
       .then(() => {
         setIsFavorite(true);
+        toast.success("Added to favorites");
+      })
+      .catch(() => {
+        toast.error("An error occurred. Please try again.");
       })
       .finally(() => setIsLoading(false));
   };
@@ -32,6 +37,10 @@ const FavoriteButton = ({ title_id }) => {
     CoreService.removeFromFavorites(title_id)
       .then(() => {
         setIsFavorite(false);
+        toast.warning("Removed from favorites");
+      })
+      .catch(() => {
+        toast.error("An error occurred. Please try again.");
       })
       .finally(() => setIsLoading(false));
   };
@@ -48,7 +57,7 @@ const FavoriteButton = ({ title_id }) => {
 
   if (isFavorite === false) {
     return (
-      <FontAwesomeIcon
+      <Icon
         icon={faHeart}
         size={"2x"}
         onClick={addToFavorites}
@@ -58,7 +67,7 @@ const FavoriteButton = ({ title_id }) => {
   }
 
   return (
-    <FontAwesomeIcon
+    <Icon
       icon={"heart"}
       size={"2x"}
       onClick={removeFromFavorites}

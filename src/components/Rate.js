@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Spinner } from "react-bootstrap";
 import Ratings from "react-ratings-declarative";
+import { toast } from "react-toastify";
 
 import { starIcon } from "constant";
 import CoreService from "services/CoreService";
@@ -17,17 +18,12 @@ const MyComponent = ({ title_id, rating, setRating, refreshOnSave }) => {
 
   const saveRating = (newRating) => {
     setIsSaving(true);
-    CoreService.rate({ id: title_id, rating: newRating })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error.data);
-      })
-      .finally(() => {
-        if (refreshOnSave) window.location.reload();
-        setIsSaving(false);
-      });
+    CoreService.rate({ id: title_id, rating: newRating }).finally(() => {
+      if (refreshOnSave) window.location.reload();
+
+      toast.success("Title rating has been saved");
+      setIsSaving(false);
+    });
   };
 
   if (isSaving)

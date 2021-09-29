@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { CloseButton, Modal, Spinner } from "react-bootstrap";
 
 import { Rate } from "components";
@@ -44,7 +44,7 @@ const TitleRatingButton = ({ title_id }) => {
     return (
       <>
         <p onClick={handleShow}>
-          <FontAwesomeIcon icon={"star"} className={"lightcoral me-1 pointer"} />
+          <Icon icon={"star"} className={"lightcoral me-1 pointer"} />
           <strong className={"lightcoral pointer"}>{rating}</strong>
           /10
         </p>
@@ -57,7 +57,7 @@ const TitleRatingButton = ({ title_id }) => {
   return (
     <>
       <p onClick={handleShow} className={"text-muted"}>
-        <FontAwesomeIcon icon={faStar} className={"me-1 pointer"} />
+        <Icon icon={faStar} className={"me-1 pointer"} />
         <span className={"text-muted"}>Rate</span>
       </p>
 

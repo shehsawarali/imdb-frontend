@@ -35,12 +35,7 @@ const AppNavbar = () => {
           Timeline
         </Button>
 
-        <NavDropdown
-          align="end"
-          title={user.first_name}
-          id="basic-nav-dropdown"
-          className={"dropdown-menu-end"}
-        >
+        <NavDropdown align="end" title={user.first_name}>
           <NavDropdown.Item as={Link} to={`/user/${user.id}`}>
             <Icon icon={"user"} className={"me-2"} />
             Profile
@@ -82,7 +77,7 @@ const AppNavbar = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-between"}>
-        <Nav className={"me-auto w-50 absolute-center"}>
+        <Nav className={"me-auto"}>
           <NavSearch />
         </Nav>
 

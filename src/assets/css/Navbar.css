@@ -67,6 +67,10 @@ nav {
   box-shadow: none !important;
   border-radius: 3px;
   transition-duration: var(--transition);
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .dropdown-toggle:hover {
   color: white !important;
@@ -80,6 +84,7 @@ nav {
 }
 
 .nav-button:hover > .svg-inline--fa,
+.nav-button:focus:hover > .svg-inline--fa,
 .dropdown-item:hover > .svg-inline--fa {
   color: white;
 }

@@ -69,6 +69,12 @@
   text-decoration: underline;
 }
 
+@media (max-width: 1024px) {
+  .nav-search input {
+    width: 250px;
+  }
+}
+
 @media (max-width: 425px) {
   .filter-sort {
     font-size: small;

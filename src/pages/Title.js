@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Col, Row } from "react-bootstrap";
 import { Link, Redirect, useParams } from "react-router-dom";
 
@@ -109,7 +109,7 @@ const Title = () => {
             <strong>Average Rating</strong>
             {title.rating ? (
               <p>
-                <FontAwesomeIcon icon={"star"} className={"primary me-1 pointer"} />
+                <Icon icon={"star"} className={"primary me-1 pointer"} />
                 <strong>{title.rating}</strong>
                 /10
               </p>

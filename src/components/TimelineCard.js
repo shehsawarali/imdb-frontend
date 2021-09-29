@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -31,7 +31,7 @@ const TimelineCard = ({ instance }) => {
         <small>{action}</small>
         {given_rating && (
           <span className={"blue"}>
-            <FontAwesomeIcon icon={"star"} className={"blue ms-2 me-1 pointer"} />
+            <Icon icon={"star"} className={"blue ms-2 me-1 pointer"} />
             <strong className={"blue"}>{given_rating}</strong>
           </span>
         )}
@@ -56,7 +56,7 @@ const TimelineCard = ({ instance }) => {
           <Col>
             {title.rating ? (
               <p className={"primary"}>
-                <FontAwesomeIcon icon={"star"} className={"me-1 pointer"} />
+                <Icon icon={"star"} className={"me-1 pointer"} />
                 <strong>{title.rating}</strong>
               </p>
             ) : (

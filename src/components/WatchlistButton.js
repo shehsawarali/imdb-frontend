@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 import CoreService from "services/CoreService";
 
@@ -23,6 +24,10 @@ const FavoriteButton = ({ title_id }) => {
     CoreService.addToWatchlist(title_id)
       .then(() => {
         setIsWatchlisted(true);
+        toast.success("Added to watchlist");
+      })
+      .catch(() => {
+        toast.error("An error occurred. Please try again.");
       })
       .finally(() => setIsLoading(false));
   };
@@ -32,6 +37,10 @@ const FavoriteButton = ({ title_id }) => {
     CoreService.removeFromWatchlist(title_id)
       .then(() => {
         setIsWatchlisted(false);
+        toast.warning("Removed from watchlist");
+      })
+      .catch(() => {
+        toast.error("An error occurred. Please try again.");
       })
       .finally(() => setIsLoading(false));
   };
@@ -48,7 +57,7 @@ const FavoriteButton = ({ title_id }) => {
 
   if (isWatchlisted === false) {
     return (
-      <FontAwesomeIcon
+      <Icon
         icon={faBookmark}
         size={"2x"}
         onClick={addToWatchlist}
@@ -58,7 +67,7 @@ const FavoriteButton = ({ title_id }) => {
   }
 
   return (
-    <FontAwesomeIcon
+    <Icon
       icon={"bookmark"}
       size={"2x"}
       onClick={removeFromWatchlist}

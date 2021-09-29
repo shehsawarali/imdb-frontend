@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { FontAwesomeIcon as Icon, FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Row, Spinner } from "react-bootstrap";
 
 import { LoadingScreen, TitleCard } from "components";
@@ -60,7 +60,7 @@ function Favorites() {
   return (
     <div className={"detail-page-container"}>
       <h6 className={"display-6 text-center"}>
-        <FontAwesomeIcon icon={"heart"} className={"me-3"} size={"sm"} />
+        <Icon icon={"heart"} className={"me-3"} size={"sm"} />
         Favorites
       </h6>
       <hr />
