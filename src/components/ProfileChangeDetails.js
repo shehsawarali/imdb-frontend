@@ -88,6 +88,7 @@ const ProfileChangeDetails = ({ id, profile }) => {
               defaultValue={profile.country.code}
               onChange={handleForm}
               required
+              className={"lightgray"}
             >
               <option value={""} disabled>
                 Country

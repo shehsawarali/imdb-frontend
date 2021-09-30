@@ -1,6 +1,5 @@
 .not-found {
   min-height: 92vh;
-  color: white;
   display: flex;
   flex-flow: column;
   align-items: center;

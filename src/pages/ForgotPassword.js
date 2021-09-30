@@ -67,7 +67,9 @@ const SignIn = () => {
         </Button>
 
         <div className={"text-center mt-4"}>
-          <Link to={"/signin"}>&lt;&lt; Go back</Link>
+          <Link to={"/signin"} className={"link"}>
+            &lt;&lt; Go back
+          </Link>
         </div>
       </form>
     </>

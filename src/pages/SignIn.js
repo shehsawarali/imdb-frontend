@@ -107,7 +107,10 @@ const SignIn = (props) => {
         </Button>
 
         <div className={"text-center mt-4"}>
-          Don't have an account? <Link to={"/signup"}>Sign Up</Link>
+          Don't have an account?{" "}
+          <Link to={"/signup"} className={"link"}>
+            Sign Up
+          </Link>
         </div>
       </form>
     </>

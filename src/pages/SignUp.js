@@ -167,7 +167,10 @@ const SignUp = () => {
         </Button>
 
         <div className={"text-center mt-4"}>
-          Already have an account? <Link to={"/signin"}>Sign In</Link>
+          Already have an account?{" "}
+          <Link to={"/signin"} className={"link"}>
+            Sign In
+          </Link>
         </div>
       </form>
     </>

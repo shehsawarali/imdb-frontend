@@ -61,7 +61,7 @@
 .filter-collapse {
   transition: height var(--transition);
   border-radius: 3px;
-  background-color: var(--secondary-light);
+  background-color: var(--background);
   border: 1px dashed var(--primary);
 }
 

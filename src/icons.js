@@ -3,6 +3,7 @@ import {
   faAngleDoubleDown,
   faBirthdayCake,
   faBookmark,
+  faCommentAlt,
   faDizzy,
   faEdit,
   faEnvelope,
@@ -41,5 +42,6 @@ library.add(
   faStar,
   faHistory,
   faSearch,
-  faUserCog
+  faUserCog,
+  faCommentAlt
 );

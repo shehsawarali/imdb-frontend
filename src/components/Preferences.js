@@ -92,7 +92,7 @@ const Preferences = ({ show, setShow, user }) => {
 
             <select
               name="timezone"
-              className={"w-75"}
+              className={"w-75 lightgray"}
               value={timezone.value}
               onChange={timezone.handleChange}
             >

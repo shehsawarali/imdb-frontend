@@ -22,6 +22,8 @@
 
 body {
   background-color: black;
+  color: lightgray;
+  background-image: url("assets/media/background-image.png");
 }
 
 .text-overflow {
@@ -61,8 +63,14 @@ body {
 .link {
   color: var(--link);
   cursor: pointer;
+  text-decoration: none;
 }
 
 .link:hover {
   text-decoration: underline;
+  opacity: 0.8;
+}
+
+.display-6 {
+  color: lightgray;
 }

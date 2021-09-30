@@ -30,9 +30,9 @@ const TimelineCard = ({ instance }) => {
           </strong>
         </Link>
         {user?.timezone ? (
-          <small className={"text-muted"}>{getDatetime(created_at, user.timezone)}</small>
+          <small>{getDatetime(created_at, user.timezone)}</small>
         ) : (
-          <small className={"text-muted"}>{getDatetime(created_at)}</small>
+          <small>{getDatetime(created_at)}</small>
         )}
       </div>
       <div>
@@ -48,7 +48,7 @@ const TimelineCard = ({ instance }) => {
             &nbsp;&nbsp;
             <TextModal
               text={review}
-              modalButton={"Open Review"}
+              modalButton={"See Review"}
               modalTitle={`${activity_user.first_name}'s Review`}
             />
           </>
@@ -63,10 +63,10 @@ const TimelineCard = ({ instance }) => {
           </Link>
           <Col>
             {title.rating ? (
-              <p className={"primary"}>
-                <Icon icon={"star"} className={"me-1 pointer"} />
-                <strong>{title.rating}</strong>
-              </p>
+              <>
+                <Icon icon={"star"} className={"me-1 pointer primary"} />
+                <strong className={"lightgray"}>{title.rating}</strong>
+              </>
             ) : (
               <>
                 <small className={"text-muted"}>No rating</small>

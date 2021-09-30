@@ -67,7 +67,7 @@ const Timeline = () => {
       <hr />
       {list.length > 0 ? (
         list.map((activity, index) => {
-          return <TimelineCard instance={activity} />;
+          return <TimelineCard instance={activity} key={index} />;
         })
       ) : (
         <p className={"text-muted text-center"}>No activity</p>

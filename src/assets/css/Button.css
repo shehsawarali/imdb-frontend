@@ -16,7 +16,7 @@
 .btn:hover {
   background-color: var(--secondary-light);
   border: 1px dashed var(--primary);
-  color: white;
+  color: lightgray;
 }
 
 .btn:focus {
@@ -31,18 +31,18 @@
 }
 
 .btn:hover > .svg-inline--fa {
-  color: white;
+  color: lightgray;
 }
 
 .btn-inverted {
   background-color: var(--secondary-light);
-  color: white;
+  color: lightgray;
   border: 1px dashed var(--primary);
 }
 
 .btn-inverted:focus {
   background-color: var(--secondary-light);
-  color: white;
+  color: lightgray;
   border: 1px dashed var(--primary);
 }
 
@@ -55,7 +55,7 @@ btn-inverted:focus:hover {
 
 .btn-inverted > .svg-inline--fa,
 .btn-inverted:focus > .svg-inline--fa {
-  color: white;
+  color: lightgray;
 }
 
 .btn-inverted:hover > .svg-inline--fa,

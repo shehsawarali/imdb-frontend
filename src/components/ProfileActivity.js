@@ -100,18 +100,16 @@ const ProfileActivity = ({ id }) => {
                 &nbsp;&nbsp;
                 <TextModal
                   text={review}
-                  modalButton={"Open Review"}
+                  modalButton={"See Review"}
                   modalTitle={`${activityUser.first_name}'s Review`}
                 />
               </>
             )}
           </div>
           {user?.timezone ? (
-            <small className={"text-muted"}>
-              {getDatetime(created_at, user.timezone)}
-            </small>
+            <small>{getDatetime(created_at, user.timezone)}</small>
           ) : (
-            <small className={"text-muted"}>{getDatetime(created_at)}</small>
+            <small>{getDatetime(created_at)}</small>
           )}
         </div>
 
@@ -123,7 +121,7 @@ const ProfileActivity = ({ id }) => {
             alt={"title"}
           />
           <div>
-            <Link to={`/title/${title.id}`}>
+            <Link to={`/title/${title.id}`} className={"link lightgray"}>
               <strong>{title.name}</strong>
             </Link>
             <Col>
