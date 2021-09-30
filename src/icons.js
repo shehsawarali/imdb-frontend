@@ -10,6 +10,7 @@ import {
   faExclamationTriangle,
   faHeart,
   faHistory,
+  faHome,
   faKey,
   faLocationArrow,
   faSave,
@@ -43,5 +44,6 @@ library.add(
   faHistory,
   faSearch,
   faUserCog,
-  faCommentAlt
+  faCommentAlt,
+  faHome
 );

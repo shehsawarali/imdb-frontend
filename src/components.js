@@ -2,7 +2,6 @@ import FavoriteButton from "components/FavoriteButton";
 import Filmography from "components/Filmography";
 import FollowButton from "components/FollowButton";
 import FollowListCard from "components/FollowListCard";
-import KnownForTitles from "components/KnownForTitles";
 import LoadingScreen from "components/LoadingScreen";
 import Navbar from "components/Navbar";
 import NavSearch from "components/NavSearch";
@@ -20,6 +19,7 @@ import TextModal from "components/TextModal";
 import TimelineCard from "components/TimelineCard";
 import TitleCard from "components/TitleCard";
 import TitleRatingButton from "components/TitleRatingButton";
+import TitleSlider from "components/TitleSlider";
 import WatchlistButton from "components/WatchlistButton";
 import WriteReview from "components/WriteReview";
 
@@ -28,7 +28,6 @@ export {
   Filmography,
   FollowButton,
   FollowListCard,
-  KnownForTitles,
   LoadingScreen,
   NavSearch,
   Navbar,
@@ -46,6 +45,7 @@ export {
   TimelineCard,
   TitleCard,
   TitleRatingButton,
+  TitleSlider,
   WatchlistButton,
   WriteReview,
 };

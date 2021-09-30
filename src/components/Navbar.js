@@ -5,6 +5,7 @@ import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "assets/css/Navbar.css";
+import logo from "assets/media/logo.png";
 import { NavSearch } from "components";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import { UserContext } from "context/UserContext";
@@ -79,9 +80,9 @@ const AppNavbar = () => {
 
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" variant={"dark"}>
-      <Navbar.Brand as={Link} to="/">
-        IMDb
-      </Navbar.Brand>
+      <Link to="/">
+        <img src={logo} className={"logo"} />
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-between"}>
         <Nav className={"me-auto"}>

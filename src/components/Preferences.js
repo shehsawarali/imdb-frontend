@@ -99,7 +99,7 @@ const Preferences = ({ show, setShow, user }) => {
               <option value={""} disabled>
                 Timezone
               </option>
-              {moment.tz.zonesForCountry(user.country.code).map((tz, index) => {
+              {moment.tz.names().map((tz, index) => {
                 return (
                   <option key={index} value={tz}>
                     {tz}

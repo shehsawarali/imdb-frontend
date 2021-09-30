@@ -6,16 +6,11 @@ nav {
   border-bottom: 1px solid var(--primary);
 }
 
-.navbar-brand {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: 1px dashed var(--primary);
-  transition-duration: var(--transition);
-}
-.navbar-brand:hover {
-  background-color: var(--primary);
-  color: var(--secondary) !important;
-  border: 1px dashed var(--secondary);
+.logo {
+  height: 3rem;
+  margin-right: 1rem;
+  border-radius: 3px;
+  border: 1px solid gray;
 }
 
 .nav-button,
