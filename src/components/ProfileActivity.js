@@ -85,57 +85,59 @@ const ProfileActivity = ({ id }) => {
     let created_at = instance.created_at;
 
     return (
-      <div className={"activity-card p-4"} key={key}>
-        <div className={"header"}>
-          <div>
-            <small>{action}</small>
-            {given_rating && (
-              <span className={"blue"}>
-                <Icon icon={"star"} className={"blue ms-2 me-1 pointer"} />
-                <strong className={"blue"}>{given_rating}</strong>
-              </span>
-            )}
-            {review && (
-              <>
-                &nbsp;&nbsp;
-                <TextModal
-                  text={review}
-                  modalButton={"See Review"}
-                  modalTitle={`${activityUser.first_name}'s Review`}
-                />
-              </>
-            )}
-          </div>
-          {user?.timezone ? (
-            <small>{getDatetime(created_at, user.timezone)}</small>
-          ) : (
-            <small>{getDatetime(created_at)}</small>
-          )}
-        </div>
-
-        <br />
-        <div className={"d-flex"}>
-          <img
-            className={"title-image me-4"}
-            src={title.image || defaultTitleImage}
-            alt={"title"}
-          />
-          <div>
-            <Link to={`/title/${title.id}`} className={"link lightgray"}>
-              <strong>{title.name}</strong>
-            </Link>
-            <Col>
-              {title.rating ? (
-                <p className={"primary"}>
-                  <Icon icon={"star"} className={"me-1 pointer"} />
-                  <strong>{title.rating}</strong>
-                </p>
-              ) : (
+      <div className={"activity-card"} key={key}>
+        <img
+          className={"title-image me-4"}
+          src={title.image || defaultTitleImage}
+          alt={"title"}
+        />
+        <div className={"flex-column w-100"}>
+          <div className={"header"}>
+            <div>
+              <small>{action}</small>
+              {given_rating && (
+                <span className={"blue"}>
+                  <Icon icon={"star"} className={"blue ms-2 me-1 pointer"} />
+                  <strong className={"blue"}>{given_rating}</strong>
+                </span>
+              )}
+              {review && (
                 <>
-                  <small className={"text-muted"}>No rating</small>
+                  &nbsp;&nbsp;
+                  <TextModal
+                    text={review}
+                    modalButton={"See Review"}
+                    modalTitle={`${activityUser.first_name}'s Review`}
+                  />
                 </>
               )}
-            </Col>
+            </div>
+            <small>
+              {user?.timezone
+                ? getDatetime(created_at, user.timezone)
+                : getDatetime(created_at)}
+            </small>
+          </div>
+
+          <br />
+          <div className={"d-flex"}>
+            <div>
+              <Link to={`/title/${title.id}`}>
+                <strong>{title.name}</strong>
+              </Link>
+              <Col>
+                {title.rating ? (
+                  <>
+                    <Icon icon={"star"} className={"me-1 pointer primary"} />
+                    <strong className={"lightgray"}>{title.rating}</strong>
+                  </>
+                ) : (
+                  <>
+                    <small className={"text-muted"}>No rating</small>
+                  </>
+                )}
+              </Col>
+            </div>
           </div>
         </div>
       </div>

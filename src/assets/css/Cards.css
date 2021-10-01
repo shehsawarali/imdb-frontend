@@ -58,7 +58,7 @@
 
 .timeline-card,
 .activity-card {
-  flex-flow: column wrap;
+  flex-direction: row;
   align-items: flex-start;
   margin-bottom: 1rem;
 }
@@ -67,20 +67,40 @@
 .activity-card .title-image {
   border-radius: 3px;
   object-fit: cover;
-  height: 88px;
-  width: 58px;
+  height: 140px;
+  width: 92px;
+  margin-right: 2rem;
 }
 
 .timeline-card .header,
 .activity-card .header {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-between !important;
   width: 100%;
 }
 
 @media (max-width: 768px) {
-  .timeline-card .header {
+  .timeline-card .header,
+  .activity-card .header {
     flex-direction: column;
+  }
+
+  .timeline-card small,
+  .activity-card small {
+    font-size: smaller;
+  }
+
+  .timeline-card .header {
+    margin-bottom: 10px;
+  }
+
+  .timeline-card .lead,
+  .activity-card .lead {
+    font-size: medium;
+  }
+
+  .timeline-card .title-image,
+  .activity-card .title-image {
+    margin-right: 1rem;
   }
 }

@@ -81,7 +81,7 @@ const AppNavbar = () => {
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" variant={"dark"}>
       <Link to="/">
-        <img src={logo} className={"logo"} />
+        <img src={logo} className={"logo"} alt={"logo"} />
       </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-between"}>

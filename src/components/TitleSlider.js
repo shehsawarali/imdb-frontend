@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 import "assets/css/TitleSlider.css";
 import DefaultTitleImage from "assets/media/default-title-image.png";
-import { responsiveSliderSettings, BACKEND_URL } from "constant";
+import { responsiveSliderSettings } from "constant";
 
 const sliderSettings = {
   dots: false,
