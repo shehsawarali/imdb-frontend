@@ -4,8 +4,6 @@ import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import "assets/css/Form.css";
-import logo from "assets/media/logo.png";
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
 import { validateEmail } from "utils";
@@ -42,11 +40,6 @@ const SignIn = () => {
 
   return (
     <>
-      <img
-        style={{ display: "block", margin: "2rem auto" }}
-        src={logo}
-        alt={"App Logo"}
-      />
       <form className={"form-container"} onSubmit={submitForm}>
         <h3>Forgot Password</h3>
 
@@ -67,7 +60,9 @@ const SignIn = () => {
         </Button>
 
         <div className={"text-center mt-4"}>
-          <Link to={"/signin"}>&lt;&lt; Go back</Link>
+          <Link to={"/signin"} className={"link"}>
+            &lt;&lt; Go back
+          </Link>
         </div>
       </form>
     </>

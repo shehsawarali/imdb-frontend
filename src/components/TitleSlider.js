@@ -2,6 +2,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
+import "assets/css/TitleSlider.css";
 import DefaultTitleImage from "assets/media/default-title-image.png";
 import { responsiveSliderSettings } from "constant";
 
@@ -10,18 +11,18 @@ const sliderSettings = {
   infinite: false,
   speed: 500,
   slidesToShow: 3.25,
-  slidesToScroll: 2,
+  slidesToScroll: 3,
   arrows: true,
 
   responsive: responsiveSliderSettings,
 };
 
-const KnownForTitles = ({ titles }) => {
+const TitleSlider = ({ titles, heading }) => {
   if (!titles?.length) return null;
 
   return (
-    <div className={"known-for-titles mt-5"}>
-      <h3>Known For Titles</h3>
+    <div className={"title-slider mt-5 mx-4"}>
+      <h3 className={"ps-3"}>{heading}</h3>
       <Slider {...sliderSettings}>
         {titles.map((title, index) => {
           return (
@@ -45,4 +46,4 @@ const KnownForTitles = ({ titles }) => {
   );
 };
 
-export default KnownForTitles;
+export default TitleSlider;

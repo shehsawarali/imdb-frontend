@@ -6,23 +6,18 @@ nav {
   border-bottom: 1px solid var(--primary);
 }
 
-.navbar-brand {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: 1px dashed var(--primary);
-  transition-duration: var(--transition);
-}
-.navbar-brand:hover {
-  background-color: var(--primary);
-  color: var(--secondary) !important;
-  border: 1px dashed var(--secondary);
+.logo {
+  height: 3rem;
+  margin-right: 1rem;
+  border-radius: 3px;
+  border: 1px solid gray;
 }
 
 .nav-button,
 .nav-button:focus {
   padding: 10px 20px;
   background-color: var(--secondary);
-  color: white;
+  color: lightgray;
   outline: none !important;
   border: 1px dashed transparent !important;
   font-weight: bold;
@@ -42,7 +37,7 @@ nav {
 }
 
 .dropdown-item {
-  color: white !important;
+  color: lightgray !important;
   font-weight: bold;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -73,7 +68,7 @@ nav {
   white-space: nowrap;
 }
 .dropdown-toggle:hover {
-  color: white !important;
+  color: lightgray !important;
   background-color: var(--secondary-light);
   border: 1px dashed var(--secondary-light);
 }
@@ -86,7 +81,7 @@ nav {
 .nav-button:hover > .svg-inline--fa,
 .nav-button:focus:hover > .svg-inline--fa,
 .dropdown-item:hover > .svg-inline--fa {
-  color: white;
+  color: lightgray;
 }
 
 .absolute-center {

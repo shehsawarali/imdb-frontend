@@ -48,10 +48,12 @@
 }
 
 .review {
-  color: var(--secondary);
+  color: lightgray;
   padding: 1rem;
   margin-bottom: 0.5rem;
-  border-radius: 3px;
+  border-radius: 8px;
+  background-color: var(--secondary-light);
+  box-shadow: 1px 1px 3px var(--secondary);
 }
 
 @media (max-width: 600px) {

@@ -44,7 +44,7 @@ const ProfileChangeDetails = ({ id, profile }) => {
           ) : (
             <>
               Edit Profile
-              <Icon icon={"edit"} size="1x" style={{ marginLeft: "8px" }} />
+              <Icon icon={"edit"} size="1x" className={"ms-2"} />
             </>
           )}
         </Button>
@@ -88,6 +88,7 @@ const ProfileChangeDetails = ({ id, profile }) => {
               defaultValue={profile.country.code}
               onChange={handleForm}
               required
+              className={"lightgray"}
             >
               <option value={""} disabled>
                 Country

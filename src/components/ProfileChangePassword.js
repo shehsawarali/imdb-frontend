@@ -60,7 +60,7 @@ const ProfileChangePassword = () => {
         ) : (
           <>
             Change Password
-            <Icon icon={"key"} size="1x" style={{ marginLeft: "8px" }} />
+            <Icon icon={"key"} size="1x" className={"ms-2"} />
           </>
         )}
       </Button>

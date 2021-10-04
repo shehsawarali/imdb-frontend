@@ -25,7 +25,7 @@ const TitleCard = ({ title }) => (
               <Icon icon={"star"} className={"primary"} />
             </>
           ) : (
-            <small>No ratings</small>
+            <small className={"text-muted"}>No rating</small>
           )}
         </small>
       </div>

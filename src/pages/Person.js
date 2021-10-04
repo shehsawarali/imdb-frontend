@@ -5,7 +5,7 @@ import { Redirect, useParams } from "react-router-dom";
 import "assets/css/Title.css";
 import "assets/css/Person.css";
 import DefaultPersonImage from "assets/media/default-person-image.png";
-import { Filmography, KnownForTitles, LoadingScreen } from "components";
+import { Filmography, LoadingScreen, TitleSlider } from "components";
 import CoreService from "services/CoreService";
 import { scrollToDiv } from "utils";
 
@@ -28,9 +28,9 @@ const Person = () => {
   const renderHeader = () => {
     return (
       <div className={"detail-page-header mb-3"}>
-        <a className={"me-1"} onClick={() => scrollToDiv("filmography")}>
+        <span className={"link me-1"} onClick={() => scrollToDiv("filmography")}>
           Filmography
-        </a>
+        </span>
       </div>
     );
   };
@@ -91,10 +91,9 @@ const Person = () => {
             {renderPicture()}
             {renderInfo()}
           </div>
-
-          <KnownForTitles titles={person.known_for_titles} />
         </div>
 
+        <TitleSlider titles={person.known_for_titles} heading={"Known For Titles"} />
         <Filmography person_principals={person.filmography} />
       </div>
     </>

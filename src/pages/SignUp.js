@@ -4,9 +4,7 @@ import { Button, Spinner } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import "assets/css/Form.css";
 import CountryOptions from "assets/js/CountryOptions";
-import logo from "assets/media/logo.png";
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
 import { validateEmail, validatePassword } from "utils";
@@ -73,12 +71,7 @@ const SignUp = () => {
 
   return (
     <>
-      <img
-        style={{ display: "block", margin: "2rem auto" }}
-        src={logo}
-        alt={"App Logo"}
-      />
-      <form className={"form-container"} onSubmit={submitForm}>
+      <form className={"form-container mt-5rem"} onSubmit={submitForm}>
         <h3>Sign-Up</h3>
 
         <div className={"mt-3"} style={{ display: "inline-block", width: "50%" }}>
@@ -167,7 +160,10 @@ const SignUp = () => {
         </Button>
 
         <div className={"text-center mt-4"}>
-          Already have an account? <Link to={"/signin"}>Sign In</Link>
+          Already have an account?{" "}
+          <Link to={"/signin"} className={"link"}>
+            Sign In
+          </Link>
         </div>
       </form>
     </>

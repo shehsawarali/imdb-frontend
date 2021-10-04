@@ -1,0 +1,11 @@
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.loading-screen .spinner-border {
+  color: var(--primary);
+  height: 8rem;
+  width: 8rem;
+}

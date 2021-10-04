@@ -181,6 +181,26 @@ const CoreService = {
         return Promise.reject(error);
       });
   },
+
+  recommendations: () => {
+    return API.get("recommendations/")
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  topRated: () => {
+    return API.get("top_rated/")
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
 
 export default CoreService;

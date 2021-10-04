@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Col } from "react-bootstrap";
@@ -6,11 +6,15 @@ import { Link } from "react-router-dom";
 
 import defaultTitleImage from "assets/media/default-title-image.png";
 import { TextModal } from "components";
+import { UserContext } from "context/UserContext";
+import { getDatetime } from "utils";
 
 const TimelineCard = ({ instance }) => {
+  const { user } = useContext(UserContext);
+
   if (!instance) return null;
 
-  let user = instance.user;
+  let activity_user = instance.user;
   let title = instance.title;
   let review = instance.review?.review;
   let given_rating = instance.rating?.rating;
@@ -18,53 +22,59 @@ const TimelineCard = ({ instance }) => {
   let created_at = instance.created_at;
 
   return (
-    <div className={"timeline-card p-4 flex-column align-items-start"}>
-      <div className={"header"}>
-        <Link to={`/user/${user.id}`} className={"lead"}>
-          <strong>
-            {user.first_name} {user.last_name}
-          </strong>
-        </Link>
-        <small className={"text-muted"}>{new Date(created_at).toLocaleString()}</small>
-      </div>
-      <div>
-        <small>{action}</small>
-        {given_rating && (
-          <span className={"blue"}>
-            <Icon icon={"star"} className={"blue ms-2 me-1 pointer"} />
-            <strong className={"blue"}>{given_rating}</strong>
-          </span>
-        )}
-        {review && (
-          <>
-            &nbsp;&nbsp;
-            <TextModal
-              text={review}
-              modalButton={"Open Review"}
-              modalTitle={`${user.first_name}'s Review`}
-            />
-          </>
-        )}
-      </div>
-      <br />
-      <div className={"d-flex"}>
-        <img className={"title-image me-4"} src={title.image || defaultTitleImage} />
-        <div>
-          <Link to={`/title/${title.id}`}>
-            <strong>{title.name}</strong>
+    <div className={"timeline-card flex-row"}>
+      <img className={"title-image"} src={title.image || defaultTitleImage} />
+      <div className={"flex-column w-100"}>
+        <div className={"header"}>
+          <Link to={`/user/${activity_user.id}`} className={"lead"}>
+            <strong>
+              {activity_user.first_name} {activity_user.last_name}
+            </strong>
           </Link>
-          <Col>
-            {title.rating ? (
-              <p className={"primary"}>
-                <Icon icon={"star"} className={"me-1 pointer"} />
-                <strong>{title.rating}</strong>
-              </p>
-            ) : (
-              <>
-                <small className={"text-muted"}>No rating</small>
-              </>
-            )}
-          </Col>
+          <small>
+            {user?.timezone
+              ? getDatetime(created_at, user.timezone)
+              : getDatetime(created_at)}
+          </small>
+        </div>
+        <div>
+          <small>{action}</small>
+          {given_rating && (
+            <span className={"blue"}>
+              <Icon icon={"star"} className={"blue ms-2 me-1 pointer"} />
+              <strong className={"blue"}>{given_rating}</strong>
+            </span>
+          )}
+          {review && (
+            <>
+              &nbsp;&nbsp;
+              <TextModal
+                text={review}
+                modalButton={"See Review"}
+                modalTitle={`${activity_user.first_name}'s Review`}
+              />
+            </>
+          )}
+        </div>
+        <br />
+        <div className={"d-flex"}>
+          <div>
+            <Link to={`/title/${title.id}`}>
+              <strong>{title.name}</strong>
+            </Link>
+            <Col>
+              {title.rating ? (
+                <>
+                  <Icon icon={"star"} className={"me-1 pointer primary"} />
+                  <strong className={"lightgray"}>{title.rating}</strong>
+                </>
+              ) : (
+                <>
+                  <small className={"text-muted"}>No rating</small>
+                </>
+              )}
+            </Col>
+          </div>
         </div>
       </div>
     </div>

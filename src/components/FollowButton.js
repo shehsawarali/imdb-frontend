@@ -41,7 +41,7 @@ const FollowButton = ({ id }) => {
     return (
       <Button className={"profile-follow-button"} onClick={follow}>
         Follow
-        <Icon icon={"user-plus"} size="1x" style={{ marginLeft: "8px" }} />
+        <Icon icon={"user-plus"} size="1x" className={"ms-2"} />
       </Button>
     );
   };
@@ -50,7 +50,7 @@ const FollowButton = ({ id }) => {
     return (
       <Button className={"profile-follow-button btn-inverted"} onClick={unfollow}>
         Unfollow
-        <Icon icon={"user-minus"} size="1x" style={{ marginLeft: "8px" }} />
+        <Icon icon={"user-minus"} size="1x" className={"ms-2"} />
       </Button>
     );
   };
@@ -74,7 +74,7 @@ const FollowButton = ({ id }) => {
   const invisibleState = () => {
     return (
       <Button className={"profile-follow-button invisible"}>
-        <Icon icon={"user"} size="1x" style={{ marginLeft: "8px" }} />
+        <Icon icon={"user"} size="1x" className={"ms-2"} />
       </Button>
     );
   };

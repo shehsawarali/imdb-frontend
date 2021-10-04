@@ -23,9 +23,10 @@ const TitleReviews = () => {
     CoreService.title(id)
       .then((response) => {
         setTitle(response);
-      })
-      .finally(() => {
         fetch().then(setIsLoading(false));
+      })
+      .catch(() => {
+        window.location.href = "/404";
       });
   }, [id]);
 
@@ -74,6 +75,10 @@ const TitleReviews = () => {
   return (
     <>
       <div className={"detail-page-container"}>
+        <h6 className={"display-6 text-center"}>
+          <Icon icon={"comment-alt"} className={"me-3"} size={"sm"} />
+          Reviews
+        </h6>
         <p className={"text-center"}>
           Showing reviews for <Link to={`/title/${id}`}>{title.name}</Link>
         </p>
@@ -85,13 +90,7 @@ const TitleReviews = () => {
         {list.length > 0 ? (
           <>
             {list.map((review, index) => {
-              return (
-                <Review
-                  key={index}
-                  review={review}
-                  color={index % 2 ? "lightgray" : "var(--primary)"}
-                />
-              );
+              return <Review key={index} review={review} />;
             })}
 
             {next && loadMoreButton()}

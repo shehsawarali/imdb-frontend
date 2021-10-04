@@ -2,11 +2,10 @@
   width: 60%;
   min-height: 100vh;
   overflow: auto;
-  background-color: var(--secondary-light);
+  background-color: var(--background);
   margin: 0 auto;
   border-radius: 5px;
   padding: 2rem 0;
-  color: white;
 }
 
 .profile-content {
@@ -22,7 +21,7 @@
   align-items: center;
   justify-content: flex-start;
   flex-flow: row nowrap;
-  color: var(--secondary) !important;
+  color: var(--secondary-light);
 }
 
 .profile-header > h1 {
@@ -52,9 +51,10 @@
 }
 
 .nav.nav-pills .nav-link {
-  color: white;
-  border: 1px dashed var(--secondary);
+  color: lightgray;
+  border: 1px solid var(--secondary-light);
   margin: 5px;
+  font-weight: bold;
 }
 .nav.nav-pills .nav-link.active {
   background-color: var(--primary);
@@ -74,11 +74,10 @@
 .profile-follow-card {
   background-color: var(--secondary-light);
   width: 100%;
-  color: white !important;
   padding: 1rem 2rem;
-  border-radius: 5px;
-  border: 1px solid var(--secondary);
-  box-shadow: none;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 3px var(--secondary);
   transition-duration: var(--transition);
 }
 .profile-follow-card:hover {

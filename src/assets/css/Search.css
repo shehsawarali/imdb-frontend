@@ -5,7 +5,7 @@
 }
 
 .nav-search input {
-  border: 1px dashed var(--primary);
+  border: 1px solid var(--secondary-light);
   outline: none;
   height: 45px;
   width: 500px;
@@ -61,7 +61,7 @@
 .filter-collapse {
   transition: height var(--transition);
   border-radius: 3px;
-  background-color: var(--secondary-light);
+  background-color: var(--background);
   border: 1px dashed var(--primary);
 }
 

@@ -81,7 +81,7 @@ const TitleSearch = (props) => {
     let filterParams = "";
 
     if (queryParams.name) {
-      filterParams += `name=${queryParams.name}`;
+      filterParams += `&name=${queryParams.name}`;
     }
     if (filter.max_rating) {
       filterParams += `&max_rating=${filter.max_rating}`;
@@ -99,7 +99,7 @@ const TitleSearch = (props) => {
       if (filter[genre]) filterParams += `&genre=${genre}`;
     }
 
-    let url = `${base_url}?type=title&${filterParams}`;
+    let url = `${base_url}?type=title${filterParams}`;
     history.push(url);
   };
 
@@ -275,6 +275,7 @@ const TitleSearch = (props) => {
         <Icon icon={"search"} className={"me-3"} size={"sm"} />
         Title Search
       </h6>
+      <hr />
       {renderHeader()}
       {renderFilters()}
       {response.results.length ? (

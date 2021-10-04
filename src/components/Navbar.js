@@ -1,17 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "assets/css/Navbar.css";
+import logo from "assets/media/logo.png";
 import { NavSearch } from "components";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
 
+import Preferences from "./Preferences";
+
 const AppNavbar = () => {
   const { user } = useContext(UserContext);
+  const [show, setShow] = useState(false);
 
   const loggedOutOptions = () => {
     return (
@@ -48,6 +52,10 @@ const AppNavbar = () => {
             <Icon icon={"heart"} className={"me-2"} />
             Favorites
           </NavDropdown.Item>
+          <NavDropdown.Item onClick={() => setShow(true)}>
+            <Icon icon={"user-cog"} className={"me-2"} />
+            Preferences
+          </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={logOut}>
             <Icon icon={"sign-out-alt"} className={"me-2"} />
@@ -72,9 +80,9 @@ const AppNavbar = () => {
 
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" variant={"dark"}>
-      <Navbar.Brand as={Link} to="/">
-        IMDb
-      </Navbar.Brand>
+      <Link to="/">
+        <img src={logo} className={"logo"} alt={"logo"} />
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-between"}>
         <Nav className={"me-auto"}>
@@ -89,6 +97,8 @@ const AppNavbar = () => {
           {user && loggedInOptions()}
         </Nav>
       </Navbar.Collapse>
+
+      {user && <Preferences show={show} setShow={setShow} user={user} />}
     </Navbar>
   );
 };

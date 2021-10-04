@@ -3,12 +3,14 @@ import {
   faAngleDoubleDown,
   faBirthdayCake,
   faBookmark,
+  faCommentAlt,
   faDizzy,
   faEdit,
   faEnvelope,
   faExclamationTriangle,
   faHeart,
   faHistory,
+  faHome,
   faKey,
   faLocationArrow,
   faSave,
@@ -16,6 +18,7 @@ import {
   faSignOutAlt,
   faStar,
   faUser,
+  faUserCog,
   faUserMinus,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
@@ -39,5 +42,8 @@ library.add(
   faHeart,
   faStar,
   faHistory,
-  faSearch
+  faSearch,
+  faUserCog,
+  faCommentAlt,
+  faHome
 );

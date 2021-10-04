@@ -2,12 +2,7 @@ import { Link } from "react-router-dom";
 
 const Review = ({ review, ...props }) => {
   return (
-    <div
-      className={"review"}
-      style={{
-        backgroundColor: props.color,
-      }}
-    >
+    <div className={"review"}>
       <div className={"my-3"}>{review.review}</div>
       <div>
         <small>

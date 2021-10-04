@@ -20,9 +20,10 @@ const MyComponent = ({ title_id, rating, setRating, refreshOnSave }) => {
     setIsSaving(true);
     CoreService.rate({ id: title_id, rating: newRating }).finally(() => {
       if (refreshOnSave) window.location.reload();
-
-      toast.success("Title rating has been saved");
-      setIsSaving(false);
+      else {
+        toast.success("Title rating has been saved");
+        setIsSaving(false);
+      }
     });
   };
 
