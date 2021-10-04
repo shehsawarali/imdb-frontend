@@ -5,6 +5,7 @@ import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import defaultTitleImage from "assets/media/default-title-image.png";
+import defaultUserImage from "assets/media/default-user-image.png";
 import { TextModal } from "components";
 import { UserContext } from "context/UserContext";
 import { getDatetime } from "utils";
@@ -23,11 +24,20 @@ const TimelineCard = ({ instance }) => {
 
   return (
     <div className={"timeline-card flex-row"}>
-      <img className={"title-image"} src={title.image || defaultTitleImage} />
+      <img
+        className={"title-image"}
+        src={title.image || defaultTitleImage}
+        alt={"title"}
+      />
       <div className={"flex-column w-100"}>
         <div className={"header"}>
-          <Link to={`/user/${activity_user.id}`} className={"lead"}>
-            <strong>
+          <Link to={`/user/${activity_user.id}`}>
+            <img
+              src={activity_user.image || defaultUserImage}
+              className={"user-image"}
+              alt={"user"}
+            />
+            <strong className={"lead"}>
               {activity_user.first_name} {activity_user.last_name}
             </strong>
           </Link>
@@ -37,7 +47,7 @@ const TimelineCard = ({ instance }) => {
               : getDatetime(created_at)}
           </small>
         </div>
-        <div>
+        <div className={"mt-1"}>
           <small>{action}</small>
           {given_rating && (
             <span className={"blue"}>

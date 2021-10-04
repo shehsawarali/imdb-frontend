@@ -79,6 +79,13 @@
   width: 100%;
 }
 
+.timeline-card .user-image {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
 @media (max-width: 768px) {
   .timeline-card .header,
   .activity-card .header {

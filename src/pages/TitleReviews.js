@@ -84,7 +84,7 @@ const TitleReviews = () => {
         </p>
         {user && (
           <div className={"detail-page-header mb-3"}>
-            <WriteReview title_id={id} />
+            <WriteReview title_id={id} refreshOnSave />
           </div>
         )}
         {list.length > 0 ? (

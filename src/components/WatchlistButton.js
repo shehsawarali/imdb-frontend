@@ -5,6 +5,7 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 
+import { UNEXPECTED_ERROR_MESSAGE } from "constant";
 import CoreService from "services/CoreService";
 
 const FavoriteButton = ({ title_id }) => {
@@ -27,7 +28,7 @@ const FavoriteButton = ({ title_id }) => {
         toast.success("Added to watchlist");
       })
       .catch(() => {
-        toast.error("An error occurred. Please try again.");
+        toast.error(UNEXPECTED_ERROR_MESSAGE);
       })
       .finally(() => setIsLoading(false));
   };
@@ -40,7 +41,7 @@ const FavoriteButton = ({ title_id }) => {
         toast.warning("Removed from watchlist");
       })
       .catch(() => {
-        toast.error("An error occurred. Please try again.");
+        toast.error(UNEXPECTED_ERROR_MESSAGE);
       })
       .finally(() => setIsLoading(false));
   };

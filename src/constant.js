@@ -5,6 +5,7 @@ export const BACKEND_URL = "http://localhost:8000";
 export const JWT_PREFIX = "Bearer";
 export const REFRESH_TOKEN = "refresh_token";
 export const ACCESS_TOKEN = "access_token";
+export const UNEXPECTED_ERROR_MESSAGE = "An error occurred. Please try again.";
 
 export const starIcon = {
   viewBox: "0 0 20 20",

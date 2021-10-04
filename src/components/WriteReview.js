@@ -4,9 +4,10 @@ import { Button, CloseButton, Modal, Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import { Rate } from "components";
+import { UNEXPECTED_ERROR_MESSAGE } from "constant";
 import CoreService from "services/CoreService";
 
-const WriteReview = ({ title_id }) => {
+const WriteReview = ({ title_id, refreshOnSave }) => {
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -43,10 +44,15 @@ const WriteReview = ({ title_id }) => {
     setIsSaving(true);
     CoreService.review({ id: title_id, review })
       .then(() => {
-        window.location.reload();
+        if (refreshOnSave) {
+          window.location.reload();
+        } else {
+          handleClose();
+          toast.success("Your review has been submitted");
+        }
       })
       .catch(() => {
-        toast.error("An error occurred. Please try again.");
+        toast.error(UNEXPECTED_ERROR_MESSAGE);
       });
   };
 
@@ -84,9 +90,13 @@ const WriteReview = ({ title_id }) => {
             )}
           </Modal.Body>
           <Modal.Footer>
-            <Button type={"submit"}>
-              {isSaving ? <Spinner animation={"border"} size={"sm"} /> : "Submit"}
-            </Button>
+            {isSaving ? (
+              <Button>
+                <Spinner animation={"border"} size={"sm"} />
+              </Button>
+            ) : (
+              <Button type={"submit"}>Submit</Button>
+            )}
           </Modal.Footer>
         </form>
       </Modal>

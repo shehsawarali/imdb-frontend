@@ -4,6 +4,7 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 
+import { UNEXPECTED_ERROR_MESSAGE } from "constant";
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
 import { validatePassword } from "utils";
@@ -44,7 +45,7 @@ const ProfileChangePassword = () => {
           toast.success(response.message);
         })
         .catch((error) => {
-          toast.error(error.data.message);
+          toast.error(UNEXPECTED_ERROR_MESSAGE);
         })
         .finally(() => {
           setIsLoading(false);

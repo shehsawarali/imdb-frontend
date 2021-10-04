@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import moment from "moment-timezone";
 import { Button, CloseButton, Modal, Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 
+import { UNEXPECTED_ERROR_MESSAGE } from "constant";
+import { UserContext } from "context/UserContext";
 import useCheckbox from "hooks/useCheckbox";
 import usePresetInput from "hooks/usePresetInput";
 import UserService from "services/UserService";
 
-const Preferences = ({ show, setShow, user }) => {
+const Preferences = ({ show, setShow }) => {
+  const { user, updateContext } = useContext(UserContext);
+
   const timezone = usePresetInput(user.timezone);
   const email_list_preference = useCheckbox(user.email_list_preference);
   const login_alert_preference = useCheckbox(user.login_alert_preference);
@@ -45,10 +49,11 @@ const Preferences = ({ show, setShow, user }) => {
     UserService.update(user.id, data)
       .then(() => {
         toast.success("Your preferences have been updated");
+        updateContext();
         setShow(false);
       })
       .catch(() => {
-        toast.error("An error occurred. Please try again.");
+        toast.error(UNEXPECTED_ERROR_MESSAGE);
       })
       .finally(() => setIsSaving(false));
   };

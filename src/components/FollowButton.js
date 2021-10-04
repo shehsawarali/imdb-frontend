@@ -2,12 +2,14 @@ import { useContext, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 
+import { UNEXPECTED_ERROR_MESSAGE } from "constant";
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
 
-const FollowButton = ({ id }) => {
-  const { user } = useContext(UserContext);
+const FollowButton = ({ id, name }) => {
+  const { user, updateContext } = useContext(UserContext);
   const [follows, setFollows] = useState(user?.follows.includes(Number(id)));
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,8 +19,12 @@ const FollowButton = ({ id }) => {
     UserService.follow(id)
       .then(() => {
         setFollows(true);
+        updateContext();
+        toast.success(`You are now following ${name}`);
       })
       .catch(() => {
+        toast.error(UNEXPECTED_ERROR_MESSAGE);
+        updateContext();
         setFollows(null);
       })
       .finally(() => setIsLoading(false));
@@ -30,8 +36,11 @@ const FollowButton = ({ id }) => {
     UserService.unfollow(id)
       .then(() => {
         setFollows(false);
+        updateContext();
+        toast.warning(`You have unfollowed ${name}`);
       })
       .catch(() => {
+        toast.error(UNEXPECTED_ERROR_MESSAGE);
         setFollows(null);
       })
       .finally(() => setIsLoading(false));

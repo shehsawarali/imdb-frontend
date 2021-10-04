@@ -5,6 +5,7 @@ import { Button, Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import CountryOptions from "assets/js/CountryOptions";
+import { UNEXPECTED_ERROR_MESSAGE } from "constant";
 import UserService from "services/UserService";
 
 const ProfileChangeDetails = ({ id, profile }) => {
@@ -25,8 +26,8 @@ const ProfileChangeDetails = ({ id, profile }) => {
       .then(() => {
         window.location.reload();
       })
-      .catch((error) => {
-        toast.error(error.data.message);
+      .catch(() => {
+        toast.error(UNEXPECTED_ERROR_MESSAGE);
         setIsLoading(false);
       });
   };

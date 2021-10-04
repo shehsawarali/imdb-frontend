@@ -22,6 +22,8 @@ let privateTabs = ["2", "3"];
 const Profile = () => {
   const { id } = useParams();
   const { user } = useContext(UserContext);
+  const [profile, setProfile] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const tabHistory = JSON.parse(localStorage.getItem("tabHistory"));
 
@@ -33,9 +35,6 @@ const Profile = () => {
 
     return "1";
   };
-
-  const [profile, setProfile] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     UserService.profile(id)
@@ -121,7 +120,7 @@ const Profile = () => {
           {user && user.id !== Number(id) && (
             <div className={"text-center mb-3"}>
               <div className={"w-50 mx-auto"}>
-                <FollowButton id={id} />
+                <FollowButton id={id} name={profile.first_name} />
               </div>
             </div>
           )}

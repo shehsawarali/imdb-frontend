@@ -4,6 +4,7 @@ import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import { UNEXPECTED_ERROR_MESSAGE } from "constant";
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
 import { validateEmail } from "utils";
@@ -31,8 +32,8 @@ const SignIn = () => {
           toast.success(response.message);
           setIsLoading(false);
         })
-        .catch((error) => {
-          toast.error(error.data.message);
+        .catch(() => {
+          toast.error(UNEXPECTED_ERROR_MESSAGE);
           setIsLoading(false);
         });
     }

@@ -1,6 +1,6 @@
 import { Col } from "react-bootstrap";
 
-import defaultImage from "assets/media/default-person.png";
+import defaultImage from "assets/media/default-user-image.png";
 import { FollowButton } from "components";
 
 const FollowListCard = ({ user }) => {
@@ -24,7 +24,7 @@ const FollowListCard = ({ user }) => {
           </div>
         </a>
         <div className={"text-center"}>
-          <FollowButton id={user.id} />
+          <FollowButton id={user.id} name={user.first_name} />
         </div>
       </div>
     </Col>

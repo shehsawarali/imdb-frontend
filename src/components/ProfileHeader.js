@@ -2,7 +2,7 @@ import { useRef, useContext } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 
-import defaultImage from "assets/media/default-person.png";
+import defaultImage from "assets/media/default-user-image.png";
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
 

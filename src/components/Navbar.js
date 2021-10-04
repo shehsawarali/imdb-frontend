@@ -98,7 +98,7 @@ const AppNavbar = () => {
         </Nav>
       </Navbar.Collapse>
 
-      {user && <Preferences show={show} setShow={setShow} user={user} />}
+      {user && <Preferences show={show} setShow={setShow} />}
     </Navbar>
   );
 };
