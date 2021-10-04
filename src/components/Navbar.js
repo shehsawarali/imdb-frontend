@@ -5,13 +5,10 @@ import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "assets/css/Navbar.css";
-import logo from "assets/media/logo.png";
-import { NavSearch } from "components";
+import { NavSearch, Preferences } from "components";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
-
-import Preferences from "./Preferences";
 
 const AppNavbar = () => {
   const { user } = useContext(UserContext);
@@ -80,8 +77,8 @@ const AppNavbar = () => {
 
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" variant={"dark"}>
-      <Link to="/">
-        <img src={logo} className={"logo"} alt={"logo"} />
+      <Link to={"/"} className={"text-decoration-none"}>
+        <div className={"logo-container"}>Filmfilia</div>
       </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-between"}>

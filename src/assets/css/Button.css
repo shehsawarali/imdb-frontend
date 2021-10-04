@@ -9,20 +9,20 @@
 
 .btn {
   background-color: var(--primary);
-  border: 1px dashed var(--secondary);
+  border: 1px solid var(--secondary);
   color: var(--secondary);
 }
 
 .btn:hover {
   background-color: var(--secondary-light);
-  border: 1px dashed var(--primary);
+  border: 1px solid var(--primary);
   color: lightgray;
 }
 
 .btn:focus {
   background-color: var(--primary);
   color: var(--secondary);
-  border: 1px dashed var(--secondary);
+  border: 1px solid var(--secondary);
 }
 
 .btn > .svg-inline--fa,
@@ -37,13 +37,13 @@
 .btn-inverted {
   background-color: var(--secondary-light);
   color: lightgray;
-  border: 1px dashed var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .btn-inverted:focus {
   background-color: var(--secondary-light);
   color: lightgray;
-  border: 1px dashed var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .btn-inverted:hover,

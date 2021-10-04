@@ -1,3 +1,5 @@
+@import "Logo.css";
+
 nav {
   padding: 0.5rem 1rem;
   background-color: var(--secondary);
@@ -6,28 +8,23 @@ nav {
   border-bottom: 1px solid var(--primary);
 }
 
-.logo {
-  height: 3rem;
-  margin-right: 1rem;
-  border-radius: 3px;
-  border: 1px solid gray;
-}
-
 .nav-button,
 .nav-button:focus {
   padding: 10px 20px;
   background-color: var(--secondary);
   color: lightgray;
   outline: none !important;
-  border: 1px dashed transparent !important;
+  border: 1px solid var(--secondary);
   font-weight: bold;
-  border-radius: 3px;
+  border-radius: 0.25rem;
   transition-duration: var(--transition);
+  box-shadow: none !important;
 }
 
-.nav-button:hover {
-  box-shadow: none;
+.nav-button:hover,
+.nav-button:focus:hover {
   background-color: var(--secondary-light);
+  border-color: var(--primary);
 }
 
 .dropdown-menu {
@@ -57,10 +54,10 @@ nav {
   background-color: var(--primary);
   color: var(--secondary) !important;
   outline: none !important;
-  border: 1px dashed var(--secondary);
+  border: 1px solid var(--primary);
   font-weight: bold;
   box-shadow: none !important;
-  border-radius: 3px;
+  border-radius: 0.25rem;
   transition-duration: var(--transition);
   max-width: 200px;
   text-overflow: ellipsis;
@@ -70,7 +67,7 @@ nav {
 .dropdown-toggle:hover {
   color: lightgray !important;
   background-color: var(--secondary-light);
-  border: 1px dashed var(--secondary-light);
+  border: 1px solid var(--primary);
 }
 
 .nav-button > .svg-inline--fa,

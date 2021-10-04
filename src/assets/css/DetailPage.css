@@ -28,8 +28,8 @@
 .detail-page-header {
   background-color: var(--secondary-light);
   padding: 1rem 1.5rem;
-  border-radius: 3px;
-  border: 1px dashed var(--secondary);
+  border-radius: 0.25rem;
+  border: 1px solid var(--secondary);
   font-weight: 600;
   font-size: smaller;
   display: flex;

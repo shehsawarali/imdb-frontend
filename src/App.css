@@ -4,6 +4,8 @@
 @import "assets/css/Toast.css";
 @import "assets/css/Form.css";
 
+@import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
+
 :root {
   --primary: #f5c518;
   --primary-light: #ecd168;
@@ -76,6 +78,7 @@ body {
 
 .display-6 {
   color: lightgray;
+  font-family: "Skranji", cursive;
 }
 
 .mt-5rem {

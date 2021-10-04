@@ -12,11 +12,18 @@
 }
 
 .nav-search select {
-  border: 1px dashed var(--secondary);
+  border: 1px solid var(--secondary);
   background-color: var(--primary);
   font-weight: bold;
   height: 45px;
   width: 100px;
+  transition-duration: var(--transition);
+}
+
+.nav-search select:hover {
+  background-color: var(--secondary-light);
+  color: lightgray;
+  border-color: var(--primary);
 }
 
 .filter-sort {
@@ -28,12 +35,23 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  border: 1px dashed var(--secondary);
+  border: 1px solid var(--secondary);
+  transition-duration: var(--transition);
+}
+
+.filter-sort:hover {
+  background-color: var(--secondary-light);
+  border-color: var(--primary);
 }
 
 .filter-sort label {
   color: var(--secondary);
   font-size: smaller;
+  transition-duration: var(--transition);
+}
+
+.filter-sort:hover label {
+  color: lightgray;
 }
 
 .filter-sort select {
@@ -42,6 +60,12 @@
   background-color: var(--primary);
   height: 30px;
   width: 75%;
+  transition-duration: var(--transition);
+}
+
+.filter-sort:hover select {
+  background-color: var(--secondary-light);
+  color: lightgray;
 }
 
 .search-header {
@@ -62,7 +86,7 @@
   transition: height var(--transition);
   border-radius: 3px;
   background-color: var(--background);
-  border: 1px dashed var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .filter-collapse h6 {

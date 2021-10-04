@@ -46,7 +46,7 @@
 }
 
 .filmography {
-  border: 1px dashed var(--primary);
+  border: 1px solid var(--primary);
   padding: 1rem 1rem;
   border-radius: 5px;
 }
