@@ -4,13 +4,14 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { Navbar } from "components";
+import { Navbar, ScrollToTop } from "components";
 import Pages from "pages";
 import { StrictlyPrivate, StrictlyPublic } from "routing";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <ToastContainer
         position="top-right"
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/person/:id" component={Pages.Person} />
         <Route path="/search/title" component={Pages.TitleSearch} />
         <Route path="/search/person" component={Pages.PersonSearch} />
+        <Route path="/search/user" component={Pages.UserSearch} />
 
         <Redirect to="/" />
       </Switch>

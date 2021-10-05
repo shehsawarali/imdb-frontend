@@ -29,6 +29,7 @@ const NavSearch = (props) => {
       >
         <option value={"title"}>Title</option>
         <option value={"person"}>Person</option>
+        <option value={"user"}>User</option>
       </select>
       &nbsp;&nbsp;
       <input

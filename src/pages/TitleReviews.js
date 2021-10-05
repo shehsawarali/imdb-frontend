@@ -31,16 +31,12 @@ const TitleReviews = () => {
   }, [id]);
 
   const fetch = async () => {
-    CoreService.getReviews(id, page + 1)
-      .then((response) => {
-        setList([...list, ...response.results]);
-        setNext(response.next);
+    CoreService.getReviews(id, page + 1).then((response) => {
+      setList([...list, ...response.results]);
+      setNext(response.next);
 
-        setPage((page) => page + 1);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      setPage((page) => page + 1);
+    });
   };
 
   const fetchMore = () => {

@@ -45,15 +45,10 @@
   text-decoration: underline;
 }
 
-.title-card img {
-  height: 70px;
-  width: 50px;
-}
-
+.title-card img,
 .person-card img {
   height: 70px;
-  width: 70px;
-  border-radius: 50%;
+  width: 50px;
 }
 
 .timeline-card,

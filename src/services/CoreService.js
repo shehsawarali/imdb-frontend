@@ -32,7 +32,6 @@ const CoreService = {
   },
 
   personSearch: (queryParams) => {
-    console.log(queryParams);
     return API.get(`search/person/?${queryParams}`)
       .then((response) => {
         return response.data;

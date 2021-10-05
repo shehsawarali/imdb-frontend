@@ -15,6 +15,7 @@ import ProfileFollowing from "components/ProfileFollowing";
 import ProfileHeader from "components/ProfileHeader";
 import Rate from "components/Rate";
 import Review from "components/Review";
+import ScrollToTop from "components/ScrollToTop";
 import TextModal from "components/TextModal";
 import TimelineCard from "components/TimelineCard";
 import TitleCard from "components/TitleCard";
@@ -41,6 +42,7 @@ export {
   ProfileHeader,
   Rate,
   Review,
+  ScrollToTop,
   TextModal,
   TimelineCard,
   TitleCard,

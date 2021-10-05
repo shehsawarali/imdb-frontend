@@ -182,6 +182,16 @@ const UserServices = {
         return Promise.reject(error);
       });
   },
+
+  userSearch: (queryParams) => {
+    return API.get(`user/search/?${queryParams}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
 
 export default UserServices;

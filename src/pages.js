@@ -12,6 +12,7 @@ import Timeline from "pages/Timeline";
 import Title from "pages/Title";
 import TitleReviews from "pages/TitleReviews";
 import TitleSearch from "pages/TitleSearch";
+import UserSearch from "pages/UserSearch";
 import VerifyAccount from "pages/VerifyAccount";
 import Watchlist from "pages/Watchlist";
 
@@ -30,6 +31,7 @@ let pages = {
   Title,
   TitleReviews,
   TitleSearch,
+  UserSearch,
   VerifyAccount,
   Watchlist,
 };
