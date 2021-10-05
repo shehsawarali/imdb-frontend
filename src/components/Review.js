@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Review = ({ review, ...props }) => {
+const Review = ({ review }) => {
   return (
     <div className={"review"}>
       <div className={"my-3"}>{review.review}</div>

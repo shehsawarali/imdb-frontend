@@ -56,7 +56,7 @@ const ProfileChangeDetails = ({ id, profile }) => {
   return (
     <>
       <div className={"w-100 d-flex flex-column"}>
-        <form onSubmit={submitForm} className={"mx-auto"}>
+        <form onSubmit={submitForm} className={"mx-auto profile-form"}>
           <div className={"mt-3"}>
             <label htmlFor="first_name">First Name</label>
             <input

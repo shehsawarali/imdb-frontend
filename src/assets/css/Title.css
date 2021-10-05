@@ -43,7 +43,7 @@
 .title-cast h3 {
   text-decoration: underline;
   text-decoration-color: var(--primary);
-  margin-left: 0rem;
+  margin-left: 0;
   margin-bottom: 1rem;
 }
 

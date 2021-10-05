@@ -42,7 +42,7 @@
   text-decoration: underline;
   color: lightgray;
   text-decoration-color: var(--primary);
-  margin-left: 0rem;
+  margin-left: 0;
   margin-bottom: 1rem;
 }
 

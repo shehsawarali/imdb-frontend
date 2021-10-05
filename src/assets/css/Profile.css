@@ -95,6 +95,10 @@
   width: 100%;
 }
 
+.profile-form {
+  width: 50%;
+}
+
 @media (max-width: 768px) {
   .profile-follow-card {
     width: 100%;
@@ -113,11 +117,14 @@
     text-overflow: inherit;
     white-space: inherit;
   }
+  .profile-form {
+    width: 75%;
+  }
 }
 
 @media (max-width: 640px) {
   .profile-header .avatar {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
@@ -133,5 +140,8 @@
   }
   .profile-content {
     padding: 0;
+  }
+  .profile-form {
+    width: 90%;
   }
 }

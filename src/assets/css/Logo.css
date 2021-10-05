@@ -1,14 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-
 .logo-container {
   font-size: 2.1rem;
   text-align: center;
   color: var(--primary);
   font-family: "Pacifico", cursive;
   font-weight: 700;
-  text-shadow: 0.5px 0.5px 0px var(--logo), 1px 1px 0px var(--secondary-light),
-    1.5px 1.5px 0px var(--error), 2px 2px 0px lightgray, 2.5px 2.5px 0px var(--success),
-    3px 3px 0px lightcoral, 3.5px 3.5px 0px var(--link);
+  text-shadow: 0.5px 0.5px 0 var(--logo), 1px 1px 0 var(--secondary-light),
+    1.5px 1.5px 0 var(--error), 2px 2px 0 lightgray, 2.5px 2.5px 0 var(--success),
+    3px 3px 0 lightcoral, 3.5px 3.5px 0 var(--link);
 
   text-decoration: none !important;
 

@@ -1,6 +1,7 @@
-import { useRef, useContext } from "react";
+import { useContext, useRef } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+import { toast } from "react-toastify";
 
 import defaultImage from "assets/media/default-user-image.png";
 import { UserContext } from "context/UserContext";
@@ -18,9 +19,9 @@ const ProfileHeader = ({ profile }) => {
       .then(() => {
         window.location.reload();
       })
-      .catch((err) => {
+      .catch((error) => {
         fileInputRef.current.value = "";
-        // ADD TOAST HERE
+        toast.error(error.data.message);
       });
   };
 
@@ -50,7 +51,7 @@ const ProfileHeader = ({ profile }) => {
           alt={"profile"}
         />
         <div
-          className={`avatar-edit ${user?.id != profile.id && "invisible"}`}
+          className={`avatar-edit ${user?.id !== profile.id && "invisible"}`}
           onClick={() => fileInputRef.current.click()}
         >
           <small className={"me-1"}>Change</small>

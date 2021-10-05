@@ -47,16 +47,9 @@ const MyComponent = ({ title_id, rating, setRating, refreshOnSave }) => {
         svgIconViewBoxes={starIcon.viewBox}
         svgIconPaths={starIcon.path}
       >
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
-        <Ratings.Widget />
+        {[...Array(10)].map((_, index) => (
+          <Ratings.Widget key={index} />
+        ))}
       </Ratings>
     </div>
   );

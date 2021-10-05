@@ -4,7 +4,6 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 
-import { UNEXPECTED_ERROR_MESSAGE } from "constant";
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
 import { validatePassword } from "utils";
@@ -45,7 +44,7 @@ const ProfileChangePassword = () => {
           toast.success(response.message);
         })
         .catch((error) => {
-          toast.error(UNEXPECTED_ERROR_MESSAGE);
+          toast.error(error.data.message);
         })
         .finally(() => {
           setIsLoading(false);
@@ -71,7 +70,7 @@ const ProfileChangePassword = () => {
   return (
     <>
       <div className={"w-100 d-flex flex-column"}>
-        <form onSubmit={submitForm} className={"mx-auto"}>
+        <form onSubmit={submitForm} className={"mx-auto my-3 profile-form"}>
           <div>
             <label htmlFor="email">Current Password</label>
             <input
