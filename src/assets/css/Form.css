@@ -31,7 +31,7 @@ input {
 
 select:invalid,
 input:disabled {
-  color: gray !important; /* same as ::placeholder */
+  color: gray; /* same as ::placeholder */
 }
 
 input:disabled,
@@ -87,6 +87,10 @@ textarea {
   resize: none;
   border-radius: 5px;
   background-color: var(--secondary-light);
+  color: lightgray;
+}
+
+.select-form {
   color: lightgray;
 }
 

@@ -134,7 +134,7 @@ const SignUp = () => {
             required
             defaultValue={""}
             onChange={country.handleChange}
-            className={"lightgray"}
+            className={"select-form"}
           >
             <option value={""} disabled>
               Country

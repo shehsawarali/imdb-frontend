@@ -29,8 +29,7 @@ const Title = () => {
     CoreService.title(id)
       .then((response) => {
         setTitle(response);
-        const cast = filterPrincipals(response?.principals, response?.crew);
-        setCast(cast);
+        setCast(filterPrincipals(response?.principals, response?.crew));
       })
       .finally(() => {
         setIsLoading(false);
