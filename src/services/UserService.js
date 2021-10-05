@@ -150,6 +150,38 @@ const UserServices = {
         return Promise.reject(error);
       });
   },
+
+  uploadImage: (data) => {
+    return API.post("user/upload-image/", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  activity: (id, page) => {
+    return API.get(`user/${id}/activity/?page=${page}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
+
+  updateTimezone: (data) => {
+    return API.post("user/preferences/timezone", data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch(function (error) {
+        return Promise.reject(error);
+      });
+  },
 };
 
 export default UserServices;

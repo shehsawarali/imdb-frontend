@@ -6,49 +6,41 @@ import { Button, Row, Spinner } from "react-bootstrap";
 import { FollowListCard } from "components";
 import UserService from "services/UserService";
 
-let list = [];
-let page = 0;
-let next = null;
-let count = null;
-
 const ProfileFollowers = ({ id }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [list, setList] = useState([]);
+  const [page, setPage] = useState(0);
+  const [next, setNext] = useState(null);
 
   useEffect(() => {
+    fetch(setIsLoading);
+  }, [id]);
+
+  const fetch = (callback) => {
     UserService.followers(id, page + 1)
       .then((response) => {
-        list = list.concat(response.results);
-        next = response.next;
-        count = response.count;
-        page += 1;
+        setList([...list, ...response.results]);
+        setNext(response.next);
+        setPage((page) => page + 1);
       })
       .finally(() => {
-        setIsLoading(false);
+        callback(false);
       });
-  }, [id]);
+  };
 
   const fetchMore = () => {
     if (!next) return;
 
     setIsLoadingMore(true);
-    UserService.followers(id, page + 1)
-      .then((response) => {
-        list = list.concat(response.results);
-        next = response.next;
-        count = response.count;
-        page += 1;
-      })
-      .finally(() => {
-        setIsLoadingMore(false);
-      });
+    fetch(setIsLoadingMore);
   };
 
   const loadMoreButton = () => {
     if (isLoadingMore) {
       return (
         <div className={"text-center mt-5"}>
-          <Button className={"btn-inverted"} onClick={fetchMore}>
+          <Button className={"btn-inverted"}>
             <Spinner animation={"border"} size={"sm"} />
           </Button>
         </div>
@@ -58,8 +50,7 @@ const ProfileFollowers = ({ id }) => {
     return (
       <div className={"text-center mt-5"}>
         <Button className={"btn-inverted"} onClick={fetchMore}>
-          View More{" "}
-          <Icon icon={"angle-double-down"} size="1x" style={{ marginLeft: "8px" }} />
+          View More <Icon icon={"angle-double-down"} size="1x" className={"ms-1"} />
         </Button>
       </div>
     );
@@ -73,8 +64,8 @@ const ProfileFollowers = ({ id }) => {
     );
   }
 
-  if (count === 0) {
-    return <div className={"text-center"}>The user is not following anyone</div>;
+  if (!list.length) {
+    return <div className={"text-center"}>This user has no followers</div>;
   }
 
   return (

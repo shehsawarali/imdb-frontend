@@ -5,9 +5,6 @@ import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import "assets/css/Form.css";
-import "assets/css/Toast.css";
-import logo from "assets/media/logo.png";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import useInput from "hooks/useInput";
 import UserService from "services/UserService";
@@ -54,7 +51,7 @@ const SignIn = (props) => {
         .then((response) => {
           localStorage.setItem(ACCESS_TOKEN, response.access);
           localStorage.setItem(REFRESH_TOKEN, response.refresh);
-          window.location.reload();
+          window.location.href = "/timeline";
         })
         .catch((error) => {
           toast.error(error.data.message);
@@ -65,11 +62,6 @@ const SignIn = (props) => {
 
   return (
     <>
-      <img
-        style={{ display: "block", margin: "2rem auto" }}
-        src={logo}
-        alt={"App Logo"}
-      />
       <form className={"form-container"} onSubmit={submitForm}>
         <h3>Sign-In</h3>
 
@@ -107,7 +99,10 @@ const SignIn = (props) => {
         </Button>
 
         <div className={"text-center mt-4"}>
-          Don't have an account? <Link to={"/signup"}>Sign Up</Link>
+          Don't have an account?{" "}
+          <Link to={"/signup"} className={"link"}>
+            Sign Up
+          </Link>
         </div>
       </form>
     </>

@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -22,10 +22,10 @@ const TitleCard = ({ title }) => (
           {title.rating ? (
             <>
               {title.rating}&nbsp;
-              <FontAwesomeIcon icon={"star"} className={"primary"} />
+              <Icon icon={"star"} className={"primary"} />
             </>
           ) : (
-            <small>No ratings</small>
+            <small className={"text-muted"}>No rating</small>
           )}
         </small>
       </div>

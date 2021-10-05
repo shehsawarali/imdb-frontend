@@ -5,6 +5,7 @@ import { Button, Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import CountryOptions from "assets/js/CountryOptions";
+import { UNEXPECTED_ERROR_MESSAGE } from "constant";
 import UserService from "services/UserService";
 
 const ProfileChangeDetails = ({ id, profile }) => {
@@ -25,8 +26,8 @@ const ProfileChangeDetails = ({ id, profile }) => {
       .then(() => {
         window.location.reload();
       })
-      .catch((error) => {
-        toast.error(error.data.message);
+      .catch(() => {
+        toast.error(UNEXPECTED_ERROR_MESSAGE);
         setIsLoading(false);
       });
   };
@@ -44,7 +45,7 @@ const ProfileChangeDetails = ({ id, profile }) => {
           ) : (
             <>
               Edit Profile
-              <Icon icon={"edit"} size="1x" style={{ marginLeft: "8px" }} />
+              <Icon icon={"edit"} size="1x" className={"ms-2"} />
             </>
           )}
         </Button>
@@ -55,7 +56,7 @@ const ProfileChangeDetails = ({ id, profile }) => {
   return (
     <>
       <div className={"w-100 d-flex flex-column"}>
-        <form onSubmit={submitForm} className={"mx-auto"}>
+        <form onSubmit={submitForm} className={"mx-auto profile-form"}>
           <div className={"mt-3"}>
             <label htmlFor="first_name">First Name</label>
             <input
@@ -88,6 +89,7 @@ const ProfileChangeDetails = ({ id, profile }) => {
               defaultValue={profile.country.code}
               onChange={handleForm}
               required
+              className={"lightgray"}
             >
               <option value={""} disabled>
                 Country

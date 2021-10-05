@@ -1,15 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Col, Row } from "react-bootstrap";
 import { Link, Redirect, useParams } from "react-router-dom";
 
 import "assets/css/Title.css";
 import DefaultTitleImage from "assets/media/default-title-image.png";
-import { LoadingScreen, PersonCard } from "components";
+import {
+  FavoriteButton,
+  LoadingScreen,
+  PersonCard,
+  TitleRatingButton,
+  WatchlistButton,
+  WriteReview,
+} from "components";
+import { UserContext } from "context/UserContext";
 import CoreService from "services/CoreService";
 
 const Title = () => {
   const { id } = useParams();
+  const { user } = useContext(UserContext);
 
   const [title, setTitle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +42,7 @@ const Title = () => {
     return (
       <div className={"detail-page-header mb-3"}>
         <div>
-          <span href={"#"} className={"me-1"}>
+          <span className={"me-1"}>
             {title.type.name.charAt(0).toUpperCase() + title.type.name.slice(1)}
           </span>
           {title.runtime_minutes && (
@@ -41,7 +51,15 @@ const Title = () => {
           {title.is_adult && <span>&#183; Adults Only</span>}
         </div>
         <div>
-          <a className={"me-1"}>User Reviews</a>
+          <Link to={`/title/${id}/reviews`} className={"me-1"}>
+            User Reviews
+          </Link>
+          {user && (
+            <>
+              &#183;&nbsp;
+              <WriteReview title_id={id} />
+            </>
+          )}
         </div>
       </div>
     );
@@ -73,18 +91,26 @@ const Title = () => {
     return (
       <div className={"detail-page-info w-100"}>
         <h2 className={"max-lines-2"}>{title.name}</h2>
-        <div className="detail-page-years">
+        <div className="detail-page-years d-flex justify-content-between">
           <p>
             {title.start_year} {title.end_year ? ` - ${title.end_year}` : null}
           </p>
+          {user && (
+            <div>
+              <WatchlistButton title_id={id} />
+              &emsp;
+              <FavoriteButton title_id={id} />
+            </div>
+          )}
         </div>
 
         <Row className={"mb-3"}>
           <Col className={"title-rating"}>
-            <strong>IMDb Rating</strong>
+            <strong>Average Rating</strong>
             {title.rating ? (
               <p>
-                <span>{title.rating ? title.rating : 0}</span>
+                <Icon icon={"star"} className={"primary me-1 pointer"} />
+                <strong>{title.rating}</strong>
                 /10
               </p>
             ) : (
@@ -94,6 +120,14 @@ const Title = () => {
               </>
             )}
           </Col>
+
+          {user && (
+            <Col className={"title-rating"}>
+              <strong>Your Rating</strong>
+              <br />
+              <TitleRatingButton title_id={id} />
+            </Col>
+          )}
         </Row>
 
         <div className={"title-description mb-5"}>

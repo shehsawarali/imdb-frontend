@@ -7,6 +7,7 @@ import "assets/css/Profile.css";
 import {
   FollowButton,
   LoadingScreen,
+  ProfileActivity,
   ProfileChangeDetails,
   ProfileChangePassword,
   ProfileFollowers,
@@ -16,13 +17,24 @@ import {
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
 
+let privateTabs = ["2", "3"];
+
 const Profile = () => {
   const { id } = useParams();
   const { user } = useContext(UserContext);
-  const profileTab = JSON.parse(localStorage.getItem("profileTab"));
-
   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const tabHistory = JSON.parse(localStorage.getItem("tabHistory"));
+
+  const defaultTab = () => {
+    if (Number(tabHistory?.id) !== user?.id && privateTabs.includes(tabHistory?.tab))
+      return "1";
+
+    if (tabHistory?.id === id) return tabHistory.tab;
+
+    return "1";
+  };
 
   useEffect(() => {
     UserService.profile(id)
@@ -39,39 +51,39 @@ const Profile = () => {
   if (!profile) return <Redirect to={"/404"} />;
 
   const changeTab = (tab) => {
-    localStorage.setItem("profileTab", JSON.stringify({ id: id, tab: tab }));
+    localStorage.setItem("tabHistory", JSON.stringify({ id: id, tab: tab }));
   };
 
   const Tabs = () => {
     return (
-      <Tab.Container defaultActiveKey={profileTab?.id == id ? profileTab.tab : "1"}>
+      <Tab.Container defaultActiveKey={defaultTab()}>
         <Nav variant="pills" className="justify-content-center mb-5">
           <Nav.Item>
-            <Nav.Link eventKey="1" onSelect={() => changeTab("1")}>
+            <Nav.Link eventKey="1" onClick={() => changeTab("1")}>
               Activity
             </Nav.Link>
           </Nav.Item>
           {user && user.id === Number(id) && (
             <>
               <Nav.Item>
-                <Nav.Link eventKey="2" onSelect={() => changeTab("2")}>
+                <Nav.Link eventKey="2" onClick={() => changeTab("2")}>
                   Update Profile
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="3" onSelect={() => changeTab("3")}>
+                <Nav.Link eventKey="3" onClick={() => changeTab("3")}>
                   Change Password
                 </Nav.Link>
               </Nav.Item>
             </>
           )}
           <Nav.Item>
-            <Nav.Link eventKey="4" onSelect={() => changeTab("4")}>
+            <Nav.Link eventKey="4" onClick={() => changeTab("4")}>
               Following
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="5" onSelect={() => changeTab("5")}>
+            <Nav.Link eventKey="5" onClick={() => changeTab("5")}>
               Followers
             </Nav.Link>
           </Nav.Item>
@@ -79,6 +91,9 @@ const Profile = () => {
 
         <div className={"px-2"}>
           <Tab.Content>
+            <Tab.Pane eventKey="1">
+              <ProfileActivity id={id} />
+            </Tab.Pane>
             <Tab.Pane eventKey="2">
               <ProfileChangeDetails profile={profile} id={id} />
             </Tab.Pane>
@@ -105,7 +120,7 @@ const Profile = () => {
           {user && user.id !== Number(id) && (
             <div className={"text-center mb-3"}>
               <div className={"w-50 mx-auto"}>
-                <FollowButton id={id} />
+                <FollowButton id={id} name={profile.first_name} />
               </div>
             </div>
           )}

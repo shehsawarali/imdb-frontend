@@ -13,22 +13,30 @@ const ContextWrapper = ({ children }) => {
     let accessToken = localStorage.getItem(ACCESS_TOKEN);
 
     if (accessToken) {
-      UserService.verifySession()
-        .then((response) => {
-          setUser(response.user);
-          setIsLoading(false);
-        })
-        .catch(() => {
-          setIsLoading(false);
-          localStorage.removeItem(ACCESS_TOKEN);
-        });
-    } else setIsLoading(false);
+      updateContext();
+    } else {
+      setIsLoading(false);
+    }
   }, []);
+
+  const updateContext = () => {
+    UserService.verifySession()
+      .then((response) => {
+        setUser(response.user);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+        localStorage.removeItem(ACCESS_TOKEN);
+      });
+  };
 
   return (
     <div>
       {!isLoading && (
-        <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
+        <UserContext.Provider value={{ user, setUser, updateContext }}>
+          {children}
+        </UserContext.Provider>
       )}
     </div>
   );

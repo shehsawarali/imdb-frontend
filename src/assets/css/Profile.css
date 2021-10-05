@@ -1,12 +1,11 @@
 .profile-container {
   width: 60%;
-  min-height: 92vh;
+  min-height: 100vh;
   overflow: auto;
-  background-color: var(--secondary-light);
+  background-color: var(--background);
   margin: 0 auto;
   border-radius: 5px;
   padding: 2rem 0;
-  color: white;
 }
 
 .profile-content {
@@ -21,18 +20,41 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-flow: row wrap;
-  color: var(--secondary) !important;
+  flex-flow: row nowrap;
+  color: var(--secondary-light);
 }
 
 .profile-header > h1 {
   font-weight: bold;
 }
 
+.profile-header #info {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.avatar {
+  margin-top: 15px;
+  margin-bottom: -10px;
+  margin-right: 3rem;
+}
+
+.avatar-edit {
+  text-align: center;
+  font-size: 14px;
+}
+
+.avatar-edit:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .nav.nav-pills .nav-link {
-  color: white;
-  border: 1px dashed var(--secondary);
+  color: lightgray;
+  border: 1px solid var(--secondary-light);
   margin: 5px;
+  font-weight: bold;
 }
 .nav.nav-pills .nav-link.active {
   background-color: var(--primary);
@@ -47,19 +69,15 @@
   background-color: white;
   padding: 0;
   border: 1px solid var(--secondary);
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-right: 3rem;
 }
 
 .profile-follow-card {
   background-color: var(--secondary-light);
   width: 100%;
-  color: white !important;
   padding: 1rem 2rem;
-  border-radius: 5px;
-  border: 1px solid var(--secondary);
-  box-shadow: none;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 3px var(--secondary);
   transition-duration: var(--transition);
 }
 .profile-follow-card:hover {
@@ -67,8 +85,18 @@
   box-shadow: rgba(0, 0, 0, 0.22) 0 10px 10px;
 }
 
+.profile-follow-card img {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 3rem;
+}
+
 .profile-follow-button {
   width: 100%;
+}
+
+.profile-form {
+  width: 50%;
 }
 
 @media (max-width: 768px) {
@@ -80,6 +108,23 @@
   }
   .profile-follow-button {
     width: 100%;
+  }
+  .profile-header {
+    flex-flow: row wrap;
+  }
+  .profile-header #info {
+    overflow: inherit;
+    text-overflow: inherit;
+    white-space: inherit;
+  }
+  .profile-form {
+    width: 75%;
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-header .avatar {
+    margin-bottom: 0;
   }
 }
 
@@ -95,5 +140,8 @@
   }
   .profile-content {
     padding: 0;
+  }
+  .profile-form {
+    width: 90%;
   }
 }

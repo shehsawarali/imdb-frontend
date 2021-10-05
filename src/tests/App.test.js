@@ -1,1 +1,1 @@
-test("renders Home", () => {});
+test("renders", () => {});

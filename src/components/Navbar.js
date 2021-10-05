@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "assets/css/Navbar.css";
-import { NavSearch } from "components";
+import { NavSearch, Preferences } from "components";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "constant";
 import { UserContext } from "context/UserContext";
 import UserService from "services/UserService";
 
 const AppNavbar = () => {
   const { user } = useContext(UserContext);
+  const [show, setShow] = useState(false);
 
   const loggedOutOptions = () => {
     return (
@@ -30,15 +31,27 @@ const AppNavbar = () => {
   const loggedInOptions = () => {
     return (
       <>
-        <button className={"nav-button me-2"}>
-          <Icon icon={"bookmark"} className={"me-2"} />
-          Watchlist
-        </button>
+        <Button as={Link} to="/timeline" className={"nav-button me-2"}>
+          <Icon icon={"history"} className={"me-2"} />
+          Timeline
+        </Button>
 
-        <NavDropdown title={user.first_name} id="basic-nav-dropdown">
+        <NavDropdown align="end" title={user.first_name}>
           <NavDropdown.Item as={Link} to={`/user/${user.id}`}>
             <Icon icon={"user"} className={"me-2"} />
             Profile
+          </NavDropdown.Item>
+          <NavDropdown.Item as={Link} to={`/watchlist`}>
+            <Icon icon={"bookmark"} className={"me-2"} />
+            Watchlist
+          </NavDropdown.Item>
+          <NavDropdown.Item as={Link} to={`/favorites`}>
+            <Icon icon={"heart"} className={"me-2"} />
+            Favorites
+          </NavDropdown.Item>
+          <NavDropdown.Item onClick={() => setShow(true)}>
+            <Icon icon={"user-cog"} className={"me-2"} />
+            Preferences
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={logOut}>
@@ -64,12 +77,12 @@ const AppNavbar = () => {
 
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" variant={"dark"}>
-      <Navbar.Brand as={Link} to="/">
-        IMDb
-      </Navbar.Brand>
+      <Link to={"/"} className={"text-decoration-none"}>
+        <div className={"logo-container"}>Filmfilia</div>
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className={"justify-content-between"}>
-        <Nav className={"me-auto w-50 absolute-center"}>
+        <Nav className={"me-auto"}>
           <NavSearch />
         </Nav>
 
@@ -81,6 +94,8 @@ const AppNavbar = () => {
           {user && loggedInOptions()}
         </Nav>
       </Navbar.Collapse>
+
+      {user && <Preferences show={show} setShow={setShow} />}
     </Navbar>
   );
 };

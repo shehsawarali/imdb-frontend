@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import QueryString from "query-string";
 import { Button, Col, Row } from "react-bootstrap";
 import { Redirect, useHistory } from "react-router-dom";
@@ -96,7 +97,11 @@ const PersonSearch = (props) => {
 
   return (
     <div className={"detail-page-container"}>
-      <h6 className={"display-6"}>Search Results</h6>
+      <h6 className={"display-6 text-center"}>
+        <Icon icon={"search"} className={"me-3"} size={"sm"} />
+        Person Search
+      </h6>
+      <hr />
       {renderHeader()}
 
       {response.results.length ? (

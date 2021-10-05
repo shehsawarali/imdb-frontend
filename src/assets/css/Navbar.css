@@ -1,3 +1,5 @@
+@import "Logo.css";
+
 nav {
   padding: 0.5rem 1rem;
   background-color: var(--secondary);
@@ -6,33 +8,23 @@ nav {
   border-bottom: 1px solid var(--primary);
 }
 
-.navbar-brand {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: 1px dashed var(--primary);
-  transition-duration: var(--transition);
-}
-.navbar-brand:hover {
-  background-color: var(--primary);
-  color: var(--secondary) !important;
-  border: 1px dashed var(--secondary);
-}
-
 .nav-button,
 .nav-button:focus {
   padding: 10px 20px;
   background-color: var(--secondary);
-  color: white;
+  color: lightgray;
   outline: none !important;
-  border: 1px dashed transparent !important;
+  border: 1px solid var(--secondary);
   font-weight: bold;
-  border-radius: 3px;
+  border-radius: 0.25rem;
   transition-duration: var(--transition);
+  box-shadow: none !important;
 }
 
-.nav-button:hover {
-  box-shadow: none;
+.nav-button:hover,
+.nav-button:focus:hover {
   background-color: var(--secondary-light);
+  border-color: var(--primary);
 }
 
 .dropdown-menu {
@@ -42,7 +34,7 @@ nav {
 }
 
 .dropdown-item {
-  color: white !important;
+  color: lightgray !important;
   font-weight: bold;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -62,16 +54,20 @@ nav {
   background-color: var(--primary);
   color: var(--secondary) !important;
   outline: none !important;
-  border: 1px dashed var(--secondary);
+  border: 1px solid var(--primary);
   font-weight: bold;
   box-shadow: none !important;
-  border-radius: 3px;
+  border-radius: 0.25rem;
   transition-duration: var(--transition);
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .dropdown-toggle:hover {
-  color: white !important;
+  color: lightgray !important;
   background-color: var(--secondary-light);
-  border: 1px dashed var(--secondary-light);
+  border: 1px solid var(--primary);
 }
 
 .nav-button > .svg-inline--fa,
@@ -80,8 +76,9 @@ nav {
 }
 
 .nav-button:hover > .svg-inline--fa,
+.nav-button:focus:hover > .svg-inline--fa,
 .dropdown-item:hover > .svg-inline--fa {
-  color: white;
+  color: lightgray;
 }
 
 .absolute-center {

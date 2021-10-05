@@ -1,25 +1,48 @@
 .title-card,
-.person-card {
-  border: 1px solid dimgray;
-  padding: 1rem;
-  transition-duration: var(--transition);
+.person-card,
+.activity-card,
+.timeline-card {
   display: flex;
+  transition-duration: var(--transition);
+  background-color: var(--secondary-light);
+  border: 1px solid var(--secondary);
+  box-shadow: 1px 1px 3px var(--secondary);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.title-card img,
+.person-card img,
+.activity-card img,
+.timeline-card img {
+  box-shadow: 2px 2px 5px var(--secondary);
+}
+
+.timeline-card a,
+.person-card a,
+.timeline-card a,
+.activity-card a {
+  color: lightgray !important;
+}
+
+.title-card,
+.person-card {
   flex-direction: row;
   align-items: center;
-  border-radius: 3px;
-  color: white !important;
+  color: lightgray !important;
 }
 
 .title-card:hover,
-.person-card:hover {
-  border-color: var(--primary);
-  background-color: var(--secondary-light);
+.person-card:hover,
+.activity-card:hover,
+.timeline-card:hover {
   box-shadow: rgba(0, 0, 0, 0.22) 0 10px 10px;
+  border-bottom: 1px solid var(--primary);
 }
 
-.title-card small,
-.person-card small {
-  color: lightgray;
+.title-card:hover strong,
+.person-card:hover strong {
+  text-decoration: underline;
 }
 
 .title-card img {
@@ -31,4 +54,60 @@
   height: 70px;
   width: 70px;
   border-radius: 50%;
+}
+
+.timeline-card,
+.activity-card {
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.timeline-card .title-image,
+.activity-card .title-image {
+  border-radius: 3px;
+  object-fit: cover;
+  height: 140px;
+  width: 92px;
+  margin-right: 2rem;
+}
+
+.timeline-card .header,
+.activity-card .header {
+  display: flex;
+  justify-content: space-between !important;
+  width: 100%;
+}
+
+.timeline-card .user-image {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .timeline-card .header,
+  .activity-card .header {
+    flex-direction: column;
+  }
+
+  .timeline-card small,
+  .activity-card small {
+    font-size: smaller;
+  }
+
+  .timeline-card .header {
+    margin-bottom: 10px;
+  }
+
+  .timeline-card .lead,
+  .activity-card .lead {
+    font-size: medium;
+  }
+
+  .timeline-card .title-image,
+  .activity-card .title-image {
+    margin-right: 1rem;
+  }
 }

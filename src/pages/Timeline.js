@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import { Button, Row, Spinner } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 
-import { FollowListCard } from "components";
-import UserService from "services/UserService";
+import { LoadingScreen, TimelineCard } from "components";
+import CoreService from "services/CoreService";
 
-const ProfileFollowers = ({ id }) => {
+const Timeline = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [list, setList] = useState([]);
@@ -15,10 +15,10 @@ const ProfileFollowers = ({ id }) => {
 
   useEffect(() => {
     fetch(setIsLoading);
-  }, [id]);
+  }, []);
 
   const fetch = (callback) => {
-    UserService.following(id, page + 1)
+    CoreService.timeline(page + 1)
       .then((response) => {
         setList([...list, ...response.results]);
         setNext(response.next);
@@ -40,7 +40,7 @@ const ProfileFollowers = ({ id }) => {
     if (isLoadingMore) {
       return (
         <div className={"text-center mt-5"}>
-          <Button className={"btn-inverted"}>
+          <Button className={"btn-inverted"} onClick={fetchMore}>
             <Spinner animation={"border"} size={"sm"} />
           </Button>
         </div>
@@ -49,36 +49,33 @@ const ProfileFollowers = ({ id }) => {
 
     return (
       <div className={"text-center mt-5"}>
-        <Button className={"btn-inverted"} onClick={fetchMore}>
+        <Button onClick={fetchMore}>
           View More <Icon icon={"angle-double-down"} size="1x" className={"ms-1"} />
         </Button>
       </div>
     );
   };
 
-  if (isLoading) {
-    return (
-      <div className={"text-center"}>
-        <Spinner animation={"border"} />
-      </div>
-    );
-  }
-
-  if (!list.length) {
-    return <div className={"text-center"}>This user is not following anyone</div>;
-  }
+  if (isLoading) return <LoadingScreen />;
 
   return (
-    <>
-      <Row md={1} xl={2} className="g-4">
-        {list.map((user_instance, index) => (
-          <FollowListCard key={index} user={user_instance} />
-        ))}
-      </Row>
+    <div className={"detail-page-container"}>
+      <h6 className={"display-6 text-center"}>
+        <Icon icon={"history"} className={"me-3"} size={"sm"} />
+        Timeline
+      </h6>
+      <hr />
+      {list.length > 0 ? (
+        list.map((activity, index) => {
+          return <TimelineCard instance={activity} key={index} />;
+        })
+      ) : (
+        <p className={"text-muted text-center"}>No activity</p>
+      )}
 
       {next && loadMoreButton()}
-    </>
+    </div>
   );
 };
 
-export default ProfileFollowers;
+export default Timeline;

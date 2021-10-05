@@ -1,10 +1,10 @@
 .form-container {
-  box-shadow: 1px 1px 5px #888888;
-  border-radius: 8px;
-  background-color: #dcdcdc;
-  margin: 2rem auto;
+  border-radius: 8px 8px 3px 3px;
+  background-color: var(--background);
+  margin: 10rem auto;
   width: 30rem;
   padding: 2rem 1rem;
+  border-bottom: 1px solid var(--primary);
 }
 
 .form-container > h3 {
@@ -17,23 +17,21 @@ input,
 select {
   height: 40px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--secondary);
   padding-left: 10px;
   padding-right: 10px;
   width: 100%;
   outline: none !important;
-  background-color: white;
+  background-color: var(--secondary-light);
+}
+
+input {
+  color: lightgray;
 }
 
 select:invalid,
 input:disabled {
   color: gray; /* same as ::placeholder */
-}
-
-input:focus,
-select:focus {
-  border: 1px solid var(--primary);
-  box-shadow: 0 0 2px 1px var(--primary);
 }
 
 input:disabled,
@@ -44,6 +42,7 @@ select:disabled {
 label {
   margin-left: 2px;
   margin-bottom: 2px;
+  color: lightgray;
 }
 
 .error {
@@ -81,8 +80,27 @@ input[type="checkbox"] {
   opacity: 1;
 }
 
+textarea {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  resize: none;
+  border-radius: 5px;
+  background-color: var(--secondary-light);
+  color: lightgray;
+}
+
 @media (max-width: 520px) {
   .form-container {
     width: 90%;
+  }
+  .filter-number-input {
+    width: 150px;
+  }
+}
+
+@media (max-width: 325px) {
+  .filter-genre {
+    font-size: 11px;
   }
 }

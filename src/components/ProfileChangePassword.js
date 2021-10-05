@@ -60,7 +60,7 @@ const ProfileChangePassword = () => {
         ) : (
           <>
             Change Password
-            <Icon icon={"key"} size="1x" style={{ marginLeft: "8px" }} />
+            <Icon icon={"key"} size="1x" className={"ms-2"} />
           </>
         )}
       </Button>
@@ -70,7 +70,7 @@ const ProfileChangePassword = () => {
   return (
     <>
       <div className={"w-100 d-flex flex-column"}>
-        <form onSubmit={submitForm} className={"mx-auto"}>
+        <form onSubmit={submitForm} className={"mx-auto my-3 profile-form"}>
           <div>
             <label htmlFor="email">Current Password</label>
             <input

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import QueryString from "query-string";
 import { Button, Col, Collapse, Row } from "react-bootstrap";
 import { Redirect, useHistory } from "react-router-dom";
@@ -80,7 +81,7 @@ const TitleSearch = (props) => {
     let filterParams = "";
 
     if (queryParams.name) {
-      filterParams += `name=${queryParams.name}`;
+      filterParams += `&name=${queryParams.name}`;
     }
     if (filter.max_rating) {
       filterParams += `&max_rating=${filter.max_rating}`;
@@ -98,7 +99,7 @@ const TitleSearch = (props) => {
       if (filter[genre]) filterParams += `&genre=${genre}`;
     }
 
-    let url = `${base_url}?type=title&${filterParams}`;
+    let url = `${base_url}?type=title${filterParams}`;
     history.push(url);
   };
 
@@ -161,7 +162,7 @@ const TitleSearch = (props) => {
               <h6>Genre</h6>
               <div className={"d-flex flex-wrap mb-3"}>
                 {genresList.map((genre, index) => (
-                  <Col sm={2} key={index}>
+                  <Col xs={6} md={3} key={index} className={"filter-genre"}>
                     <label className={"me-4"}>
                       <input
                         type="checkbox"
@@ -185,6 +186,7 @@ const TitleSearch = (props) => {
                   defaultValue={filter["min_rating"]}
                   name={"min_rating"}
                   onChange={changeInput}
+                  className={"filter-number-input"}
                 />
                 <span className={"mx-2"}>to</span>
                 <input
@@ -195,6 +197,7 @@ const TitleSearch = (props) => {
                   defaultValue={filter["max_rating"]}
                   name={"max_rating"}
                   onChange={changeInput}
+                  className={"filter-number-input"}
                 />
               </div>
 
@@ -203,21 +206,23 @@ const TitleSearch = (props) => {
                 <input
                   type="number"
                   min="1800"
-                  max={new Date().getFullYear()}
+                  max={new Date().getFullYear() + 1}
                   step="1"
                   defaultValue={filter["min_year"]}
                   name={"min_year"}
                   onChange={changeInput}
+                  className={"filter-number-input"}
                 />
                 <span className={"mx-2"}>to</span>
                 <input
                   type="number"
                   min="1800"
-                  max={new Date().getFullYear()}
+                  max={new Date().getFullYear() + 1}
                   step="1"
                   defaultValue={filter["max_year"]}
                   name={"max_year"}
                   onChange={changeInput}
+                  className={"filter-number-input"}
                 />
               </div>
 
@@ -266,7 +271,11 @@ const TitleSearch = (props) => {
 
   return (
     <div className={"detail-page-container"}>
-      <h6 className={"display-6"}>Search Results</h6>
+      <h6 className={"display-6 text-center"}>
+        <Icon icon={"search"} className={"me-3"} size={"sm"} />
+        Title Search
+      </h6>
+      <hr />
       {renderHeader()}
       {renderFilters()}
       {response.results.length ? (
