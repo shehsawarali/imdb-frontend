@@ -23,16 +23,31 @@ const Title = () => {
 
   const [title, setTitle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [cast, setCast] = useState([]);
 
   useEffect(() => {
     CoreService.title(id)
       .then((response) => {
         setTitle(response);
+        setCast(filterPrincipals(response?.principals, response?.crew));
       })
       .finally(() => {
         setIsLoading(false);
       });
   }, [id]);
+
+  const filterPrincipals = (principals, crew) => {
+    if (!principals.length) return [];
+
+    if (!crew?.directors.length && !crew?.writers.length) return principals;
+
+    const total_crew = [...crew.directors, ...crew.writers];
+    const crew_ids = total_crew.map((person) => person.id);
+
+    return principals.filter((principal) => {
+      return !crew_ids.includes(principal.person.id);
+    });
+  };
 
   if (isLoading) return <LoadingScreen />;
 
@@ -174,19 +189,15 @@ const Title = () => {
   };
 
   const renderCast = () => {
-    if (!title.principals.length) return null;
+    if (!cast.length) return null;
 
     return (
       <div className={"title-cast mt-5"}>
         <h3>Cast & Other Crew</h3>
         <Row md={1} xl={2} className="g-4">
-          {title.principals.map((principal, index) => (
+          {cast.map((principal, index) => (
             <Col key={index}>
-              <PersonCard
-                person={principal.person}
-                characters={principal.characters}
-                category={principal.category}
-              />
+              <PersonCard person={principal.person} characters={principal.characters} />
             </Col>
           ))}
         </Row>

@@ -90,6 +90,10 @@ textarea {
   color: lightgray;
 }
 
+.select-form {
+  color: lightgray;
+}
+
 @media (max-width: 520px) {
   .form-container {
     width: 90%;

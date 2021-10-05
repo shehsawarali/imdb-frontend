@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+import { Redirect } from "react-router-dom";
 
 import { LoadingScreen } from "components";
 import TitleSlider from "components/TitleSlider";
@@ -29,6 +30,8 @@ const Home = () => {
   }, []);
 
   if (isLoading) return <LoadingScreen />;
+
+  if (!topRated.length && !recommendations.length) return <Redirect to={"/timeline"} />;
 
   return (
     <div className={"detail-page-container"}>

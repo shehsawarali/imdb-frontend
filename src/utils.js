@@ -86,7 +86,7 @@ export const mergeObjects = (oldObject, newObject) => {
 };
 
 export const getDatetime = (isoString, timezone = null) => {
-  const settings = { hour12: true, dateStyle: "short", timeStyle: "short" };
+  const settings = { hour12: false, dateStyle: "short", timeStyle: "short" };
 
   if (timezone) {
     settings.timeZone = timezone;
