@@ -31,7 +31,7 @@ input {
 
 select:invalid,
 input:disabled {
-  color: gray; /* same as ::placeholder */
+  color: gray !important; /* same as ::placeholder */
 }
 
 input:disabled,
