@@ -28,9 +28,11 @@ const Person = () => {
   const renderHeader = () => {
     return (
       <div className={"detail-page-header mb-3"}>
-        <span className={"link me-1"} onClick={() => scrollToDiv("filmography")}>
-          Filmography
-        </span>
+        {person.filmography.length && (
+          <span className={"link me-1"} onClick={() => scrollToDiv("filmography")}>
+            Filmography
+          </span>
+        )}
       </div>
     );
   };

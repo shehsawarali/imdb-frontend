@@ -23,27 +23,30 @@ const TitleReviews = () => {
     CoreService.title(id)
       .then((response) => {
         setTitle(response);
-        fetch().then(setIsLoading(false));
+        fetch(setIsLoading);
       })
       .catch(() => {
         window.location.href = "/404";
       });
   }, [id]);
 
-  const fetch = async () => {
-    CoreService.getReviews(id, page + 1).then((response) => {
-      setList([...list, ...response.results]);
-      setNext(response.next);
-
-      setPage((page) => page + 1);
-    });
+  const fetch = (callback) => {
+    CoreService.getReviews(id, page + 1)
+      .then((response) => {
+        setList([...list, ...response.results]);
+        setNext(response.next);
+        setPage((page) => page + 1);
+      })
+      .finally(() => {
+        callback(false);
+      });
   };
 
   const fetchMore = () => {
     if (!next) return;
 
     setIsLoadingMore(true);
-    fetch().then(() => setIsLoadingMore(false));
+    fetch(setIsLoadingMore);
   };
 
   const loadMoreButton = () => {
