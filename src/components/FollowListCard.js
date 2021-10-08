@@ -17,7 +17,7 @@ const FollowListCard = ({ user }) => {
             alt={"profile"}
             style={{ height: "70px", width: "70px" }}
           />
-          <div className={"text-overflow w-50 lightgray"}>
+          <div className={"text-overflow w-100 lightgray"}>
             {user.first_name} {user.last_name}
             <br />
             {user.email}
